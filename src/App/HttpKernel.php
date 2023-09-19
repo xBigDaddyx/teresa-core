@@ -2,10 +2,15 @@
 
 namespace App;
 
+use App\Users\Middlewares\CompaniesPermissionMiddleware;
 use Illuminate\Foundation\Http\Kernel;
 
 class HttpKernel extends Kernel
 {
+    protected $middlewarePriority = [
+        CompaniesPermissionMiddleware::class,
+    ];
+
     /**
      * The application's global HTTP middleware stack.
      *
