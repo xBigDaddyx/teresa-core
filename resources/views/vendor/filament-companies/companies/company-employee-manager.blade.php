@@ -171,7 +171,7 @@
                                         </x-filament::button>
                                     @elseif (Wallo\FilamentCompanies\FilamentCompanies::hasRoles())
                                         <x-filament::button size="sm" disabled="true" outlined="true" color="gray">
-                                            {{ Wallo\FilamentCompanies\FilamentCompanies::findRole($user->employeeship->role)->name }}
+                                            {{ $user->employeeship->role }}
                                         </x-filament::button>
                                     @endif
 

@@ -4,53 +4,45 @@ namespace Domain\Users\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
-use Filament\Models\Contracts\HasDefaultTenant;
-use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
-use Wallo\FilamentCompanies\HasCompanies;
-use Wallo\FilamentCompanies\HasConnectedAccounts;
-use Wallo\FilamentCompanies\HasProfilePhoto;
-use Wallo\FilamentCompanies\SetsProfilePhotoFromUrl;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser, HasAvatar, HasDefaultTenant, HasTenants
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use HasApiTokens;
-    use HasCompanies;
-    use HasConnectedAccounts;
     use HasFactory;
-    use HasProfilePhoto;
+    use HasRoles;
     use Notifiable;
-    use SetsProfilePhotoFromUrl;
 
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
     }
 
-    public function getTenants(Panel $panel): array|Collection
+    public function getFilamentAvatarUrl(): ?string
     {
-        return $this->allCompanies();
+        if ($this->profile_photo_path !== null) {
+            return 'http://10.31.1.57/storage/'.$this->profile_photo_path;
+        }
+
+        return 'http://10.31.1.57/storage/images/hoplun-logo.jpg';
     }
 
-    public function canAccessTenant(Model $tenant): bool
+    public function getAvatarAttribute()
     {
-        return $this->belongsToCompany($tenant);
+        $avatar = $this->getFilamentAvatarUrl();
+
+        return $avatar;
     }
 
-    public function getDefaultTenant(Panel $panel): ?Model
+    public function getAvatarUrl()
     {
-        return $this->currentCompany;
-    }
-
-    public function getFilamentAvatarUrl(): string
-    {
-        return $this->profile_photo_url;
+        return filament()->getUserAvatarUrl($this);
     }
 
     /**
@@ -81,12 +73,12 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasDefaul
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // /**
+    //  * The accessors to append to the model's array form.
+    //  *
+    //  * @var array<int, string>
+    //  */
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
 }

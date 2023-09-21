@@ -1,6 +1,7 @@
 <?php
 
 use App\Providers\Filament\AdminPanelProvider;
+use App\Providers\Filament\UserPanelProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -84,7 +85,7 @@ return [
     |
     */
 
-    'locale' => 'id',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,9 +161,12 @@ return [
         /*
          * Package Service Providers...
          */
-        Spatie\Permission\PermissionServiceProvider::class,
+        //Spatie\Permission\PermissionServiceProvider::class,
 
         AdminPanelProvider::class,
+
+        UserPanelProvider::class,
+        \Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -171,8 +175,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
+        App\Providers\Filament\UserPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FilamentCompaniesServiceProvider::class,
+
     ])->toArray(),
 
     /*
