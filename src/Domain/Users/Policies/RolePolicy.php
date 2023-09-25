@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace Domain\Users\Policies;
 
 use Domain\Users\Models\Role;
 use Domain\Users\Models\User;

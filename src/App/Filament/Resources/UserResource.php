@@ -12,9 +12,12 @@ use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class UserResource extends Resource
 {
@@ -66,17 +69,34 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->sortable()
-                    ->label(strval(__('#'))),
+                // Tables\Columns\TextColumn::make('id')
+                //     ->sortable()
+                //     ->label(strval(__('#'))),
+                Tables\Columns\TextColumn::make('index')
+                    ->label('#')
+                    ->state(
+                        static function (HasTable $livewire, stdClass $rowLoop): string {
+                            return (string) (
+                                $rowLoop->iteration +
+                                ($livewire->getTableRecordsPerPage() * (
+                                    $livewire->getTablePage() - 1
+                                ))
+                            );
+                        }
+                    ),
                 Tables\Columns\ImageColumn::make('avatar')
                     ->circular(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable()
+                    ->weight(FontWeight::Bold)
                     ->label(strval(__('Name'))),
 
                 Tables\Columns\TextColumn::make('email')
+                    ->icon('heroicon-o-envelope')
+                    ->copyable()
+                    ->copyMessage('Email address copied')
+                    ->copyMessageDuration(1500)
                     ->searchable()
                     ->sortable()
                     ->label(strval(__('Email'))),
@@ -94,9 +114,26 @@ class UserResource extends Resource
                     })
                     ->label(strval(__('Verified'))),
 
+                Tables\Columns\TextColumn::make('company.name')
+                    ->icon('heroicon-o-building-office-2')
+                    ->searchable()
+                    ->sortable()
+                    ->label(strval(__('Company'))),
+                Tables\Columns\TextColumn::make('department')
+                    ->icon('heroicon-o-briefcase')
+                    ->searchable()
+                    ->sortable()
+                    ->label(strval(__('Department'))),
+
+                Tables\Columns\TextColumn::make('company.name')
+                    ->icon('heroicon-o-building-office-2')
+                    ->searchable()
+                    ->sortable()
+                    ->label(strval(__('Company'))),
                 Tables\Columns\TextColumn::make('roles.name')
+                    ->color('primary')
                     ->badge()
-                    ->separator(',')
+
                     ->label(strval(__('Roles'))),
 
                 Tables\Columns\TextColumn::make('created_at')

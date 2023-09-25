@@ -7,40 +7,32 @@ use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Support\Traits\HasProfilePhoto;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use HasApiTokens;
     use HasFactory;
+    use HasProfilePhoto;
     use HasRoles;
     use Notifiable;
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return str_ends_with($this->email, '@hoplun.com');
     }
 
     public function getFilamentAvatarUrl(): ?string
     {
-        if ($this->profile_photo_path !== null) {
-            return 'http://10.31.1.57/storage/'.$this->profile_photo_path;
-        }
-
-        return 'http://10.31.1.57/storage/images/hoplun-logo.jpg';
+        return $this->profilePhotoUrl;
     }
 
     public function getAvatarAttribute()
-    {
-        $avatar = $this->getFilamentAvatarUrl();
-
-        return $avatar;
-    }
-
-    public function getAvatarUrl()
     {
         return filament()->getUserAvatarUrl($this);
     }
@@ -78,7 +70,12 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     //  *
     //  * @var array<int, string>
     //  */
-    // protected $appends = [
-    //     'profile_photo_url',
-    // ];
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'current_company_id', 'id');
+    }
 }

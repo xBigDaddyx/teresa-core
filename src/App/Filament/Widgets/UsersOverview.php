@@ -5,7 +5,6 @@ namespace App\Filament\Widgets;
 use Domain\Users\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Illuminate\Database\Eloquent\Builder;
 
 class UsersOverview extends BaseWidget
 {
@@ -22,12 +21,7 @@ class UsersOverview extends BaseWidget
                 ->description('Users')
                 ->descriptionIcon('heroicon-m-users')
                 ->color('primary'),
-            Stat::make('Assigned roles', $users->whereHas('roles', function (Builder $query) {
-                $query->has('users');
-            })->count('id'))
-                ->description('Users')
-                ->descriptionIcon('heroicon-m-users')
-                ->color('primary'),
+
         ];
     }
 }
