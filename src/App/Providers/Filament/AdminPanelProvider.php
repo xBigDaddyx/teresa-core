@@ -86,7 +86,7 @@ class AdminPanelProvider extends PanelProvider
                     ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
                 'profile' => MenuItem::make()->label('Company profile'),
             ])
-            ->spa()
+
             ->brandLogo(asset('storage/images/teresa-logo.png'))
             ->favicon(asset('storage/images/favicon.ico'))
             //->tenantRoutePrefix('company')
