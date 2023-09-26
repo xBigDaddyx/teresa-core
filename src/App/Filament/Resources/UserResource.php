@@ -3,19 +3,29 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers\CompaniesRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 use Domain\Users\Models\User;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ViewRecord;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use stdClass;
 
@@ -26,6 +36,16 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationGroup = 'User Management';
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {
@@ -48,7 +68,7 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state)),
                 Select::make('roles')
-                    ->hidden(fn (Page $livewire): bool => $livewire instanceof EditRecord)
+                    ->hidden(fn (Page $livewire): bool => $livewire instanceof EditRecord || $livewire instanceof ViewRecord)
                     ->multiple()
                     ->relationship('roles', 'name')->preload(),
 
@@ -130,6 +150,12 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->label(strval(__('Company'))),
+                Tables\Columns\TextColumn::make('mobile')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->icon('heroicon-o-device-phone-mobile')
+                    ->searchable()
+                    ->sortable()
+                    ->label(strval(__('Phone'))),
                 Tables\Columns\TextColumn::make('roles.name')
                     ->color('primary')
                     ->badge()
@@ -137,13 +163,60 @@ class UserResource extends Resource
                     ->label(strval(__('Roles'))),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->dateTime('Y-m-d H:i:s')
                     ->label(strval(__('Created'))),
             ])
             ->filters([
-                //
-            ])
+
+                SelectFilter::make('department')
+                    ->options(fn (): array => User::query()->where('department', '!=', null)->pluck('department', 'department')->all()),
+                TernaryFilter::make('unassigned_department')
+                    ->placeholder('-')
+                    ->label(__('Has Department'))
+                    ->trueLabel('With unassigned department records')
+                    ->falseLabel('Only unassigned department records')
+                    ->queries(
+                        true: fn (Builder $query) => $query,
+                        false: fn (Builder $query) => $query->where('department', null),
+                        blank: fn (Builder $query) => $query->where('department', '!=', null),
+                    ),
+
+                TernaryFilter::make('unassigned_roles')
+                    ->label(__('Has Roles'))
+                    ->trueLabel('With unassigned role records')
+                    ->falseLabel('Only unassigned role records')
+                    ->queries(
+                        true: fn (Builder $query) => $query,
+                        false: fn (Builder $query) => $query->has('roles'),
+                    ),
+                Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('created_from'),
+                        DatePicker::make('created_until'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    }),
+                Filter::make('email_verified_at')
+                    ->label(__('Verified'))
+                    ->query(fn (Builder $query): Builder => $query->where('email_verified_at', '!=', null))
+                    ->toggle(),
+            ], layout: FiltersLayout::AboveContentCollapsible)->filtersFormColumns(5)->filtersTriggerAction(
+                fn (Action $action) => $action
+                    ->button()
+                    ->label(__('Filter')),
+            )
             ->actions([
+
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -157,6 +230,7 @@ class UserResource extends Resource
     {
         return [
             RolesRelationManager::class,
+            CompaniesRelationManager::class,
         ];
     }
 
@@ -164,8 +238,9 @@ class UserResource extends Resource
     {
         return [
             'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            //'create' => Pages\CreateUser::route('/create'),
+            'view' => Pages\ViewUser::route('/{record}'),
+            //'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

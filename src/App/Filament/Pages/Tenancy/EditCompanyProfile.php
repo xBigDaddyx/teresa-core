@@ -38,7 +38,8 @@ class EditCompanyProfile extends EditTenantProfile
                                     ->imageEditorMode(2)
                                     ->panelLayout('circle')
                                     ->downloadable()
-                                    ->openable(),
+                                    ->openable()
+                                    ->disabled(fn (): bool => ! auth()->user()->hasRole('super-admin')),
                             ])->columnSpan(1),
                         Section::make('Company')
                             ->id('main-section')
@@ -59,7 +60,8 @@ class EditCompanyProfile extends EditTenantProfile
                             ])->columns([
                                 'sm' => 1,
                                 'lg' => 2,
-                            ])->columnSpan(2),
+                            ])->columnSpan(2)
+                            ->disabled(fn (): bool => ! auth()->user()->hasRole('super-admin')),
 
                     ]),
             ]);

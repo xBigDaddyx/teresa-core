@@ -8,6 +8,7 @@ use Domain\Users\Models\Company;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
@@ -79,6 +80,11 @@ class AdminPanelProvider extends PanelProvider
             ->tenantMiddleware([
 
                 \Hasnayeen\Themes\Http\Middleware\SetTheme::class,
+            ])
+            ->tenantMenuItems([
+                'register' => MenuItem::make()->label('Register new company')
+                    ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
+                'profile' => MenuItem::make()->label('Company profile'),
             ])
             //->tenantRoutePrefix('company')
             ->tenant(Company::class, 'short_name', 'company')

@@ -51,12 +51,18 @@ class Company extends Model implements HasAvatar, HasCurrentTenantLabel
         parent::boot();
         self::creating(function ($model) {
             $model->personal_company = false;
+            $model->created_by = auth()->user()->id;
         });
     }
 
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
     public function users(): HasMany

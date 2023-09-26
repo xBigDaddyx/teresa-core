@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PermissionResource\Pages;
+use Domain\Users\Models\Permission;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -13,7 +14,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Permission;
+
+//use Spatie\Permission\Models\Permission;
 
 class PermissionResource extends Resource
 {
