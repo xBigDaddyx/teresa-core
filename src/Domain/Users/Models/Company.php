@@ -2,18 +2,37 @@
 
 namespace Domain\Users\Models;
 
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasCurrentTenantLabel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Support\Traits\HasProfileLogo;
 
-class Company extends Model
+class Company extends Model implements HasAvatar, HasCurrentTenantLabel
 {
-    use HasFactory;
+    use HasFactory, HasProfileLogo;
+
+    public function getCurrentTenantLabel(): string
+    {
+        return 'Active company';
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->logo_url;
+    }
 
     protected $guarded = [
         'id',
     ];
+
+    public function getFilamentName(): string
+    {
+        return "{$this->name} ({$this->short_name})";
+    }
 
     protected $fillable = [
         'name',
@@ -44,4 +63,13 @@ class Company extends Model
     {
         return $this->hasMany(User::class, 'current_company_id', 'id');
     }
+
+    public function members(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'company_user');
+    }
+
+    protected $appends = [
+        'logo_url',
+    ];
 }
