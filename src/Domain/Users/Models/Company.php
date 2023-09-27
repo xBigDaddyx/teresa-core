@@ -2,6 +2,7 @@
 
 namespace Domain\Users\Models;
 
+use Domain\Accuracies\Models\PackingList;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasCurrentTenantLabel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,6 +74,11 @@ class Company extends Model implements HasAvatar, HasCurrentTenantLabel
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'company_user');
+    }
+
+    public function packingLists(): HasMany
+    {
+        return $this->hasMany(PackingList::class, 'company_id', 'id');
     }
 
     protected $appends = [
