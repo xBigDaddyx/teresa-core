@@ -160,10 +160,9 @@ return [
          * Package Service Providers...
          */
         //Spatie\Permission\PermissionServiceProvider::class,
-        App\Providers\VoltServiceProvider::class,
-        App\Providers\FolioServiceProvider::class,
         //UserPanelProvider::class,
         \Spatie\Permission\PermissionServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -174,7 +173,7 @@ return [
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\Filament\AccuracyPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\VoltServiceProvider::class,
 
     ])->toArray(),
 
