@@ -16,11 +16,12 @@
 </head>
 
 <body class="antialiased">
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
+@if (Route::has('login'))
             <livewire:welcome.navigation />
         @endif
+    <div
+        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+
 
         <!-- Hero -->
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,12 +30,12 @@
                 <div>
                     <h1
                         class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-                        Start your journey with <span class="text-success-600">{{env('APP_NAME')}}</span></h1>
-                    <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Crafted with love.</p>
+                        Start your journey with <span class="text-primary-400 font-extrabold">{{env('APP_NAME')}}</span></h1>
+                    <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Crafted with love ❤️</p>
 
                     <!-- Buttons -->
                     <div class="mt-7 grid gap-3 w-full sm:inline-flex">
-                        <a class="inline-flex justify-center items-center gap-x-3 text-center bg-success-600 hover:bg-success-700 border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-success-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
+                        <a class="inline-flex justify-center items-center gap-x-3 text-center bg-primary-400 hover:bg-primary-500 border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
                             href="{{route('login')}}">
                             Get started
                             <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
