@@ -41,7 +41,7 @@ Route::get('/auth/callback', function () {
         if ($findbysocial) {
             Auth::login($findbysocial);
 
-            return redirect('/dashboard');
+            return redirect()->route('menu');
         }
 
         $usermodel = User::updateOrCreate(
@@ -51,7 +51,7 @@ Route::get('/auth/callback', function () {
 
         Auth::login($usermodel);
 
-        return redirect('/dashboard');
+        return redirect()->route('menu');
 
     } catch (Exception $e) {
         dd($e->getMessage());
@@ -59,3 +59,7 @@ Route::get('/auth/callback', function () {
 
     // $user->token
 });
+
+Route::view('menu', 'livewire.menu.menu')
+    ->middleware(['auth', 'verified'])
+    ->name('menu');
