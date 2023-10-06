@@ -16,7 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('index');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -47,7 +47,7 @@ Route::get('/auth/callback', function () {
                 $findUser->save();
             }
 
-            return redirect()->route('/');
+            return redirect()->route('index');
         }
 
         return abort(403);
