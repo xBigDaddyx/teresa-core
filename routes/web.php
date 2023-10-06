@@ -37,21 +37,28 @@ Route::get('/auth/callback', function () {
         $user = Socialite::driver('azure')->user();
 
         // find user in the database where the social id is the same with the id provided by Google
-        $findbysocial = User::where('social_id', $user->id)->first();
-        if ($findbysocial) {
-            Auth::login($findbysocial);
+        $findUser = User::where('social_id', $user->id)->orWhere('email', $user->email)->first();
 
-            return redirect()->route('menu');
+        if ($findUser) {
+            Auth::login($findUser);
+            if ($findUser->social_id === null || empty($findUser->social_id)) {
+                $findUser->social_id = $user->id;
+                $findUser->social_type = 'azure';
+                $findUser->save();
+            }
+
+            return redirect()->route('/');
         }
 
-        $usermodel = User::updateOrCreate(
-            ['email' => $user->email],
-            ['social_type' => 'azure', 'social_id' => $user->id]
-        );
+        return abort(403);
+        // $usermodel = User::updateOrCreate(
+        //     ['email' => $user->email],
+        //     ['social_type' => 'azure', 'social_id' => $user->id]
+        // );
 
-        Auth::login($usermodel);
+        // Auth::login($usermodel);
 
-        return redirect()->route('menu');
+        // return redirect()->route('menu');
 
     } catch (Exception $e) {
         dd($e->getMessage());

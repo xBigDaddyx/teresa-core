@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="mytheme">
 
 <head>
     <meta charset="utf-8">
@@ -15,16 +15,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased">
-@if (Route::has('login'))
-            <livewire:welcome.navigation />
-        @endif
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+<body class="antialiased bg-primary-100 dark:bg-[#2D2F41]">
 
+    <div
+        class="h-screen items-center">
+        @if (Route::has('login'))
+
+<livewire:welcome.navigation />
+
+
+
+
+        @endif
 
         <!-- Hero -->
-        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Grid -->
             <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
                 <div>

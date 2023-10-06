@@ -11,9 +11,34 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
-        'node_modules/preline/dist/*.js',
-    ],
 
+    ],
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+
+                    "primary": "#F5A357",
+
+                    "secondary": "#313A4A",
+
+                    "accent": "#806866",
+
+                    "neutral": "#313A4A",
+
+                    "base-100": "#FEFCFD",
+
+                    "info": "#4E676B",
+
+                    "success": "#8A9277",
+
+                    "warning": "#FDD797",
+
+                    "error": "#DC7149",
+                },
+            },
+        ],
+    },
     theme: {
         extend: {
             colors: {
@@ -116,5 +141,5 @@ export default {
         },
     },
 
-    plugins: [forms, require('preline/plugin'), typography],
+    plugins: [forms, typography, require("daisyui")],
 };
