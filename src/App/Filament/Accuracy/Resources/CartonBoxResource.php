@@ -2,28 +2,33 @@
 
 namespace App\Filament\Accuracy\Resources;
 
-use App\Filament\Accuracy\Resources\PackingListResource\Pages;
+use App\Filament\Accuracy\Resources\CartonBoxResource\Pages;
+use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers;
 use Domain\Accuracies\Models\Buyer;
+use Domain\Accuracies\Models\CartonBox;
 use Domain\Accuracies\Models\PackingList;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\Summarizers\Count;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Enums\FiltersLayout;
-use Filament\Tables\Filters\Filter;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PackingListResource extends Resource
+class CartonBoxResource extends Resource
 {
-    protected static ?string $model = PackingList::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $model = CartonBox::class;
+    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
     protected static ?string $navigationGroup = 'Packages';
 
-    protected static ?string $label = 'Packing List';
+    protected static ?string $label = 'Carton Box';
 
     public static function form(Form $form): Form
     {
@@ -37,41 +42,81 @@ class PackingListResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('po')
+
+                Tables\Columns\TextColumn::make('id')
+                    ->label('#'),
+                Tables\Columns\TextColumn::make('box_code')
                     ->searchable()
-                    ->sortable()
+                    ->label('Box Code'),
+                Tables\Columns\TextColumn::make('packingList.po')
+                    ->searchable()
                     ->label('PO'),
-                Tables\Columns\TextColumn::make('buyer.name')
+                Tables\Columns\TextColumn::make('carton_number')
+                    ->tooltip('Carton Number')
+                    ->label('CN'),
+                Tables\Columns\TextColumn::make('size')
                     ->searchable()
-                    ->sortable()
-                    ->label('Buyer'),
-                Tables\Columns\TextColumn::make('buyer.country')
+                    ->label('Size'),
+                Tables\Columns\TextColumn::make('color')
                     ->searchable()
-                    ->sortable()
-                    ->label('Buyer Country'),
-                Tables\Columns\TextColumn::make('style_no')
+                    ->label('Color'),
+                Tables\Columns\TextColumn::make('quantity')
+                    // ->summarize(Sum::make()->label('Total'))
+                    ->label('Quantity'),
+                Tables\Columns\TextColumn::make('type')
                     ->searchable()
-                    ->sortable()
-                    ->label('Style'),
-                Tables\Columns\TextColumn::make('contract_no')
+                    ->label('Type'),
+                // Tables\Columns\TextColumn::make('description')
+                //     ->searchable()
+                //     ->limit(50)
+                //     ->label('Box Info'),
+                Tables\Columns\IconColumn::make('is_completed')
+
                     ->searchable()
-                    ->sortable()
-                    ->label('Contract'),
-                Tables\Columns\TextColumn::make('batch')
-                    ->searchable()
-                    ->sortable()
-                    ->label('Batch'),
-                Tables\Columns\TextColumn::make('description')
-                    ->limit(50)
-                    ->label('Description'),
+                    ->boolean()
+                    ->trueIcon('tabler-clipboard-check')
+                    ->falseIcon('tabler-clipboard-x')
+                    ->label('Completed'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->label('Created'),
+                    ->label('Created')
+                    ->dateTime(),
             ])
+            ->groups([
+                Group::make('packingList.po')
+                    ->label('PO')
+                    ->getDescriptionFromRecordUsing(function (CartonBox $record) {
+                        return $record->packingList->buyer->name;
+                    })
+                    ->collapsible(),
+                Group::make('is_completed')
+                    ->getTitleFromRecordUsing(function (CartonBox $record) {
+                        if ($record->is_completed === true) {
+                            return 'Completed';
+                        }
+                        return 'Outstanding';
+                    })
+                    ->getDescriptionFromRecordUsing(function (CartonBox $record) {
+                        if ($record->is_completed === true) {
+                            return 'This carton box is completed and validated';
+                        }
+                        return 'This carton box is incompleted';
+                    })
+                    ->label('Status')
+                    ->collapsible(),
+                Group::make('type')
+                    ->label('Type')
+                    ->collapsible(),
+            ])
+            ->groupsInDropdownOnDesktop()
+            ->defaultGroup('packingList.po')
+            ->queryStringIdentifier('users')
+            ->striped()
+            ->deferLoading()
+
             ->filters([
                 Tables\Filters\TrashedFilter::make()
                     ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
-                Filter::make('buyer')
+                Tables\Filters\Filter::make('buyer')
                     ->columnSpanFull()
                     ->columns(3)
                     ->form([
@@ -133,19 +178,19 @@ class PackingListResource extends Resource
                         return $query
                             ->when(
                                 $data['buyer_id'],
-                                fn (Builder $query, $buyer): Builder => $query->whereHas('buyer', function (Builder $q) use ($buyer) {
+                                fn (Builder $query, $buyer): Builder => $query->whereHas('packingList', function (Builder $q) use ($buyer) {
                                     $q->where('buyer_id', '=', $buyer);
                                 }),
                             )
                             ->when(
                                 $data['contract_no'],
-                                fn (Builder $query, $type): Builder => $query->whereHas('buyer', function (Builder $query) use ($data) {
+                                fn (Builder $query, $type): Builder => $query->whereHas('packingList', function (Builder $query) use ($data) {
                                     $query->where('contract_no', '=', $data['contract_no']);
                                 })
                             )
                             ->when(
                                 $data['style_no'],
-                                fn (Builder $query, $type): Builder => $query->whereHas('buyer', function (Builder $query) use ($data) {
+                                fn (Builder $query, $type): Builder => $query->whereHas('packingList', function (Builder $query) use ($data) {
                                     $query->where('style_no', '=', $data['style_no']);
                                 })
                             );
@@ -158,36 +203,42 @@ class PackingListResource extends Resource
 
                         return 'Buyer : (' . $buyer->name . ')';
                     }),
+                // Tables\Filters\SelectFilter::make('po')->relationship('packingList', 'po', fn (Builder $query) => $query->withTrashed())
+                //     ->label('Purchase Order'),
+                // Tables\Filters\SelectFilter::make('contract_no')->relationship('packingList', 'contract_no')
+                //     ->label('Contract No'),
+                // Tables\Filters\SelectFilter::make('batch')->relationship('packingList', 'batch')
+                //     ->label('Batch'),
+
+                Tables\Filters\Filter::make('is_completed')
+                    ->label('Completed')
+                    ->query(fn (Builder $query): Builder => $query->where('is_completed', true)),
             ], FiltersLayout::AboveContentCollapsible)
             ->filtersFormColumns(4)
             ->filtersFormWidth('4xl')
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePackingLists::route('/'),
+            'index' => Pages\ListCartonBoxes::route('/'),
+            'create' => Pages\CreateCartonBox::route('/create'),
+            'edit' => Pages\EditCartonBox::route('/{record}/edit'),
         ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
     }
 }

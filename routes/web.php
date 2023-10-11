@@ -1,6 +1,7 @@
 <?php
 
 use Domain\Users\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -26,11 +27,16 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 Route::get('/auth/redirect', function () {
     return Socialite::driver('azure')->redirect();
 });
-
+Route::get('/logout', function (Request $request) {
+    Auth::guard()->logout();
+    $request->session()->flush();
+    $azureLogoutUrl = Socialite::driver('azure')->getLogoutUrl(route('login'));
+    return redirect($azureLogoutUrl);
+})->middleware('auth')->name('logout');
 Route::get('/auth/callback', function () {
     try {
         // get user data from Google

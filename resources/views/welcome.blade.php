@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{env('APP_NAME')}}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,31 +15,37 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased bg-primary-100 dark:bg-[#2D2F41]">
+<body class="antialiased bg-primary-50 dark:bg-[#2D2F41] h-screen">
 
-    <div
-        class="h-screen items-center">
-        @if (Route::has('login'))
 
-<livewire:welcome.navigation />
+    @if (Route::has('login'))
 
+    <livewire:welcome.navigation />
 
 
 
-        @endif
 
-        <!-- Hero -->
-        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <!-- Grid -->
-            <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
-                <div>
-                    <h1
-                        class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
-                        Start your journey with <span class="text-primary-400 font-extrabold">{{env('APP_NAME')}}</span></h1>
-                    <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Crafted with love ❤️</p>
+    @endif
 
-                    <!-- Buttons -->
-                    <div class="mt-7 grid gap-3 w-full sm:inline-flex">
+    <!-- Hero -->
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
+            <div>
+                @auth
+                <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white">
+                    Welcome, <span class="text-primary-400 font-extrabold">{{auth()->user()->name}}!</span></h1>
+                <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Feel free to explore and enjoy your experience! 🫰</p>
+
+                @else
+                <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white">
+                    Start your journey with <span class="text-primary-400 font-extrabold">{{env('APP_NAME')}}</span></h1>
+                <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Crafted with love ❤️</p>
+
+                @endauth
+
+                <!-- Buttons -->
+                <!-- <div class="mt-7 grid gap-3 w-full sm:inline-flex">
                         <a class="inline-flex justify-center items-center gap-x-3 text-center bg-primary-400 hover:bg-primary-500 border border-transparent text-sm lg:text-base text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
                             href="{{route('login')}}">
                             Get started
@@ -50,26 +56,24 @@
                             </svg>
                         </a>
 
-                    </div>
-                    <!-- End Buttons -->
+                    </div> -->
+                <!-- End Buttons -->
 
 
-                </div>
-                <!-- End Col -->
-
-                <div class="relative ml-4">
-
-                    <img class="w-full rounded-md"
-                        src="{{ asset('storage/images/illu01.png') }}"
-                        alt="Image Description">
-
-                </div>
-                <!-- End Col -->
             </div>
-            <!-- End Grid -->
+            <!-- End Col -->
+
+            <div class="relative ml-4">
+
+                <img class="w-3/4 h-3/4 rounded-md" src="{{ asset('storage/images/illu01.png') }}" alt="Image Description">
+
+            </div>
+            <!-- End Col -->
         </div>
-        <!-- End Hero -->
+        <!-- End Grid -->
     </div>
+    <!-- End Hero -->
+
 </body>
 
 </html>

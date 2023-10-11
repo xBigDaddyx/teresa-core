@@ -6,5 +6,5 @@ use Filament\Pages\Auth\Login as AuthLogin;
 
 class Login extends AuthLogin
 {
-    protected static string $view = 'admin.auth.login';
+    protected static string $view = 'Admin.Auth.login';
 }

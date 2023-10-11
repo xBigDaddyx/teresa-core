@@ -52,18 +52,18 @@ class PackingList extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name.'%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
             if ($count < 10) {
-                $number = '000'.$count;
+                $number = '000' . $count;
             } elseif ($count >= 10 && $count < 100) {
-                $number = '00'.$count;
+                $number = '00' . $count;
             } elseif ($count >= 100 && $count < 1000) {
-                $number = '0'.$count;
+                $number = '0' . $count;
             } else {
                 $number = $count;
             }
             $model->company_id = auth()->user()->currentCompany->id;
-            $model->id = auth()->user()->currentCompany->short_name.'.PL.'.$number;
+            $model->id = auth()->user()->currentCompany->short_name . '.PL.' . $number;
         });
     }
 
@@ -96,10 +96,10 @@ class PackingList extends Model
     //     return $this->belongsTo(Buyer::class, 'buyer_id', 'id');
     // }
 
-    // public function buyer()
-    // {
-    //     return $this->belongsTo(Buyer::class, 'buyer_id', 'id');
-    // }
+    public function buyer()
+    {
+        return $this->belongsTo(Buyer::class, 'buyer_id', 'id');
+    }
 
     // public function cartonBoxes()
     // {

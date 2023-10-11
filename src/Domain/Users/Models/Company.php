@@ -2,6 +2,7 @@
 
 namespace Domain\Users\Models;
 
+use Domain\Accuracies\Models\CartonBox;
 use Domain\Accuracies\Models\PackingList;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasCurrentTenantLabel;
@@ -79,6 +80,10 @@ class Company extends Model implements HasAvatar, HasCurrentTenantLabel
     public function packingLists(): HasMany
     {
         return $this->hasMany(PackingList::class, 'company_id', 'id');
+    }
+    public function cartonBoxes(): HasMany
+    {
+        return $this->hasMany(CartonBox::class, 'company_id', 'id');
     }
 
     protected $appends = [

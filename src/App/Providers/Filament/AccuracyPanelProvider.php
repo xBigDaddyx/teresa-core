@@ -21,6 +21,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class AccuracyPanelProvider extends PanelProvider
 {
@@ -29,12 +30,11 @@ class AccuracyPanelProvider extends PanelProvider
         return $panel
             ->id('accuracy')
             ->path('accuracy')
-            ->login()
-            ->default()
             ->colors([
                 'primary' => Color::Amber,
             ])
             ->plugins([
+                BreezyCore::make(),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
                 \Hasnayeen\Themes\ThemesPlugin::make(),
                 \BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin::make(),
