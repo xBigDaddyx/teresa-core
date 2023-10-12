@@ -53,7 +53,7 @@ class PackingList extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
             if ($count < 10) {
                 $number = '000' . $count;
             } elseif ($count >= 10 && $count < 100) {
@@ -63,8 +63,8 @@ class PackingList extends Model
             } else {
                 $number = $count;
             }
-            $model->company_id = auth()->user()->currentCompany->id;
-            $model->id = auth()->user()->currentCompany->short_name . '.PL.' . $number;
+            $model->company_id = auth()->user()->company->id;
+            $model->id = auth()->user()->company->short_name . '.PL.' . $number;
         });
     }
 

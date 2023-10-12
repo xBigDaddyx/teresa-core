@@ -33,7 +33,7 @@ class CartonBoxAttribute extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
             if ($count < 10) {
                 $number = '0000' . $count;
             } elseif ($count >= 10 && $count < 100) {
@@ -45,7 +45,7 @@ class CartonBoxAttribute extends Model
             } else {
                 $number = $count;
             }
-            $model->id = auth()->user()->currentCompany->short_name . '.CBA.' . $number;
+            $model->id = auth()->user()->company->short_name . '.CBA.' . $number;
         });
     }
 

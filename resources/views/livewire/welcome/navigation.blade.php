@@ -7,7 +7,7 @@
     <div class="navbar-end">
 
         <div class="dropdown dropdown-end ">
-            @auth
+
             <label tabindex="0" class="btn btn-ghost">
                 <x-heroicon-s-window class="h-5 w-5" />
 
@@ -16,8 +16,8 @@
 
 
 
-                <li> <a href="{{url('/admin')}}"><x-heroicon-s-key class="h-5 w-5" />Administration</a></li>
-                <li><a href="{{url('/accuracy')}}"><x-heroicon-s-clipboard-document-check class="h-5 w-5" />Accuracy</a></li>
+                <li> <a href="{{route('filament.admin.tenant')}}"><x-heroicon-s-key class="h-5 w-5" />Administration</a></li>
+                <li><a href="{{route('filament.accuracy.tenant')}}"><x-heroicon-s-clipboard-document-check class="h-5 w-5" />Accuracy</a></li>
 
 
 
@@ -25,7 +25,7 @@
 
             </ul>
 
-            @endauth
+
 
         </div>
         <div class="flex justify-center items-center">
@@ -43,7 +43,7 @@
                     <li><a href="{{route('logout')}}">Logout</a></li>
                 </ul>
                 @else
-                <a href="{{route('login')}}" class="btn btn-primary">Login</a>
+                <!-- <a href="{{route('login')}}" class="btn btn-primary">Login</a> -->
 
                 @endauth
             </div>

@@ -9,7 +9,10 @@ use Filament\Resources\Pages\EditRecord;
 class EditPackingList extends EditRecord
 {
     protected static string $resource = PackingListResource::class;
-
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return true;
+    }
     protected function getActions(): array
     {
         return [

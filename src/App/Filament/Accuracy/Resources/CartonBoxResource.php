@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Awcodes\Shout\Components\Shout;
+use Filament\Forms\Get;
 use Filament\Resources\RelationManagers\RelationGroup;
 
 class CartonBoxResource extends Resource
@@ -41,6 +42,7 @@ class CartonBoxResource extends Resource
         return $form
             ->schema([
                 Shout::make('important')
+                    ->hiddenOn('create')
                     ->visible(fn (Model $record): bool => $record->isLocked())
                     ->columnSpan('full')
                     ->icon('tabler-lock')
@@ -59,10 +61,10 @@ class CartonBoxResource extends Resource
                             ->default(0)
                             ->label('Carton Number'),
                         Forms\Components\TextInput::make('size')
-                            ->hidden(fn (Model $record): bool => $record->type === 'RATIO')
+                            ->hidden(fn (Get $get): bool => $get('type') === 'RATIO')
                             ->label('Size'),
                         Forms\Components\TextInput::make('color')
-                            ->hidden(fn (Model $record): bool => $record->type === 'RATIO')
+                            ->hidden(fn (Get $get): bool => $get('type') === 'RATIO')
                             ->label('Color'),
                         Forms\Components\TextInput::make('quantity')
                             ->required()
@@ -78,6 +80,7 @@ class CartonBoxResource extends Resource
                             ->label('Type'),
                         Forms\Components\Toggle::make('is_completed')
                             ->label('Completed')
+                            ->hiddenOn('create')
                             ->visible(function (Model $record) {
                                 if ($record->polybags->count() > 0) {
                                     if ($record->is_completed !== true) {

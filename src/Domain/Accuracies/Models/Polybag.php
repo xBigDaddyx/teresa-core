@@ -38,7 +38,7 @@ class Polybag extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
 
             if ($count < 10) {
                 $number = '000000' . $count;
@@ -55,8 +55,8 @@ class Polybag extends Model
             } else {
                 $number = $count;
             }
-            $model->company_id = auth()->user()->currentCompany->id;
-            $model->id = auth()->user()->currentCompany->short_name . '.PB.' . $number;
+            $model->company_id = auth()->user()->company->id;
+            $model->id = auth()->user()->company->short_name . '.PB.' . $number;
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Pages\Tenancy\EditCompanyProfile;
 use App\Filament\Pages\Tenancy\RegisterCompany;
+use Domain\Admin\Models\Login;
 use Domain\Users\Models\Company;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -29,10 +30,14 @@ class AccuracyPanelProvider extends PanelProvider
     {
         return $panel
             ->id('accuracy')
-            ->path('accuracy')
+            ->path('admin')
             ->colors([
                 'primary' => Color::Amber,
             ])
+
+            ->domain('accuracy.core.test')
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('30s')
             ->plugins([
                 BreezyCore::make(),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),

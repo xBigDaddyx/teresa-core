@@ -22,7 +22,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
-        "leandrocfe/filament-apex-charts": "3.0",
+        "leandrocfe/filament-apex-charts": "^3.0",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
         "richan-fongdasen/eloquent-blameable": "^1.9",

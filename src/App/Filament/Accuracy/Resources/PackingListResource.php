@@ -3,6 +3,7 @@
 namespace App\Filament\Accuracy\Resources;
 
 use App\Filament\Accuracy\Resources\PackingListResource\Pages;
+use App\Filament\Accuracy\Resources\PackingListResource\RelationManagers\CartonBoxesRelationManager;
 use Domain\Accuracies\Models\Buyer;
 use Domain\Accuracies\Models\PackingList;
 use Filament\Forms;

@@ -32,7 +32,7 @@ class Tag extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
 
             if ($count < 10) {
                 $number = '000000' . $count;
@@ -49,7 +49,7 @@ class Tag extends Model
             } else {
                 $number = $count;
             }
-            $model->id = auth()->user()->currentCompany->short_name . '.TAG.' . $number;
+            $model->id = auth()->user()->company->short_name . '.TAG.' . $number;
         });
     }
 

@@ -27,7 +27,7 @@ class CartonBox extends Model
     use HasFactory;
     use BlameableTrait;
     use SoftDeletes;
-
+    protected $primary = 'id';
     protected $connection = 'teresa_box';
 
     protected $keyType = 'string';
@@ -65,7 +65,7 @@ class CartonBox extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->currentCompany->short_name . '%')->withTrashed()->count() + 1);
+            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
 
             if ($count < 10) {
                 $number = '00000' . $count;
@@ -80,8 +80,8 @@ class CartonBox extends Model
             } else {
                 $number = $count;
             }
-            $model->company_id = auth()->user()->currentCompany->id;
-            $model->id = auth()->user()->currentCompany->short_name . '.CB.' . $number;
+            $model->company_id = auth()->user()->company->id;
+            $model->id = auth()->user()->company->short_name . '.CB.' . $number;
         });
     }
 

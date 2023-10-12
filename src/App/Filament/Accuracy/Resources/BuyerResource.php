@@ -5,6 +5,7 @@ namespace App\Filament\Accuracy\Resources;
 use App\Filament\Accuracy\Resources\BuyerResource\Pages;
 use App\Filament\Accuracy\Resources\BuyerResource\RelationManagers;
 use Domain\Accuracies\Models\Buyer;
+use Filament\Actions\DeleteAction;
 use Filament\Forms;
 
 use Filament\Forms\Form;
@@ -51,14 +52,31 @@ class BuyerResource extends Resource
                     ->label('Buyer Country'),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make()
+                    ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+
+                    // Action::make('Activities')
+                    //     ->hidden(! Auth::user()->hasCompanyRole(Auth::user()->currentCompany, 'it'))
+                    //     ->icon('tabler-refresh')
+                    //     ->url(fn (EntitiesBuyer $record): string => route('filament.resources.modules/packing/entities/buyers.activities', $record))
+                    //     ->openUrlInNewTab(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make()
+                        ->requiresConfirmation()
+                        ->visible(fn (): bool => auth()->user()->can('buyers.delete')),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->visible(fn (): bool => auth()->user()->can('buyers.deleteBulk')),
+                    Tables\Actions\ForceDeleteBulkAction::make()
+                        ->visible(fn (): bool => auth()->user()->can('buyers.deleteBulk')),
+                    Tables\Actions\RestoreBulkAction::make()
+                        ->visible(fn (): bool => auth()->user()->can('buyers.restoreBulk')),
                 ]),
             ]);
     }
