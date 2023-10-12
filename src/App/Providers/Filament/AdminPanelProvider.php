@@ -91,7 +91,7 @@ class AdminPanelProvider extends PanelProvider
                 'profile' => MenuItem::make()->label('Company profile'),
             ])
 
-            ->brandLogo(asset('storage/images/teresa-logo.png'))
+
             ->favicon(asset('storage/images/favicon.ico'))
             //->tenantRoutePrefix('company')
             ->tenant(Company::class, 'short_name', 'company')

@@ -13,6 +13,7 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PackingListResource extends Resource
@@ -29,7 +30,45 @@ class PackingListResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Buyer Information')
+                    ->schema([
+                        Forms\Components\Select::make('buyer_id')
+                            ->required()
+                            ->relationship('buyer', 'name')
+                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->name} - {$record->country}"),
+                        Forms\Components\TextInput::make('po')
+                            ->required()
+                            ->label('Buyer PO'),
+                        Forms\Components\TextInput::make('batch')
+                            ->label('batch'),
+
+                    ])->columns(2),
+                Forms\Components\Section::make('General Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('style_no')
+                            ->required()
+                            ->label('Style'),
+                        Forms\Components\TextInput::make('contract_no')
+                            ->required()
+                            ->label('Contract'),
+                        Forms\Components\Radio::make('type')
+                            ->options([
+                                'SOLID' => 'Solid',
+                                'MULTIPLE' => 'Mulltiple',
+                                'RATIO' => 'Ratio',
+                            ])
+                            ->inline()
+                            ->descriptions([
+                                'SOLID' => 'for solid type',
+                                'MULTIPLE' => 'there is multiple carton box type in one packing list.',
+                                'RATIO' => 'there is ratio attribute for all carton box in one packing list.'
+                            ])
+                            ->label('Type'),
+                        Forms\Components\Textarea::make('description')
+                            ->columnSpan(2)
+                            ->label('Description'),
+
+                    ])->columns(2),
             ]);
     }
 
@@ -179,10 +218,19 @@ class PackingListResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePackingLists::route('/'),
+            //'index' => Pages\ManagePackingLists::route('/'),
+            'index' => Pages\ListPackingLists::route('/'),
+            'create' => Pages\CreatePackingList::route('/create'),
+            'edit' => Pages\EditPackingList::route('/{record}/edit'),
         ];
     }
+    public static function getRelations(): array
+    {
+        return [
+            CartonBoxesRelationManager::class,
 
+        ];
+    }
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

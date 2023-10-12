@@ -71,7 +71,8 @@ class AccuracyPanelProvider extends PanelProvider
                     ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
                 'profile' => MenuItem::make()->label('Company profile'),
             ])
-            ->brandLogo(asset('storage/images/teresa-logo.png'))
+            ->maxContentWidth('full')
+            ->sidebarCollapsibleOnDesktop()
             ->favicon(asset('storage/images/favicon.ico'))
             //->tenantRoutePrefix('company')
             ->tenant(Company::class, 'short_name', 'company')

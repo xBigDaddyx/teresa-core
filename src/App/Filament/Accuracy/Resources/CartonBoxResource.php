@@ -4,6 +4,10 @@ namespace App\Filament\Accuracy\Resources;
 
 use App\Filament\Accuracy\Resources\CartonBoxResource\Pages;
 use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers;
+use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers\CartonBoxAttributesRelationManager;
+use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers\PackingListRelationManager;
+use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers\PolybagsRelationManager;
+use App\Filament\Accuracy\Resources\CartonBoxResource\RelationManagers\PolybagTagsRelationManager;
 use Domain\Accuracies\Models\Buyer;
 use Domain\Accuracies\Models\CartonBox;
 use Domain\Accuracies\Models\PackingList;
@@ -20,6 +24,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Awcodes\Shout\Components\Shout;
+use Filament\Resources\RelationManagers\RelationGroup;
 
 class CartonBoxResource extends Resource
 {
@@ -34,7 +40,61 @@ class CartonBoxResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Shout::make('important')
+                    ->visible(fn (Model $record): bool => $record->isLocked())
+                    ->columnSpan('full')
+                    ->icon('tabler-lock')
+                    ->content('This carton box is locked because its already completed!')
+                    ->type('warning'),
+                Forms\Components\Section::make('General Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('box_code')
+                            ->label('Box Code')
+                            ->required(),
+                        Forms\Components\Select::make('packing_list_id')
+                            ->relationship('packingList', 'po')
+                            ->required()
+                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "PO: {$record->po} - {$record->buyer->name} {$record->buyer->country} - {$record->style_no}"),
+                        Forms\Components\TextInput::make('carton_number')
+                            ->default(0)
+                            ->label('Carton Number'),
+                        Forms\Components\TextInput::make('size')
+                            ->hidden(fn (Model $record): bool => $record->type === 'RATIO')
+                            ->label('Size'),
+                        Forms\Components\TextInput::make('color')
+                            ->hidden(fn (Model $record): bool => $record->type === 'RATIO')
+                            ->label('Color'),
+                        Forms\Components\TextInput::make('quantity')
+                            ->required()
+                            ->label('Quantity'),
+                        Forms\Components\Select::make('type')
+                            ->required()
+                            ->options([
+                                'SOLID' => 'SOLID',
+                                'MULTIPLE' => 'MULTIPLE',
+                                'MIX' => 'MIX',
+                                'RATIO' => 'RATIO',
+                            ])
+                            ->label('Type'),
+                        Forms\Components\Toggle::make('is_completed')
+                            ->label('Completed')
+                            ->visible(function (Model $record) {
+                                if ($record->polybags->count() > 0) {
+                                    if ($record->is_completed !== true) {
+                                        return true;
+                                    }
+
+                                    return false;
+                                }
+
+                                return true;
+                            }),
+                        // Checkbox::make('is_completed')
+                        //     ->label('Completed'),
+                        // Textarea::make('description')
+                        //     ->label('Box Info')
+                        //     ->columnSpan(2),
+                    ])->columns(2),
             ]);
     }
 
@@ -116,6 +176,13 @@ class CartonBoxResource extends Resource
             ->filters([
                 Tables\Filters\TrashedFilter::make()
                     ->visible(fn (): bool => auth()->user()->hasRole('super-admin')),
+                Tables\Filters\SelectFilter::make('type')
+                    ->options([
+                        'SOLID' => 'SOLID',
+                        'MULTIPLE' => 'MULTIPLE',
+                        'MIX' => 'MIX',
+                        'RATIO' => 'RATIO',
+                    ]),
                 Tables\Filters\Filter::make('buyer')
                     ->columnSpanFull()
                     ->columns(3)
@@ -217,19 +284,60 @@ class CartonBoxResource extends Resource
             ->filtersFormColumns(4)
             ->filtersFormWidth('4xl')
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    // Filament\Tables\Actions\Action::make('Activities')
+                    //     ->hidden(!auth()->user()->hasRole('super-admin'))
+                    //     ->icon('tabler-refresh')
+                    //     ->url(fn (EntitiesCartonBox $record): string => route('filament.resources.carton-boxes.activities', $record))
+                    //     ->openUrlInNewTab(),
+                    Tables\Actions\Action::make('lock')
+                        ->action(fn (CartonBox $record) => $record->lock())
+                        ->icon('tabler-lock')
+                        ->requiresConfirmation()
+                        ->visible(fn (CartonBox $record): bool => $record->isUnlocked() && $record->is_completed === true && auth()->user()->can('lock', $record))
+                        ->modalHeading('Lock Carton Box')
+                        ->modalDescription('Are you sure you\'d like to lock this carton box?')
+                        ->modalIcon('tabler-lock')
+                        ->modalIconColor('danger')
+                        ->modalSubmitActionLabel('Yes, lock it.')
+                        ->color('danger'),
+                    Tables\Actions\Action::make('unlock')
+                        ->action(fn (CartonBox $record) => $record->unlock())
+                        ->icon('tabler-lock-open')
+                        ->visible(fn (CartonBox $record): bool => $record->isLocked() && auth()->user()->can('unlock', $record))
+                        ->requiresConfirmation()
+                        ->modalHeading('Unlock Carton Box')
+                        ->modalDescription('Are you sure you\'d like to unlock this carton box?')
+                        ->modalIcon('tabler-lock-open')
+                        ->modalIconColor('success')
+                        ->modalSubmitActionLabel('Yes, Unlock it.')
+                        ->color('success'),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make()
+                        ->visible(fn (CartonBox $record): bool => $record->isUnlocked()),
+                    Tables\Actions\DeleteAction::make()
+                        ->visible(fn (): bool => auth()->user()->can('carton-boxes.delete')),
+                ]),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->visible(fn (): bool => auth()->user()->can('carton-boxes.deleteBulk')),
+                Tables\Actions\ForceDeleteBulkAction::make()
+                    ->visible(fn (): bool => auth()->user()->can('carton-boxes.deleteBulk')),
+                Tables\Actions\RestoreBulkAction::make()
+                    ->visible(fn (): bool => auth()->user()->can('carton-boxes.restoreBulk')),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationGroup::make('Polybags', [
+                PolybagsRelationManager::class,
+                PolybagTagsRelationManager::class,
+            ]),
+            CartonBoxAttributesRelationManager::class,
+            //PackingListRelationManager::class,
         ];
     }
 
@@ -238,6 +346,7 @@ class CartonBoxResource extends Resource
         return [
             'index' => Pages\ListCartonBoxes::route('/'),
             'create' => Pages\CreateCartonBox::route('/create'),
+            'view' => Pages\ViewCartonBox::route('/{record}'),
             'edit' => Pages\EditCartonBox::route('/{record}/edit'),
         ];
     }

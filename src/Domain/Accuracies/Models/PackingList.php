@@ -3,13 +3,14 @@
 namespace Domain\Accuracies\Models;
 
 use Domain\Users\Models\Company;
+use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 //use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-//use RichanFongdasen\EloquentBlameable\BlameableTrait;
+use RichanFongdasen\EloquentBlameable\BlameableTrait;
 //use OwenIt\Auditing\Contracts\Auditable;
 
 //class PackingList extends Model implements Auditable
@@ -18,7 +19,7 @@ class PackingList extends Model
     //use \OwenIt\Auditing\Auditable;
     use HasFactory;
 
-    //use BlameableTrait;
+    use BlameableTrait;
     use SoftDeletes;
 
     // protected $auditInclude = [
@@ -36,12 +37,12 @@ class PackingList extends Model
         'is_ratio' => 'boolean',
     ];
 
-    // protected static $blameable = [
-    //     'guard' => null,
-    //     'user' => \App\Models\User::class,
-    //     'createdBy' => 'created_by',
-    //     'updatedBy' => 'updated_by',
-    // ];
+    protected static $blameable = [
+        'guard' => null,
+        'user' => User::class,
+        'createdBy' => 'created_by',
+        'updatedBy' => 'updated_by',
+    ];
 
     // protected $appends = [
     //     'percentage',
@@ -101,10 +102,10 @@ class PackingList extends Model
         return $this->belongsTo(Buyer::class, 'buyer_id', 'id');
     }
 
-    // public function cartonBoxes()
-    // {
-    //     return $this->hasMany(CartonBox::class, 'packing_list_id', 'id');
-    // }
+    public function cartonBoxes()
+    {
+        return $this->hasMany(CartonBox::class, 'packing_list_id', 'id');
+    }
 
     // public function packingListAttributes(): HasMany
     // {

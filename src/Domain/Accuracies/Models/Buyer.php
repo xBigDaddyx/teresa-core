@@ -3,6 +3,7 @@
 namespace Domain\Accuracies\Models;
 
 use Domain\Users\Models\Company;
+use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +19,7 @@ class Buyer extends Model
     //use \OwenIt\Auditing\Auditable;
     //use LogsActivity;
     use HasFactory;
-    //use BlameableTrait;
+    use BlameableTrait;
     use SoftDeletes;
 
     protected $connection = 'teresa_box';
@@ -33,12 +34,12 @@ class Buyer extends Model
 
     //protected $auditTimestamps = true;
 
-    // protected static $blameable = [
-    //     'guard' => null,
-    //     'user' => \App\Models\User::class,
-    //     'createdBy' => 'created_by',
-    //     'updatedBy' => 'updated_by',
-    // ];
+    protected static $blameable = [
+        'guard' => null,
+        'user' => User::class,
+        'createdBy' => 'created_by',
+        'updatedBy' => 'updated_by',
+    ];
 
     // protected $auditEvents = [
     //     'deleted',

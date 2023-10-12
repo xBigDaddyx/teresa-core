@@ -1,7 +1,7 @@
 <div class="navbar bg-base-100 shadow-sm">
     <div class="navbar-start">
 
-        <a class="btn btn-ghost normal-case text-xl">{{ env('APP_NAME') }}</a>
+        <a class="btn btn-ghost normal-case text-xl"> <img class="w-10 h-10" src="{{ asset('storage/images/teresa-logo-f.png') }}"></a>
     </div>
 
     <div class="navbar-end">
@@ -47,6 +47,7 @@
 
                 @endauth
             </div>
+            @auth
             <div class="mx-2 text-left">
                 <div class="grid text-sm font-extrabold text-primary-500">
                     <div>{{auth()->user()->name}}</div>
@@ -55,6 +56,8 @@
 
                 <div class="grid text-xs">{{auth()->user()->department}}</div>
             </div>
+            @endauth
+
         </div>
 
 

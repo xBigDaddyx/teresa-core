@@ -23,9 +23,9 @@ class CartonBox extends Model
     //use PowerJoins;
     //use \OwenIt\Auditing\Auditable;
     //use LogsActivity;
-    //use HasLocks;
+    use HasLocks;
     use HasFactory;
-    //use BlameableTrait;
+    use BlameableTrait;
     use SoftDeletes;
 
     protected $connection = 'teresa_box';
@@ -38,12 +38,12 @@ class CartonBox extends Model
 
     protected $guarded = [];
 
-    // protected static $blameable = [
-    //     'guard' => null,
-    //     'user' => \App\Models\User::class,
-    //     'createdBy' => 'created_by',
-    //     'updatedBy' => 'updated_by',
-    // ];
+    protected static $blameable = [
+        'guard' => null,
+        'user' => User::class,
+        'createdBy' => 'created_by',
+        'updatedBy' => 'updated_by',
+    ];
 
     protected $casts = [
         'is_completed' => 'boolean',
@@ -124,10 +124,10 @@ class CartonBox extends Model
         return $this->belongsTo(PackingList::class, 'packing_list_id', 'id');
     }
 
-    // public function polybags()
-    // {
-    //     return $this->hasMany(Polybag::class);
-    // }
+    public function polybags()
+    {
+        return $this->hasMany(Polybag::class);
+    }
 
     public function user()
     {
@@ -137,17 +137,18 @@ class CartonBox extends Model
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
-    // public function polybagTags(): HasManyThrough
-    // {
-    //     return $this->hasManyThrough(Tag::class, Polybag::class, 'carton_box_id', 'taggable_id')->where(
-    //         'taggable_type', Polybag::class
-    //     );
-    // }
+    public function polybagTags(): HasManyThrough
+    {
+        return $this->hasManyThrough(Tag::class, Polybag::class, 'carton_box_id', 'taggable_id')->where(
+            'taggable_type',
+            Polybag::class
+        );
+    }
 
-    // public function cartonBoxAttributes(): HasMany
-    // {
-    //     return $this->hasMany(CartonBoxAttribute::class);
-    // }
+    public function cartonBoxAttributes(): HasMany
+    {
+        return $this->hasMany(CartonBoxAttribute::class);
+    }
 
     public function updatedBy()
     {
