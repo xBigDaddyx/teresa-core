@@ -5,6 +5,7 @@ namespace App\Filament\Accuracy\Widgets;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Domain\Accuracies\Repositories\CartonBoxRepository;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Collection;
 use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
@@ -52,7 +53,7 @@ class ValidationOutputChart extends ApexChartWidget
         $series1 = new Collection();
         foreach ($period as $key => $date) {
             $dates->push(Carbon::parse($date)->format('d M'));
-            $series1->push((string)$cartonBoxRepository->Output($date));
+            $series1->push((string)$cartonBoxRepository->Output($date, Filament::getTenant()->id));
         }
 
         return [
