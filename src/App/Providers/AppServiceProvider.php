@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use BezhanSalleh\PanelSwitch\PanelSwitch;
 use Illuminate\Support\ServiceProvider;
+use Teresa\CartonBoxGuard\Interfaces\CartonBoxValidationInterface;
+use Teresa\CartonBoxGuard\Repositories\CartonBoxRepository;
+use Teresa\CartonBoxGuard\Services\CartonBoxValidationService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind('CartonBoxRepository', CartonBoxRepository::class);
+        $this->app->bind(CartonBoxValidationInterface::class, CartonBoxValidationService::class);
     }
 
     /**
@@ -21,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Illuminate\Database\Eloquent\Factories\Factory::guessFactoryNamesUsing(function (string $modelName) {
-            return '\Database\Factories\\'.class_basename($modelName).'Factory';
+            return '\Database\Factories\\' . class_basename($modelName) . 'Factory';
         });
 
         PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {

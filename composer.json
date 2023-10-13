@@ -31,7 +31,8 @@
         "socialiteproviders/microsoft-azure": "^5.1",
         "socialiteproviders/zoho": "^4.1",
         "spatie/laravel-permission": "^5.11",
-        "stijnvanouplines/blade-country-flags": "^1.0"
+        "stijnvanouplines/blade-country-flags": "^1.0",
+        "teresa/carton-box-guard": "dev-main"
     },
     "require-dev": {
         "akrillia/laravel-beyond": "^6.0",
@@ -88,6 +89,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

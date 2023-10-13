@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
+
 return [
 
     /*
@@ -163,6 +164,7 @@ return [
         //UserPanelProvider::class,
         \Spatie\Permission\PermissionServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
+        \Teresa\CartonBoxGuard\Providers\CartonBoxGuardServiceProvider::class,
         /*
          * Application Service Providers...
          */

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cae5ee95c0d158478a1180537dec5fe",
+    "content-hash": "c30d57ed4e72bec8837b8ba872f26e93",
     "packages": [
         {
             "name": "awcodes/shout",
@@ -8680,6 +8680,79 @@
             "time": "2023-09-12T10:11:35+00:00"
         },
         {
+            "name": "teresa/carton-box-guard",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xBigDaddyx/carton-box-guard.git",
+                "reference": "5617939b33398a01e7e353195d73694fc44d2971"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xBigDaddyx/carton-box-guard/zipball/5617939b33398a01e7e353195d73694fc44d2971",
+                "reference": "5617939b33398a01e7e353195d73694fc44d2971",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.14.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.8",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.8",
+                "pestphp/pest": "^2.20",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Teresa\\CartonBoxGuard\\CartonBoxGuardServiceProvider"
+                    ],
+                    "aliases": {
+                        "CartonBoxGuard": "Teresa\\CartonBoxGuard\\Facades\\CartonBoxGuard"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Teresa\\CartonBoxGuard\\": "src/",
+                    "Teresa\\CartonBoxGuard\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faisal Yusuf",
+                    "email": "yussupcazzanova97@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CartonBoxGuard is a cutting-edge Laravel package designed to revolutionize the accuracy of carton box content management. Ensuring the correct items are packed within carton boxes is essential for businesses that handle the shipping and distribution of products. Accidental errors can result in costly returns, customer dissatisfaction, and logistical nightmares. CartonBoxGuard is here to put an end to these issues.",
+            "homepage": "https://github.com/teresa/carton-box-guard",
+            "keywords": [
+                "Teresa",
+                "carton-box-guard",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/xBigDaddyx/carton-box-guard/issues",
+                "source": "https://github.com/xBigDaddyx/carton-box-guard/tree/main"
+            },
+            "time": "2023-10-13T15:40:26+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.6",
             "source": {
@@ -11516,8 +11589,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "teresa/carton-box-guard": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
