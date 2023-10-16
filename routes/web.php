@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartonBoxCheckController;
+use App\Http\Controllers\PolybagValidationController;
+use App\Http\Controllers\ValidationController;
 use Domain\Users\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -87,6 +90,10 @@ Route::domain('{panel}.core.test')->group(function () {
 
         // $user->token
     });
+});
+Route::middleware('auth')->prefix('accuracy')->group(function () {
+    Route::get('/carton/check', [CartonBoxCheckController::class, 'index'])->name('accuracy.check.carton');
+    Route::get('/{carton}/polybag', [PolybagValidationController::class, 'index'])->name('accuracy.validation.polybag');
 });
 
 Route::view('menu', 'livewire.menu.menu')

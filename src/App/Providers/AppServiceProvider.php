@@ -15,8 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('CartonBoxRepository', CartonBoxRepository::class);
-        $this->app->bind(CartonBoxValidationInterface::class, CartonBoxValidationService::class);
     }
 
     /**

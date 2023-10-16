@@ -371,8 +371,8 @@ class CartonBoxResource extends Resource
                                 Infolists\Components\TextEntry::make('carton_number'),
 
                                 Infolists\Components\TextEntry::make('quantity'),
-                                Infolists\Components\ViewEntry::make('is_completed')
-                                    ->view('components.status'),
+                                // Infolists\Components\ViewEntry::make('is_completed')
+                                //     ->view('components.status'),
                                 // Infolists\Components\IconEntry::make('is_completed')
                                 //     ->label('Completed')
                                 //     ->boolean(),

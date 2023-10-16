@@ -11,18 +11,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Kirschbaum\PowerJoins\PowerJoins;
-use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Support\Facades\Auth;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
 use Sfolador\Locked\Traits\HasLocks;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Teresa\CartonBoxGuard\Models\CartonBox as ModelsCartonBox;
+use Teresa\CartonBoxGuard\Traits\HasStringId;
 
-class CartonBox extends Model
+class CartonBox extends ModelsCartonBox
 {
     //use PowerJoins;
     //use \OwenIt\Auditing\Auditable;
     //use LogsActivity;
+    use HasStringId;
     use HasLocks;
     use HasFactory;
     use BlameableTrait;
@@ -48,7 +50,14 @@ class CartonBox extends Model
     protected $casts = [
         'is_completed' => 'boolean',
     ];
-
+    public function prefixable(): array
+    {
+        return [
+            'id_prefix' => 'PB',
+            'company_id' => Auth::user()->company->id,
+            'company_short_name' => Auth::user()->company->short_name,
+        ];
+    }
     //protected $auditInclude = [
     //     'box_code', 'size', 'color', 'is_completed', 'carton_number', 'quantity', 'locked_at',
     // ];
@@ -61,29 +70,7 @@ class CartonBox extends Model
     //     // Chain fluent methods for configuration options
     // }
 
-    public static function boot()
-    {
-        parent::boot();
-        self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
 
-            if ($count < 10) {
-                $number = '00000' . $count;
-            } elseif ($count >= 10 && $count < 100) {
-                $number = '0000' . $count;
-            } elseif ($count >= 100 && $count < 1000) {
-                $number = '000' . $count;
-            } elseif ($count >= 1000 && $count < 10000) {
-                $number = '00' . $count;
-            } elseif ($count >= 10000 && $count < 100000) {
-                $number = '0' . $count;
-            } else {
-                $number = $count;
-            }
-            $model->company_id = auth()->user()->company->id;
-            $model->id = auth()->user()->company->short_name . '.CB.' . $number;
-        });
-    }
 
     // protected $appends = [
     //     'percentage',
@@ -104,10 +91,6 @@ class CartonBox extends Model
     //     return $this->morphMany(Tag::class, 'taggable');
     // }
 
-    public function scopeCompleted($query)
-    {
-        return $query->where('is_completed', true);
-    }
 
     public function scopeOutstanding($query)
     {
@@ -124,10 +107,6 @@ class CartonBox extends Model
         return $this->belongsTo(PackingList::class, 'packing_list_id', 'id');
     }
 
-    public function polybags()
-    {
-        return $this->hasMany(Polybag::class);
-    }
 
     public function user()
     {

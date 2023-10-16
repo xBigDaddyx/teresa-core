@@ -9,10 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
+use Teresa\CartonBoxGuard\Models\Polybag as ModelsPolybag;
+use Teresa\CartonBoxGuard\Traits\HasStringId;
 
-class Polybag extends Model
+class Polybag extends ModelsPolybag
 {
+    use HasStringId;
     use HasFactory;
     use BlameableTrait;
     use SoftDeletes;
@@ -23,8 +27,6 @@ class Polybag extends Model
 
     protected $connection = 'teresa_box';
 
-    protected $fillable = [];
-
     protected $guarded = [];
 
     protected static $blameable = [
@@ -34,30 +36,13 @@ class Polybag extends Model
         'updatedBy' => 'updated_by',
     ];
 
-    public static function boot()
+    public function prefixable(): array
     {
-        parent::boot();
-        self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
-
-            if ($count < 10) {
-                $number = '000000' . $count;
-            } elseif ($count >= 10 && $count < 100) {
-                $number = '00000' . $count;
-            } elseif ($count >= 100 && $count < 1000) {
-                $number = '0000' . $count;
-            } elseif ($count >= 1000 && $count < 10000) {
-                $number = '000' . $count;
-            } elseif ($count >= 10000 && $count < 100000) {
-                $number = '00' . $count;
-            } elseif ($count >= 100000 && $count < 1000000) {
-                $number = '0' . $count;
-            } else {
-                $number = $count;
-            }
-            $model->company_id = auth()->user()->company->id;
-            $model->id = auth()->user()->company->short_name . '.PB.' . $number;
-        });
+        return [
+            'id_prefix' => 'PB',
+            'company_id' => Auth::user()->company->id,
+            'company_short_name' => Auth::user()->company->short_name,
+        ];
     }
 
     public function tags(): MorphMany
