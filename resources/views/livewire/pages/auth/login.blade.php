@@ -71,7 +71,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->ensureIsNotRateLimited();
 
-        if (! auth()->attempt($this->only(['email', 'password'], $this->remember))) {
+        if (!auth()->attempt($this->only(['email', 'password'], $this->remember))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -88,7 +88,7 @@ new #[Layout('layouts.guest')] class extends Component
 
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -106,7 +106,7 @@ new #[Layout('layouts.guest')] class extends Component
 
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
     }
 }; ?>
 
@@ -119,10 +119,8 @@ new #[Layout('layouts.guest')] class extends Component
     </div>
     <div class="mt-5">
         <a href="{{ url('auth/redirect') }}">
-            <button type="button"
-                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-auto" width="46" height="47"
-                    viewBox="0 0 256 256">
+            <button type="button" class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-auto" width="46" height="47" viewBox="0 0 256 256">
                     <rect x="0" y="0" width="256" height="256" fill="none" stroke="none" />
                     <path fill="#F1511B" d="M121.666 121.666H0V0h121.666z" />
                     <path fill="#80CC28" d="M256 121.666H134.335V0H256z" />
@@ -133,8 +131,7 @@ new #[Layout('layouts.guest')] class extends Component
             </button>
 
         </a>
-        <div
-            class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+        <div class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
             Or</div>
         <form wire:submit="login">
 
@@ -142,8 +139,7 @@ new #[Layout('layouts.guest')] class extends Component
                 <!-- Email Address -->
                 <div>
                     <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email"
-                        name="email" required autofocus autocomplete="username" />
+                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -151,8 +147,7 @@ new #[Layout('layouts.guest')] class extends Component
                 <div class="mt-4">
                     <x-input-label for="password" :value="__('Password')" />
 
-                    <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password"
-                        name="password" required autocomplete="current-password" />
+                    <x-text-input wire:model="password" id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
@@ -160,27 +155,27 @@ new #[Layout('layouts.guest')] class extends Component
                 <!-- Remember Me -->
                 <div class="block mt-4">
                     <label for="remember" class="inline-flex items-center">
-                        <input wire:model="remember" id="remember" type="checkbox"
-                            class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-primary-600 shadow-sm focus:ring-primary-500 dark:focus:ring-primary-600 dark:focus:ring-offset-gray-800"
-                            name="remember">
+                        <input wire:model="remember" id="remember" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-primary-600 shadow-sm focus:ring-primary-500 dark:focus:ring-primary-600 dark:focus:ring-offset-gray-800" name="remember">
                         <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
                     </label>
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-gray-800"
-                            href="{{ route('password.request') }}" wire:navigate>
-                            {{ __('Forgot your password?') }}
-                        </a>
+                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
+                        {{ __('Forgot your password?') }}
+                    </a>
                     @endif
 
 
 
                 </div>
-                <button type="submit"
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Log in') }}
+                </button>
+                <!-- <button type="submit"
                     class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-primary-500 text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-                    {{ __('Log in') }}</button>
+                    {{ __('Log in') }}</button> -->
 
             </div>
 

@@ -30,16 +30,15 @@ class AccuracyPanelProvider extends PanelProvider
     {
         return $panel
             ->id('accuracy')
-            ->path('admin')
+            ->path('accuracy')
             ->colors([
                 'primary' => Color::Amber,
             ])
-
-            ->domain('accuracy.core.test')
+            ->login(Login::class)
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->plugins([
-                BreezyCore::make(),
+
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
                 \Hasnayeen\Themes\ThemesPlugin::make(),
                 \BezhanSalleh\FilamentLanguageSwitch\FilamentLanguageSwitchPlugin::make(),
@@ -52,7 +51,7 @@ class AccuracyPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Accuracy/Widgets'), for: 'App\\Filament\\Accuracy\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

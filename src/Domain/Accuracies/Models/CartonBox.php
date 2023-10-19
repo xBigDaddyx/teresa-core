@@ -36,7 +36,6 @@ class CartonBox extends ModelsCartonBox
 
     protected $primaryKey = 'id';
 
-    protected $fillable = [];
 
     protected $guarded = [];
 

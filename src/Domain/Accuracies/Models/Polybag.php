@@ -44,7 +44,11 @@ class Polybag extends ModelsPolybag
             'company_short_name' => Auth::user()->company->short_name,
         ];
     }
+    protected $dispatchesEvents = [
 
+        'created' => PolybagCreated::class,
+        //..
+    ];
     public function tags(): MorphMany
     {
         return $this->morphMany(Tag::class, 'taggable');

@@ -46,16 +46,31 @@ class CheckCarton extends Component
         return view('livewire.pages.check-carton');
     }
 
-    public function showToast($type, $title, $description = null)
+    public function showToast($type, $title, $description = null, $position = 'toast-top toast-end', $redirect = null)
     {
         return $this->toast(
             type: $type,
             title: $title,
             description: $description,                  // optional (text)
-            position: 'toast-top toast-end',    // optional (daisyUI classes)
+            position: $position,    // optional (daisyUI classes)
             timeout: 6000,                      // optional (ms)
-            redirectTo: null                    // optional (uri)
+            redirectTo: $redirect                    // optional (uri)
         );
+    }
+    public function updated($property)
+    {
+        // $property: The name of the current property that was updated
+
+        if ($property === 'extraForm.selectedPo') {
+            $box_code = (string)$this->boxForm['box_code'];
+            $po = (string)$this->extraForm['selectedPo'];
+            $null_carton_numbers = [
+                null => ['carton_number' => '-- Select Carton Number --']
+            ];
+            $this->carton_numbers = array_merge(CartonBox::select('carton_number')->where('box_code', $box_code)->whereHas('packingList', function (Builder $query) use ($po) {
+                $query->where('po', $po);
+            })->distinct('carton_number')->get()->toArray(), $null_carton_numbers);
+        }
     }
     public function check()
     {
@@ -88,21 +103,26 @@ class CheckCarton extends Component
             //return $this->alert = true;
         }
         if ($box === 'multiple') {
+            $this->showToast('warning', 'Many carton found!', 'Please select PO and Carton Number for more specific.');
             $null_pos = [
                 null => ['po' => '-- Select PO --']
             ];
-            $null_carton_numbers = [
-                null => ['carton_number' => '-- Select Carton Number --']
-            ];
+
             $this->pos = array_merge(PackingList::select('po')->whereHas('cartonBoxes', function (Builder $query) use ($box_code) {
                 $query->where('box_code', $box_code);
             })->distinct('po')->get()->toArray(), $null_pos);
 
-            $this->carton_numbers = array_merge(CartonBox::select('carton_number')->where('box_code', $box_code)->distinct('carton_number')->get()->toArray(), $null_carton_numbers);
+
             return $this->showExtraForm = true;
         }
+        if (!empty($box->is_completed)) {
+            if ($box->is_completed === true || $box->is_completed === 'true') {
 
-        $this->showToast('warning', 'Carton box found!', 'Going to validate of this carton');
+                return redirect(route('accuracy.completed.carton', ['carton' => $box->id]));
+            }
+        }
+
+        $this->showToast('success', 'Carton box found!', 'Going to validate of this carton');
         return redirect(route('accuracy.validation.polybag', ['carton' => $box->id]));
     }
 }

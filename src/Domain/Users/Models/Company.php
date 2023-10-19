@@ -2,8 +2,12 @@
 
 namespace Domain\Users\Models;
 
+use Domain\Accuracies\Models\Buyer;
 use Domain\Accuracies\Models\CartonBox;
 use Domain\Accuracies\Models\PackingList;
+use Domain\Kanban\Models\Plan;
+use Domain\Kanban\Models\Sewing;
+use Domain\Kanban\Models\Shift;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasCurrentTenantLabel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -85,7 +89,22 @@ class Company extends Model implements HasAvatar, HasCurrentTenantLabel
     {
         return $this->hasMany(CartonBox::class, 'company_id', 'id');
     }
-
+    public function buyers(): HasMany
+    {
+        return $this->hasMany(Buyer::class, 'company_id', 'id');
+    }
+    public function sewings(): HasMany
+    {
+        return $this->hasMany(Sewing::class, 'company_id', 'id');
+    }
+    public function shifts(): HasMany
+    {
+        return $this->hasMany(Shift::class, 'company_id', 'id');
+    }
+    public function plans(): HasMany
+    {
+        return $this->hasMany(Plan::class, 'company_id', 'id');
+    }
     protected $appends = [
         'logo_url',
     ];

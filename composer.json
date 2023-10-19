@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "awcodes/shout": "^2.0",
+        "aymanalhattami/filament-slim-scrollbar": "^2.0",
         "bezhansalleh/filament-language-switch": "^2.0",
         "bezhansalleh/filament-panel-switch": "^1.0",
         "bezhansalleh/filament-shield": "^3.0",
@@ -18,7 +19,6 @@
         "guzzlehttp/guzzle": "^7.2",
         "hasnayeen/themes": "^3.0",
         "jantinnerezo/livewire-alert": "^3.0",
-        "jeffgreco13/filament-breezy": "^2.1",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.9",
@@ -26,6 +26,7 @@
         "leandrocfe/filament-apex-charts": "^3.0",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
+        "predis/predis": "^2.2",
         "richan-fongdasen/eloquent-blameable": "^1.9",
         "robsontenorio/mary": "^0.43.0",
         "ryangjchandler/blade-tabler-icons": "^2.1",

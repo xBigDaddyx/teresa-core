@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="mytheme">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="teresa">
 
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased bg-primary-50 dark:bg-[#2D2F41] h-screen">
+<body class="antialiased bg-base-100 h-screen">
 
 
     @if (Route::has('login'))

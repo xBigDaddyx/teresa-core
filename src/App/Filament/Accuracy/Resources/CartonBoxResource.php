@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Awcodes\Shout\Components\Shout;
+use Filament\Facades\Filament;
 use Filament\Forms\Get;
 use Filament\Infolists;
 use Filament\Infolists\Components\Grid;
@@ -57,7 +58,7 @@ class CartonBoxResource extends Resource
                             ->label('Box Code')
                             ->required(),
                         Forms\Components\Select::make('packing_list_id')
-                            ->relationship('packingList', 'po')
+                            ->relationship('packingList', 'po', modifyQueryUsing: fn (Builder $query) => $query->whereBelongsTo(Filament::getTenant()))
                             ->required()
                             ->getOptionLabelFromRecordUsing(fn (Model $record) => "PO: {$record->po} - {$record->buyer->name} {$record->buyer->country} - {$record->style_no}"),
                         Forms\Components\TextInput::make('carton_number')
@@ -334,56 +335,56 @@ class CartonBoxResource extends Resource
                     ->visible(fn (): bool => auth()->user()->can('carton-boxes.restoreBulk')),
             ]);
     }
-    public static function infolist(Infolist $infolist): Infolist
-    {
-        return $infolist
-            ->schema([
-                Infolists\Components\Section::make('Packing List')
-                    ->description('Packing list information for this carton box.')
-                    ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                Infolists\Components\TextEntry::make('type'),
-                                Infolists\Components\TextEntry::make('packingList.po')
-                                    ->label('PO'),
-                                Infolists\Components\TextEntry::make('packingList.buyer.name')
-                                    ->label('Buyer'),
-                            ])
+    // public static function infolist(Infolist $infolist): Infolist
+    // {
+    //     return $infolist
+    //         ->schema([
+    //             Infolists\Components\Section::make('Packing List')
+    //                 ->description('Packing list information for this carton box.')
+    //                 ->schema([
+    //                     Grid::make(2)
+    //                         ->schema([
+    //                             Infolists\Components\TextEntry::make('type'),
+    //                             Infolists\Components\TextEntry::make('packingList.po')
+    //                                 ->label('PO'),
+    //                             Infolists\Components\TextEntry::make('packingList.buyer.name')
+    //                                 ->label('Buyer'),
+    //                         ])
 
-                    ]),
-                Infolists\Components\Section::make('Element')
-                    ->description('Information element for this carton box.')
-                    ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                Infolists\Components\TextEntry::make('size'),
-                                Infolists\Components\TextEntry::make('color'),
-                            ])
+    //                 ]),
+    //             Infolists\Components\Section::make('Element')
+    //                 ->description('Information element for this carton box.')
+    //                 ->schema([
+    //                     Grid::make(2)
+    //                         ->schema([
+    //                             Infolists\Components\TextEntry::make('size'),
+    //                             Infolists\Components\TextEntry::make('color'),
+    //                         ])
 
-                    ]),
-                Infolists\Components\Section::make('Identity and Quantity')
-                    ->description('Information about identity and quantity for this carton box.')
-                    ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                Infolists\Components\TextEntry::make('box_code'),
+    //                 ]),
+    //             Infolists\Components\Section::make('Identity and Quantity')
+    //                 ->description('Information about identity and quantity for this carton box.')
+    //                 ->schema([
+    //                     Grid::make(2)
+    //                         ->schema([
+    //                             Infolists\Components\TextEntry::make('box_code'),
 
-                                Infolists\Components\TextEntry::make('carton_number'),
+    //                             Infolists\Components\TextEntry::make('carton_number'),
 
-                                Infolists\Components\TextEntry::make('quantity'),
-                                // Infolists\Components\ViewEntry::make('is_completed')
-                                //     ->view('components.status'),
-                                // Infolists\Components\IconEntry::make('is_completed')
-                                //     ->label('Completed')
-                                //     ->boolean(),
-                            ]),
+    //                             Infolists\Components\TextEntry::make('quantity'),
+    //                             // Infolists\Components\ViewEntry::make('is_completed')
+    //                             //     ->view('components.status'),
+    //                             // Infolists\Components\IconEntry::make('is_completed')
+    //                             //     ->label('Completed')
+    //                             //     ->boolean(),
+    //                         ]),
 
-                    ]),
+    //                 ]),
 
 
 
-            ]);
-    }
+    //         ]);
+    // }
     public static function getRelations(): array
     {
         return [

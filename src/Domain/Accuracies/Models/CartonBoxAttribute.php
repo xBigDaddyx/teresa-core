@@ -45,10 +45,14 @@ class CartonBoxAttribute extends Model
             } else {
                 $number = $count;
             }
+            $model->type = $model->carton->type;
             $model->id = auth()->user()->company->short_name . '.CBA.' . $number;
         });
     }
-
+    public function carton(): BelongsTo
+    {
+        return $this->belongsTo(CartonBox::class, 'carton_box_id', 'id');
+    }
     public function tags(): MorphMany
     {
         return $this->morphMany(Tag::class, 'attributable');

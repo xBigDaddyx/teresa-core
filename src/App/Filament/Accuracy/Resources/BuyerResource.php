@@ -29,11 +29,19 @@ class BuyerResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->label('Buyer Name'),
-                Forms\Components\TextInput::make('country')
-                    ->label('Buyer Country'),
+                Forms\Components\Section::make('General Information')
+                    ->description('Information about this buyer')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->label(__('Buyer Name')),
+                                Forms\Components\TextInput::make('country')
+                                    ->label(__('Buyer Country')),
+                            ])
+
+                    ]),
             ]);
     }
 
@@ -43,13 +51,13 @@ class BuyerResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->searchable()
-                    ->label('#'),
+                    ->label(__('#')),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
-                    ->label('Buyer Name'),
+                    ->label(__('Buyer Name')),
                 Tables\Columns\TextColumn::make('country')
                     ->searchable()
-                    ->label('Buyer Country'),
+                    ->label(__('Buyer Country')),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make()

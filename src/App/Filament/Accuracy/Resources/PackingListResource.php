@@ -6,6 +6,7 @@ use App\Filament\Accuracy\Resources\PackingListResource\Pages;
 use App\Filament\Accuracy\Resources\PackingListResource\RelationManagers\CartonBoxesRelationManager;
 use Domain\Accuracies\Models\Buyer;
 use Domain\Accuracies\Models\PackingList;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -35,7 +36,7 @@ class PackingListResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('buyer_id')
                             ->required()
-                            ->relationship('buyer', 'name')
+                            ->relationship('buyer', 'name', modifyQueryUsing: fn (Builder $query) => $query->whereBelongsTo(Filament::getTenant()))
                             ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->name} - {$record->country}"),
                         Forms\Components\TextInput::make('po')
                             ->required()

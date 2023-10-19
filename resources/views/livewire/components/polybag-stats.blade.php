@@ -1,5 +1,5 @@
-<div class="p-8 rounded-b-xl flex gap-5 mb-4 flex justify-center" wire.poll.keep-alive>
-    <div class="stats shadow">
+<div class="max-w-[85rem] mx-auto hidden md:block" wire.poll.keep-alive>
+    <div class="stats stats-vertical shadow">
         <div class="stat">
             <div class="stat-figure text-error">
                 <x-heroicon-o-clipboard-document-list class="inline-block w-8 h-8 stroke-current" />
@@ -35,6 +35,5 @@
             <div class="stat-desc">Type {{$type}}</div>
         </div>
 
-    </div>
 
-</div>
+    </div>

@@ -12,6 +12,7 @@ use Filament\Forms\Get;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Notifications\Notification;
 use Filament\Notifications\Actions\Action;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class CreateCartonBox extends CreateRecord
 {
@@ -60,7 +61,7 @@ class CreateCartonBox extends CreateRecord
                             Forms\Components\Select::make('packing_list_id')
                                 ->label('Packing List')
                                 ->searchable()
-                                ->relationship('packingList', 'po')
+                                ->relationship('packingList', 'po', modifyQueryUsing: fn (Builder $query) => $query->whereBelongsTo(Filament::getTenant()))
                                 ->required()
                                 ->getOptionLabelFromRecordUsing(fn (Model $record) => "PO: {$record->po} - {$record->buyer->name} {$record->buyer->country} - {$record->style_no}"),
 

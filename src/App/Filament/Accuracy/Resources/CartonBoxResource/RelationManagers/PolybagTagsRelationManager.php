@@ -15,6 +15,7 @@ class PolybagTagsRelationManager extends RelationManager
 {
     protected static string $relationship = 'polybagTags';
 
+
     public function form(Form $form): Form
     {
         return $form

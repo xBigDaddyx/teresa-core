@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Livewire;
 
 class CartonBoxAttributesRelationManager extends RelationManager
 {
@@ -20,6 +21,9 @@ class CartonBoxAttributesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Forms\Components\Placeholder::make('type')
+                    ->content(fn (RelationManager  $livewire): string => $livewire->getOwnerRecord()->type)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('size')
                     ->helperText('Should be the size of attribute')
                     ->hint('Size Attribute')
@@ -43,6 +47,7 @@ class CartonBoxAttributesRelationManager extends RelationManager
                     ->hintColor('primary'),
             ]);
     }
+
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
         return $ownerRecord->type === 'MIX' || $ownerRecord->type === 'RATIO';

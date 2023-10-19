@@ -17,6 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Support\Traits\HasProfilePhoto;
 
+
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenants
 {
     use HasApiTokens;
@@ -25,9 +26,17 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     use HasRoles;
     use Notifiable;
 
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@hoplun.com');
+        if ($panel->getId() === 'admin') {
+            return str_ends_with($this->email, '@hoplun.com') && $this->hasRole('super-admin');
+        } else if ($panel->getId() === 'accuracy') {
+            return str_ends_with($this->email, '@hoplun.com') && $this->hasRole('packing-administration-officer') || $this->hasRole('super-admin');
+        } else if ($panel->getId() === 'kanban') {
+            return str_ends_with($this->email, '@hoplun.com') && $this->hasRole('kanban-officer') || $this->hasRole('super-admin');
+        }
+        return true;
     }
 
     public function getFilamentAvatarUrl(): ?string
