@@ -9,14 +9,23 @@
             <div class="stat-value text-md">{{$carton->carton_number}}</div>
             <div class="stat-desc text-error">Box Code : {{$carton->box_code}}</div>
         </div>
-
+        @if ($carton->type === 'RATIO')
         <div class="stat">
             <div class="stat-figure text-secondary">
                 <x-heroicon-o-document-duplicate class="inline-block w-8 h-8 stroke-current" />
             </div>
-            <div class="stat-title font-bold">Validated</div>
+            <div class="stat-title font-bold">Garment Tags</div>
             <div class="stat-value text-secondary">{{$count}}</div>
-            <div class="stat-desc">Polybags</div>
+            <div class="stat-desc">Validated</div>
+        </div>
+        @endif
+        <div class="stat">
+            <div class="stat-figure text-secondary">
+                <x-heroicon-o-document-duplicate class="inline-block w-8 h-8 stroke-current" />
+            </div>
+            <div class="stat-title font-bold">Polybags Tags</div>
+            <div class="stat-value text-secondary">{{$count}}</div>
+            <div class="stat-desc">Validated</div>
         </div>
         <div class="stat">
             <div class="stat-figure text-success">

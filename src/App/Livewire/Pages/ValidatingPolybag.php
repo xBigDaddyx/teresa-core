@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Livewire\Forms\ValidateForm;
 use Domain\Accuracies\Models\CartonBox;
 use Domain\Accuracies\Models\Polybag;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class ValidatingPolybag extends Component
     public bool $showTable = false;
     public bool $completed = false;
     public bool $polybagCompleted = false;
-
+    public ValidateForm $form;
     public $polybagForm = [
         'polybag_code' => null,
     ];
@@ -92,16 +93,16 @@ class ValidatingPolybag extends Component
             $validate = CartonBoxFacade::validatePolybag($this->carton, $this->polybagForm['polybag_code']);
         } elseif ($this->carton->type === 'RATIO') {
             if ($this->polybagCompleted) {
-                $validate = CartonBoxFacade::validatePolybag($this->carton, $this->tagForm['tag_code'], $this->polybagForm['polybag_code'], $this->polybagCompleted);
+                $validate = CartonBoxFacade::validatePolybag($this->carton, $this->form->tag_barcode, $this->form->polybag_barcode, $this->polybagCompleted);
 
 
                 $this->resetTagForm();
                 return $this->redirect(route('accuracy.completed.carton', ['carton' => $this->carton->id]));
             }
-            $validate = CartonBoxFacade::validatePolybag($this->carton, $this->tagForm['tag_code'], null, $this->polybagCompleted);
+            $validate = CartonBoxFacade::validatePolybag($this->carton, $this->form->tag_barcode, null, $this->polybagCompleted);
         }
 
-        $this->dispatch('validation', value: $validate);
+
 
         if ($validate === 'validated') {
 

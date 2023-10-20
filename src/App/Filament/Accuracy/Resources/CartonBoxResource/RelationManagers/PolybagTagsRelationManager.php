@@ -17,6 +17,7 @@ class PolybagTagsRelationManager extends RelationManager
 
 
     public function form(Form $form): Form
+
     {
         return $form
             ->schema([

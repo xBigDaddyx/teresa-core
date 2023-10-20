@@ -15,7 +15,8 @@ class PolybagStats extends Component
     public $polybags;
     #[Reactive]
     public $type;
-
+    #[Reactive]
+    public $tags;
 
     public function render()
     {
