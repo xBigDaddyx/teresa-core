@@ -15,7 +15,6 @@ class TextColumn extends Column
     use Concerns\HasDescription;
     use Concerns\HasFontFamily;
     use Concerns\HasIcon;
-    use Concerns\HasIconColor;
     use Concerns\HasWeight;
 
     /**

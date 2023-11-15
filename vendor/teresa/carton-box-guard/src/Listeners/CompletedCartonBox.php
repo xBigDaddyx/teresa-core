@@ -4,7 +4,6 @@ namespace Teresa\CartonBoxGuard\Listeners;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Teresa\CartonBoxGuard\Events\PolybagCreated;
 use Teresa\CartonBoxGuard\Models\CartonBox;
 
@@ -28,19 +27,15 @@ class CompletedCartonBox
      */
     public function handle(PolybagCreated $event)
     {
-        $max_quantity = (int)$event->carton->quantity;
+        $max_quantity = $event->carton->quantity;
         $carton = CartonBox::find($event->carton->id);
         $polybags_count = $carton->polybags->count();
-
         if ($polybags_count === $max_quantity) {
-
             $carton->is_completed = true;
             $carton->completed_by = Auth::user()->id;
             $carton->completed_at = Carbon::now();
             $carton->lock();
             $carton->save();
-            return true;
         }
-        return false;
     }
 }

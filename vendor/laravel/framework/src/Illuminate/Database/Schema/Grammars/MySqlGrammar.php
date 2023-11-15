@@ -1071,7 +1071,7 @@ class MySqlGrammar extends Grammar
         }
 
         if (! is_null($virtualAs = $column->virtualAs)) {
-            return " as ({$this->getValue($virtualAs)})";
+            return " as ({$virtualAs})";
         }
     }
 
@@ -1093,7 +1093,7 @@ class MySqlGrammar extends Grammar
         }
 
         if (! is_null($storedAs = $column->storedAs)) {
-            return " as ({$this->getValue($storedAs)}) stored";
+            return " as ({$storedAs}) stored";
         }
     }
 

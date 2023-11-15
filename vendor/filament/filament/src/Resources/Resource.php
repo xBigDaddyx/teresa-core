@@ -86,8 +86,6 @@ abstract class Resource
 
     protected static ?string $slug = null;
 
-    protected static bool $isScopedToTenant = true;
-
     protected static ?string $tenantOwnershipRelationshipName = null;
 
     protected static ?string $tenantRelationshipName = null;
@@ -310,10 +308,7 @@ abstract class Resource
     {
         $query = static::getModel()::query();
 
-        if (
-            static::isScopedToTenant() &&
-            ($tenant = Filament::getTenant())
-        ) {
+        if ($tenant = Filament::getTenant()) {
             static::scopeEloquentQueryToTenant($query, $tenant);
         }
 
@@ -750,11 +745,6 @@ abstract class Resource
     public static function isDiscovered(): bool
     {
         return static::$isDiscovered;
-    }
-
-    public static function isScopedToTenant(): bool
-    {
-        return static::$isScopedToTenant;
     }
 
     public static function getTenantOwnershipRelationshipName(): string

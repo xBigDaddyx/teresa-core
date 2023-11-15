@@ -36,7 +36,11 @@ class CommentsRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
+<<<<<<< Updated upstream:src/App/Filament/Purchase/Resources/ApprovalRequestResource/RelationManagers/CommentsRelationManager.php
                 Tables\Actions\AssociateAction::make(),
+=======
+                Tables\Actions\AttachAction::make(),
+>>>>>>> Stashed changes:src/App/Filament/Resources/UserResource/RelationManagers/RolesRelationManager.php
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

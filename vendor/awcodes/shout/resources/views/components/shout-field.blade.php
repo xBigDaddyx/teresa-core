@@ -1,4 +1,4 @@
-<x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
+<x-dynamic-component :component="$getFieldWrapperView()">
     <x-shout::shout
         :type="$getType()"
         :color="$getColor()"

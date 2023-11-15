@@ -2,16 +2,12 @@
 
 namespace Filament\Support\Colors;
 
-use Closure;
-use Filament\Support\Concerns\EvaluatesClosures;
 use Spatie\Color\Hex;
 
 class ColorManager
 {
-    use EvaluatesClosures;
-
     /**
-     * @var array<array<string, array{50: string, 100: string, 200: string, 300: string, 400: string, 500: string, 600: string, 700: string, 800: string, 900: string, 950: string} | string> | Closure>
+     * @var array<string, array{50: string, 100: string, 200: string, 300: string, 400: string, 500: string, 600: string, 700: string, 800: string, 900: string, 950: string}>
      */
     protected array $colors = [];
 
@@ -31,11 +27,13 @@ class ColorManager
     protected array $removedShades = [];
 
     /**
-     * @param  array<string, array{50: string, 100: string, 200: string, 300: string, 400: string, 500: string, 600: string, 700: string, 800: string, 900: string, 950: string} | string> | Closure  $colors
+     * @param  array<string, array{50: string, 100: string, 200: string, 300: string, 400: string, 500: string, 600: string, 700: string, 800: string, 900: string, 950: string} | string>  $colors
      */
-    public function register(array | Closure $colors): static
+    public function register(array $colors): static
     {
-        $this->colors[] = $colors;
+        foreach ($colors as $name => $color) {
+            $this->colors[$name] = $this->processColor($color);
+        }
 
         return $this;
     }
@@ -80,24 +78,15 @@ class ColorManager
      */
     public function getColors(): array
     {
-        $colors = [
+        return [
             'danger' => Color::Red,
             'gray' => Color::Zinc,
             'info' => Color::Blue,
             'primary' => Color::Amber,
             'success' => Color::Green,
             'warning' => Color::Amber,
+            ...$this->colors,
         ];
-
-        foreach ($this->colors as $set) {
-            $set = $this->evaluate($set);
-
-            foreach ($set as $name => $color) {
-                $colors[$name] = $this->processColor($color);
-            }
-        }
-
-        return $colors;
     }
 
     /**

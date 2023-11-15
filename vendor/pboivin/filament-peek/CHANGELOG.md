@@ -3,11 +3,6 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
-## 2.2.1 - 2023-11-13
-
-enh: Spanish translations by @kennyhorna
-
-
 ## 2.2.0 - 2023-10-10
 
 * feat: Add option to use internal preview URL

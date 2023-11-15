@@ -49,7 +49,11 @@
     <x-toast />
 
     <div class="overflow-hidden bg-base-200 ">
+<<<<<<< Updated upstream:resources/views/kanban/layouts/app.blade.php
         @include('kanban.layouts.navbar')
+=======
+        @include('accuracy.layouts.navbar')
+>>>>>>> Stashed changes:resources/views/accuracy/layouts/app.blade.php
         <main class="w-screen">
             @yield('content')
         </main>

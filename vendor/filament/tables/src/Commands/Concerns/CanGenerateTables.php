@@ -121,7 +121,6 @@ trait CanGenerateTables
             if (in_array($columnName, [
                 'created_at',
                 'updated_at',
-                'deleted_at',
             ])) {
                 $columnData['toggleable'] = ['isToggledHiddenByDefault' => true];
             }

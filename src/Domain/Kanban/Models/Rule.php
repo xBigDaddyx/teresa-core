@@ -2,6 +2,7 @@
 
 namespace Domain\Kanban\Models;
 
+use Domain\Accuracies\Models\Buyer;
 use Domain\Users\Models\Company;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -54,6 +55,21 @@ class Rule extends Model
         'unit',
         'company_id'
     ];
+<<<<<<< Updated upstream:src/Domain/Kanban/Models/Rule.php
+=======
+    public function sewing(): BelongsTo
+    {
+        return $this->belongsTo(Sewing::class, 'sewing_id', 'id');
+    }
+    public function customer(): BelongsTo
+    {
+        return $this->setConnection('teresa_box')->belongsTo(Buyer::class, 'buyer', 'id');
+    }
+    // public function queue()
+    // {
+    //     return $this->hasOne(Queue::class, 'plan_id', 'id');
+    // }
+>>>>>>> Stashed changes:src/Domain/Kanban/Models/Plan.php
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);

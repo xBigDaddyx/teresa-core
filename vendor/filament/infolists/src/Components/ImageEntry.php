@@ -134,7 +134,7 @@ class ImageEntry extends Entry
 
     public function getImageUrl(?string $state = null): ?string
     {
-        if ((filter_var($state, FILTER_VALIDATE_URL) !== false) || str($state)->startsWith('data:')) {
+        if (filter_var($state, FILTER_VALIDATE_URL) !== false) {
             return $state;
         }
 

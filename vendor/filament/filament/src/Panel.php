@@ -64,9 +64,9 @@ class Panel extends Component
 
     public function boot(): void
     {
-        FilamentColor::register($this->getColors());
+        FilamentColor::register($this->colors);
 
-        FilamentIcon::register($this->getIcons());
+        FilamentIcon::register($this->icons);
 
         FilamentView::spa($this->hasSpaMode());
 
