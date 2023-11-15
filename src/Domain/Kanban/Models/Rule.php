@@ -55,8 +55,6 @@ class Rule extends Model
         'unit',
         'company_id'
     ];
-<<<<<<< Updated upstream:src/Domain/Kanban/Models/Rule.php
-=======
     public function sewing(): BelongsTo
     {
         return $this->belongsTo(Sewing::class, 'sewing_id', 'id');
@@ -69,7 +67,6 @@ class Rule extends Model
     // {
     //     return $this->hasOne(Queue::class, 'plan_id', 'id');
     // }
->>>>>>> Stashed changes:src/Domain/Kanban/Models/Plan.php
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
