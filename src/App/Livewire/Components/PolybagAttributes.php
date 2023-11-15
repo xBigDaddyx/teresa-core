@@ -24,13 +24,6 @@ class PolybagAttributes extends Component
 
     public function render()
     {
-<<<<<<< Updated upstream:src/App/Livewire/Components/PolybagAttributes.php
         return view('livewire.components.polybag-attributes');
-=======
-        if (session()->get('carton.type') === 'RATIO' || session()->get('carton.type') === 'MIX') {
-            return view('livewire.components.polybag-stats', ['count' => $this->polybags->count(), 'tags_count' => $this->tags->count()]);
-        }
-        return view('livewire.components.polybag-stats', ['count' => $this->polybags->count()]);
->>>>>>> Stashed changes:src/App/Livewire/Components/PolybagStats.php
     }
 }
