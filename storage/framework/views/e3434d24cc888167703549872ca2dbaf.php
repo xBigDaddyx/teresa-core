@@ -7,7 +7,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('pages.validating-polybag', ['carton'=>$carton]);
 
-$__html = app('livewire')->mount($__name, $__params, 'cmo8Xvw', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'rDT0HCe', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

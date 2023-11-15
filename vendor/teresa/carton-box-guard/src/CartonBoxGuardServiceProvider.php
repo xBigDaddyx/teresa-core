@@ -8,9 +8,12 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Teresa\CartonBoxGuard\Commands\CartonBoxGuardCommand;
 use Teresa\CartonBoxGuard\Events\PolybagCreated;
 use Teresa\CartonBoxGuard\Interfaces\CartonBoxValidationInterface;
+use Teresa\CartonBoxGuard\Interfaces\PolybagValidationInterface;
 use Teresa\CartonBoxGuard\Listeners\CompletedCartonBox;
 use Teresa\CartonBoxGuard\Repositories\CartonBoxRepository;
+use Teresa\CartonBoxGuard\Repositories\PolybagRepository;
 use Teresa\CartonBoxGuard\Services\CartonBoxValidationService;
+use Teresa\CartonBoxGuard\Services\PolybagValidationService;
 
 class CartonBoxGuardServiceProvider extends PackageServiceProvider
 {
@@ -35,6 +38,8 @@ class CartonBoxGuardServiceProvider extends PackageServiceProvider
     public function registeringPackage()
     {
         $this->app->bind('CartonBoxRepository', CartonBoxRepository::class);
+        $this->app->bind('PolybagRepository', PolybagRepository::class);
+        $this->app->bind(PolybagValidationInterface::class, PolybagValidationService::class);
         $this->app->bind(CartonBoxValidationInterface::class, CartonBoxValidationService::class);
     }
 }

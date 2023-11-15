@@ -6,7 +6,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('pages.check-carton');
 
-$__html = app('livewire')->mount($__name, $__params, 'fH3AjNA', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'mpWFK1P', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

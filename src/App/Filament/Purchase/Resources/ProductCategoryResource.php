@@ -15,12 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductCategoryResource extends Resource
 {
-<<<<<<< Updated upstream:src/App/Filament/Purchase/Resources/ProductCategoryResource.php
     protected static ?string $model = ProductCategory::class;
-=======
-    protected static ?string $model = Shift::class;
-    protected static ?string $navigationGroup = 'Setting';
->>>>>>> Stashed changes:src/App/Filament/Kanban/Resources/ShiftResource.php
 
     protected static ?string $navigationGroup = 'Product';
     protected static ?string $navigationLabel = 'Product Category';

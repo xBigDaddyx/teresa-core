@@ -4,6 +4,7 @@ namespace Teresa\CartonBoxGuard\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Teresa\CartonBoxGuard\Events\PolybagCreated;
@@ -33,21 +34,25 @@ class Polybag extends Model
 
     protected $dispatchesEvents = [
 
-        'created' => PolybagCreated::class,
+        'created' => \Teresa\CartonBoxGuard\Events\PolybagCreated::class,
         //..
     ];
 
     public function __construct(array $attributes = [])
     {
-        if (! isset($this->connection)) {
+        if (!isset($this->connection)) {
             $this->setConnection(config('carton-box-guard.database_connection'));
         }
 
-        if (! isset($this->table)) {
+        if (!isset($this->table)) {
             $this->setTable(config('carton-box-guard.polybag.table_name'));
         }
 
         parent::__construct($attributes);
+    }
+    public function tags(): MorphMany
+    {
+        return $this->morphMany(Tag::class, 'taggable');
     }
 
     public function cartonBox(): BelongsTo
