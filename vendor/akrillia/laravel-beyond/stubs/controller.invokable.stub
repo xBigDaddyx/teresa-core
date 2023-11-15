@@ -1,0 +1,13 @@
+<?php
+
+namespace App\{{ namespace }}\Controllers;
+
+use Support\Controllers\Controller;
+
+class {{ className }} extends Controller
+{
+    public function __invoke()
+    {
+        //
+    }
+}

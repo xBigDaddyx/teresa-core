@@ -1,0 +1,16 @@
+<?php
+
+namespace Domain\{{ namespace }}\Policies;
+
+use Domain\Users\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class {{ className }}
+{
+    use HandlesAuthorization;
+
+    public function __construct()
+    {
+        //
+    }
+}

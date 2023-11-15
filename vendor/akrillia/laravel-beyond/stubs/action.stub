@@ -1,0 +1,11 @@
+<?php
+
+namespace Domain\{{ namespace }}\Actions;
+
+class {{ className }}
+{
+    public function execute()
+    {
+        //
+    }
+}

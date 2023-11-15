@@ -1,0 +1,10 @@
+<?php
+
+namespace Domain\{{ namespace }}\DataTransferObjects;
+
+use Spatie\DataTransferObject\DataTransferObject;
+
+class {{ className }} extends DataTransferObject
+{
+    //
+}

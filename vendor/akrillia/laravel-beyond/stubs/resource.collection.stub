@@ -1,0 +1,13 @@
+<?php
+
+namespace App\{{ namespace }}\Resources;
+
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class {{ className }} extends ResourceCollection
+{
+    public function toArray($request)
+    {
+        return parent::toArray($request);
+    }
+}

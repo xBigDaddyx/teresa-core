@@ -1,0 +1,27 @@
+{
+    "git": {
+        "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+        "release": true,
+        "web": true
+    },
+    "hooks": {
+        "before:init": [
+            "php vendor/bin/pest"
+        ],
+        "after:bump": [
+            "php vendor/bin/pint",
+            "composer update --lock"
+        ]
+    },
+    "npm": {
+        "publish": false
+    },
+    "plugins": {
+        "@release-it/bumper": {
+            "in": "composer.json",
+            "out": "composer.json"
+        }
+    }
+}

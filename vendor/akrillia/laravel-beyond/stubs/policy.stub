@@ -1,0 +1,44 @@
+<?php
+
+namespace Domain\{{ namespace }}\Policies;
+
+use Domain\{{ namespace }}\Models\{{ modelName }};
+use Domain\Users\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class {{ className }}
+{
+    use HandlesAuthorization;
+
+    public function before(User $user)
+    {
+    }
+
+    public function viewAny(User $user)
+    {
+    }
+
+    public function view(User $user, {{ modelName }} ${{ modelVariable }})
+    {
+    }
+
+    public function create(User $user)
+    {
+    }
+
+    public function update(User $user, {{ modelName }} ${{ modelVariable }})
+    {
+    }
+
+    public function delete(User $user, {{ modelName }} ${{ modelVariable }})
+    {
+    }
+
+    public function restore(User $user, {{ modelName }} ${{ modelVariable }})
+    {
+    }
+
+    public function forceDelete(User $user, {{ modelName }} ${{ modelVariable }})
+    {
+    }
+}

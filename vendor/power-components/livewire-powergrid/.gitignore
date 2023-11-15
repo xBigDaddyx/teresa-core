@@ -1,0 +1,19 @@
+vendor
+.idea/
+.php_cs.cache
+
+# PHPUnit
+/.phpunit.cache
+
+.phpunit.result.cache
+.php-cs-fixer.cache
+/node_modules
+
+pnpm-lock.yaml
+tmp/
+dist/powergrid.js.LICENSE.txt
+.env
+
+tests/cypress/app/
+.DS_Store
+package-lock.json
