@@ -2,11 +2,6 @@
 
 namespace App\Livewire\Components;
 
-<<<<<<< Updated upstream:src/App/Livewire/Components/PolybagAttributes.php
-=======
-use Domain\Accuracies\Models\CartonBox;
-use Domain\Accuracies\Models\Tag;
->>>>>>> Stashed changes:src/App/Livewire/Components/PolybagStats.php
 use Livewire\Component;
 //use Teresa\CartonBoxGuard\Models\CartonBox;
 use Livewire\Attributes\Reactive;
