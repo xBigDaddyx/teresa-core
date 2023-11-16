@@ -110,7 +110,7 @@ class ProductResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make()
-                    ->visible(auth()->user()->hasRole('super-admin')),
+                    ->visible(auth('ldap')->user()->hasRole('super-admin')),
                 Tables\Filters\SelectFilter::make('product_category_id')
                     ->label(__('Product Category'))
                     ->relationship('category', 'name'),
@@ -126,7 +126,7 @@ class ProductResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make()
-                        ->visible(auth()->user()->hasRole('super-admin')),
+                        ->visible(auth('ldap')->user()->hasRole('super-admin')),
                 ]),
             ]);
     }

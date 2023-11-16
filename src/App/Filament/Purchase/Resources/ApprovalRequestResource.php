@@ -9,6 +9,7 @@ use App\Filament\Purchase\Resources\ApprovalRequestResource\RelationManagers\Com
 use Domain\Purchases\Models\ApprovalRequest;
 use Domain\Purchases\Models\Comment;
 use Filament\Actions\StaticAction;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -34,7 +35,11 @@ class ApprovalRequestResource extends Resource
     public static function getNavigationBadge(): ?string
     {
 
-        return static::getModel()::whereBelongsTo(auth()->user())->count();
+        return static::getModel()::whereBelongsTo(auth('ldap')->user())->count() ?? 0;
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getModel()::whereBelongsTo(auth('ldap')->user())->count() > 10 ? 'warning' : 'primary';
     }
     public static function form(Form $form): Form
     {
@@ -68,10 +73,10 @@ class ApprovalRequestResource extends Resource
             ])
 
             ->modifyQueryUsing(function (Builder $query) {
-                if (auth()->user()->hasRole('super-admin')) {
+                if (auth('ldap')->user()->hasRole('super-admin')) {
                     return $query;
                 }
-                return $query->whereBelongsTo(auth()->user());
+                return $query->whereBelongsTo(auth('ldap')->user());
             })
 
             ->filters([

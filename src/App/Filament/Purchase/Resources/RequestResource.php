@@ -180,7 +180,7 @@ class RequestResource extends Resource
                     ->icon('tabler-file-export')
                     ->color('success')
                     ->visible(fn (Request $record) => $record->is_submited === false)
-                    ->action(fn (Request $record) => RequestSubmited::dispatch($record, 'PR', auth()->user())),
+                    ->action(fn (Request $record) => RequestSubmited::dispatch($record, 'PR', auth('ldap')->user())),
                 // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make()
                     ->button()
