@@ -13,6 +13,7 @@ use App\Mail\SendRequestApprovedNotification;
 use App\Mail\SendRequestSubmitedNotification;
 use Domain\Kanban\Models\PlanQueue;
 use Domain\Purchases\Models\ApprovalRequest;
+use Domain\Purchases\Models\Request as ModelsRequest;
 use Domain\Users\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -122,9 +123,9 @@ Route::view('menu', 'livewire.menu.menu')
     ->name('menu');
 
 Route::get('/mailable', function () {
-    $invoice = PlanQueue::find(55);
+    $invoice = ApprovalRequest::find(18);
 
-    return new SendPlanQueueNotification(User::find(381), $invoice);
+    return new SendRequestSubmitedNotification(User::find(381), $invoice);
 });
 
 Route::get('/plan-queue/{oldQueue}/{newQueue}', [PlanQueueController::class, 'switch'])->name('plan.queue.switch')->middleware('signed');

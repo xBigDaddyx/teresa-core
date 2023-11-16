@@ -5,6 +5,7 @@ namespace App\Filament\Purchase\Resources;
 use App\Events\RequestSubmited;
 use App\Filament\Purchase\Resources\RequestResource\Pages;
 use App\Filament\Purchase\Resources\RequestResource\RelationManagers;
+use App\Filament\Purchase\Resources\RequestResource\RelationManagers\ApprovalHistoriesRelationManager;
 use App\Jobs\ProcessApproval;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Barryvdh\DomPDF\PDF;
@@ -203,7 +204,7 @@ class RequestResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ApprovalHistoriesRelationManager::class,
         ];
     }
 

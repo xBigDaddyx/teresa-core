@@ -108,6 +108,10 @@ class Request extends Model
     {
         return $this->setConnection('sqlsrv')->morphMany(ApprovalRequest::class, 'approvable');
     }
+    public function approvalHistories(): MorphMany
+    {
+        return $this->setConnection('sqlsrv')->morphMany(ApprovalHistory::class, 'approvable');
+    }
     public function person(): BelongsTo
     {
         return $this->setConnection('sqlsrv')->belongsTo(User::class, 'user_id', 'id');

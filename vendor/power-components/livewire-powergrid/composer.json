@@ -1,0 +1,95 @@
+{
+    "name": "power-components/livewire-powergrid",
+    "description": "PowerGrid generates Advanced Datatables using Laravel Livewire.",
+    "homepage": "https://github.com/power-components/livewire-powergrid",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Luan Freitas",
+            "email": "luanfreitas10@protonmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "DanSysAnalyst",
+            "email": "daniel@sysanalyst.eu",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "doctrine/dbal": "2.12.1 | ^3.7.1",
+        "livewire/livewire": "^3.1.0",
+        "laravel/prompts": "^0.1.13"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.24.3",
+        "orchestra/testbench": "^8.14.1",
+        "composer/composer": "^2.6.5",
+        "laravel/pint": "^1.13.6",
+        "nunomaduro/larastan": "^2.6.4",
+        "laradumps/laradumps-core": "^0.3.0",
+        "spaze/phpstan-disallowed-calls": "^2.16.1"
+    },
+    "suggest": {
+        "openspout/openspout": "Required to export XLS and CSV"
+    },
+    "autoload": {
+        "psr-4": {
+            "PowerComponents\\LivewirePowerGrid\\": "src"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PowerComponents\\LivewirePowerGrid\\Tests\\" : "tests"
+        },
+        "files": [
+            "tests/Plugins/Autoload.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PowerComponents\\LivewirePowerGrid\\Providers\\PowerGridServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "pint:fix": "./vendor/bin/pint",
+        "test": "@test:sqlite --bail",
+        "test:pint": "./vendor/bin/pint --test",
+        "test:sqlite": [
+            "./vendor/bin/pest --compact"
+        ],
+        "test:mysql":  [
+            "./vendor/bin/pest --compact --configuration phpunit.mysql.xml"
+        ],
+        "test:pgsql": [
+            "./vendor/bin/pest --compact --configuration phpunit.pgsql.xml"
+        ],
+        "test:sqlsrv": [
+            "./vendor/bin/pest --configuration phpunit.sqlsrv.xml"
+        ],
+        "test:types": "./vendor/bin/phpstan analyse --ansi --memory-limit=-1",
+        "test:dbs": [
+            "@test:sqlite",
+            "@test:mysql",
+            "@test:pgsql"
+        ],
+        "verify": [
+            "@test:pint",
+            "@test:types",
+            "@test"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "pestphp/pest-plugin": true
+        }
+    }
+}

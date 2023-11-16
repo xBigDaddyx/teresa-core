@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\RequestApproved;
 use App\Mail\SendRequestApprovedNotification;
 use Domain\Purchases\Models\ApprovalFlow;
+use Domain\Purchases\Models\ApprovalHistory;
 use Domain\Purchases\Models\ApprovalRequest;
 use Domain\Users\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -32,8 +33,9 @@ class RequestApprovedListener
         $request = $approvalRequest->approvable;
         $next_approval = $approvalRequest->approvable->getNextApproval();
         $new = new ApprovalRequest();
+        $action = '';
         if ($next_approval['next_stage'] !== 'Completed') {
-
+            $action = 'Approved';
             $new->status = 'Approved';
             $new->approval_flow_id = $next_approval['next_stage_id'];
             $new->approvable_id = $approvalRequest->approvable->id;
@@ -45,6 +47,7 @@ class RequestApprovedListener
             $new->created_by = $next_approval['next_person_charge'];
             $new->save();
         } else {
+            $action = 'Completed';
             $new->status = 'Completed';
             $new->approval_flow_id = $approvalRequest->approval_flow_id;
             $new->approvable_id = $approvalRequest->approvable->id;
@@ -57,6 +60,12 @@ class RequestApprovedListener
             $new->save();
         }
 
+        $history = new ApprovalHistory();
+        $history->approvable_id = $approvalRequest->approvable->id;
+        $history->approvable_type = $approvalRequest->approvable->getNamespace();
+        $history->action = $action;
+        $history->user_id = $approvalRequest->user_id;
+        $history->save();
 
         $approvalRequest->delete();
 

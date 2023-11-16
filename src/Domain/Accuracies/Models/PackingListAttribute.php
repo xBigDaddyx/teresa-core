@@ -46,13 +46,8 @@ class PackingListAttribute extends Model
             } else {
                 $number = $count;
             }
-<<<<<<< Updated upstream:src/Domain/Accuracies/Models/PackingListAttribute.php
             $model->type = $model->packingList->type;
             $model->id = Filament::getTenant()->short_name . '.PLA.' . $number;
-=======
-            $model->type = $model->carton->type;
-            $model->id = Filament::getTenant()->short_name . '.CBA.' . $number;
->>>>>>> Stashed changes:src/Domain/Accuracies/Models/CartonBoxAttribute.php
         });
     }
     public function packingList(): BelongsTo

@@ -208,6 +208,13 @@
       'FilamentBreezy' => 'Jeffgreco13\\FilamentBreezy\\Facades\\FilamentBreezy',
     ),
   ),
+  'jeroen-g/laravel-packager' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'JeroenG\\Packager\\PackagerServiceProvider',
+    ),
+  ),
   'kirschbaum-development/eloquent-power-joins' => 
   array (
     'providers' => 
@@ -334,6 +341,13 @@
     'providers' => 
     array (
       0 => 'Pboivin\\FilamentPeek\\FilamentPeekServiceProvider',
+    ),
+  ),
+  'power-components/livewire-powergrid' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'PowerComponents\\LivewirePowerGrid\\Providers\\PowerGridServiceProvider',
     ),
   ),
   'richan-fongdasen/eloquent-blameable' => 

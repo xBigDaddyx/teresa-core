@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\RequestSubmited;
 use App\Mail\SendRequestSubmitedNotification;
+use Domain\Purchases\Models\ApprovalHistory;
 use Domain\Purchases\Models\ApprovalRequest;
 use Domain\Purchases\Models\Request;
 use Domain\Users\Models\User;
@@ -47,6 +48,13 @@ class RequestSubmitedListener
         $approvalRequest->company_id = $event->user->company->id;
         $approvalRequest->created_by = $event->user->id;
         $approvalRequest->save();
+
+        $history = new ApprovalHistory();
+        $history->approvable_id = $event->request->id;
+        $history->approvable_type = $event->request->getNamespace();
+        $history->action = 'Submit';
+        $history->user_id = $event->user->id;
+        $history->save();
 
         $model = Request::find($event->request->id);
         $model->is_submited = true;

@@ -143,7 +143,6 @@ class PlanQueueResource extends Resource
                     Tables\Columns\TextColumn::make('plan.customer.name')
                         ->formatStateUsing(fn (string $state): string => __("Buyer : {$state}"))
                         ->sortable()
-                        ->searchable()
                         ->label('Buyer'),
 
 
