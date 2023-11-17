@@ -25,7 +25,20 @@ class CurrencyResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('General Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('sign')
+                            ->label(__('Sign Name')),
+                        Forms\Components\TextInput::make('single')
+                            ->label(__('Single Name')),
+                        Forms\Components\TextInput::make('multi')
+                            ->label(__('Multiple Name')),
+                        Forms\Components\TextInput::make('rate')
+                            ->numeric()
+                            ->label(__('Rate')),
+                    ])->columns(2)
+
+
             ]);
     }
 
@@ -73,10 +86,11 @@ class CurrencyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCurrencies::route('/'),
-            'create' => Pages\CreateCurrency::route('/create'),
-            'view' => Pages\ViewCurrency::route('/{record}'),
-            'edit' => Pages\EditCurrency::route('/{record}/edit'),
+            'index' => Pages\ManageCurrencies::route('/'),
+            // 'index' => Pages\ListCurrencies::route('/'),
+            // 'create' => Pages\CreateCurrency::route('/create'),
+            // 'view' => Pages\ViewCurrency::route('/{record}'),
+            // 'edit' => Pages\EditCurrency::route('/{record}/edit'),
         ];
     }
 

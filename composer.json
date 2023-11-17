@@ -47,7 +47,8 @@
         "spatie/laravel-permission": "^5.11",
         "stijnvanouplines/blade-country-flags": "^1.0",
         "tapp/filament-auditing": "^3.0",
-        "teresa/carton-box-guard": "^1.0"
+        "teresa/carton-box-guard": "^1.0",
+        "ysfkaya/filament-phone-input": "^2.1"
     },
     "require-dev": {
         "akrillia/laravel-beyond": "^6.0",

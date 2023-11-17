@@ -350,6 +350,13 @@
       0 => 'PowerComponents\\LivewirePowerGrid\\Providers\\PowerGridServiceProvider',
     ),
   ),
+  'propaganistas/laravel-phone' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Propaganistas\\LaravelPhone\\PhoneServiceProvider',
+    ),
+  ),
   'richan-fongdasen/eloquent-blameable' => 
   array (
     'providers' => 
@@ -452,6 +459,13 @@
     'aliases' => 
     array (
       'CartonBoxGuard' => 'Teresa\\CartonBoxGuard\\Facades\\CartonBoxGuard',
+    ),
+  ),
+  'ysfkaya/filament-phone-input' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ysfkaya\\FilamentPhoneInput\\FilamentPhoneInputServiceProvider',
     ),
   ),
 );

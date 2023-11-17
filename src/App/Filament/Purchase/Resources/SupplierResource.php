@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Ysfkaya\FilamentPhoneInput\Tables\PhoneInputColumn;
 
 class SupplierResource extends Resource
 {
@@ -42,9 +43,9 @@ class SupplierResource extends Resource
                     ->label(__('City')),
                 Tables\Columns\TextColumn::make('contact_person')
                     ->label(__('Contact Person')),
-                Tables\Columns\TextColumn::make('phone')
+                PhoneInputColumn::make('phone')
                     ->label(__('Phone')),
-                Tables\Columns\TextColumn::make('mobile')
+                PhoneInputColumn::make('mobile')
                     ->label(__('Mobile')),
                 Tables\Columns\TextColumn::make('fax')
                     ->label(__('Fax')),

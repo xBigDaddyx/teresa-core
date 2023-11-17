@@ -25,7 +25,8 @@ class CityResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label(__('Name')),
             ]);
     }
 
@@ -67,10 +68,11 @@ class CityResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCities::route('/'),
-            'create' => Pages\CreateCity::route('/create'),
-            'view' => Pages\ViewCity::route('/{record}'),
-            'edit' => Pages\EditCity::route('/{record}/edit'),
+            'index' => Pages\ManageCities::route('/'),
+            // 'index' => Pages\ListCities::route('/'),
+            // 'create' => Pages\CreateCity::route('/create'),
+            // 'view' => Pages\ViewCity::route('/{record}'),
+            // 'edit' => Pages\EditCity::route('/{record}/edit'),
         ];
     }
 

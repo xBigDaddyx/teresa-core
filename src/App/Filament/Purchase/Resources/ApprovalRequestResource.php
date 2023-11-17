@@ -2,12 +2,17 @@
 
 namespace App\Filament\Purchase\Resources;
 
+use App\Events\MakeOrderEvent;
 use App\Events\RequestApproved;
 use App\Filament\Purchase\Resources\ApprovalRequestResource\Pages;
 use App\Filament\Purchase\Resources\ApprovalRequestResource\RelationManagers;
 use App\Filament\Purchase\Resources\ApprovalRequestResource\RelationManagers\CommentsRelationManager;
 use Domain\Purchases\Models\ApprovalRequest;
+use Domain\Purchases\Models\Category;
 use Domain\Purchases\Models\Comment;
+use Domain\Purchases\Models\Order;
+use Domain\Purchases\Models\OrderItem;
+use Domain\Purchases\Models\Supplier;
 use Filament\Actions\StaticAction;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -23,6 +28,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
 use Illuminate\Contracts\View\View;
+use Filament\Forms\Components\Wizard\Step;
+use Filament\Forms\Get;
 
 class ApprovalRequestResource extends Resource
 {
@@ -90,12 +97,116 @@ class ApprovalRequestResource extends Resource
                     ->previewModalData(fn (Model $record) => ['record' => $record->approvable])
                     ->label(__('View'))
                     ->color('info'),
+                Tables\Actions\Action::make('order')
+                    ->label('Make Order')
+                    ->icon('tabler-files')
+                    ->steps([
+                        Step::make('Supplier')
+                            ->description('Supplier information')
+                            ->schema([
+                                Forms\Components\Select::make('supplier_id')
+                                    ->label(__('Supplier'))
+                                    // ->options(function () {
+                                    //     return $suppliers = Supplier::whereBelongsTo(Filament::getTenant())->pluck('name', 'id');
+                                    // })
+                                    ->searchable()
+                                    ->getSearchResultsUsing(fn (string $search): array => Supplier::where('name', 'like', "%{$search}%")->whereBelongsTo(Filament::getTenant())->limit(50)->pluck('name', 'id')->toArray())
+                                    ->getOptionLabelsUsing(fn (array $values): array => Supplier::whereIn('id', $values)->whereBelongsTo(Filament::getTenant())->pluck('name', 'id')->toArray())
+                                    ->required(),
+                                Forms\Components\DatePicker::make('delivery_date')
+                                    ->label(__('Delivery Date'))
+                                    ->required(),
+
+                            ])
+                            ->columns(2),
+                        Step::make('Order')
+                            ->description('Order information')
+                            ->schema([
+                                Forms\Components\Select::make('category_id')
+                                    ->label(__('Order Category'))
+                                    ->options(function () {
+                                        return $category = Category::whereBelongsTo(Filament::getTenant())->pluck('name', 'id');
+                                    })
+                                    ->live()
+                                    ->required(),
+                                Forms\Components\TextInput::make('capex_code')
+                                    ->hidden(function (Get $get) {
+                                        if ($get('category_id')) {
+                                            $category = Category::find($get('category_id'));
+                                            if ($category->name === 'CAPEX') {
+                                                return false;
+                                            }
+                                        }
+                                        return true;
+                                    })
+                                    ->label(__('Capex Code')),
+                                Forms\Components\Textarea::make('payment_term')
+                                    ->label(__('Payment Term'))
+                                    ->required(),
+                                Forms\Components\Section::make('Tax')
+                                    ->description('Tax information')
+                                    ->columns(2)
+                                    ->schema([
+                                        Forms\Components\Toggle::make('included_tax')
+                                            ->onColor('success')
+                                            ->offColor('danger')
+                                            ->onIcon('tabler-check')
+                                            ->offIcon('tabler-x')
+                                            ->inline(false)
+                                            ->label(__('Tax Invoice'))
+                                            ->live(),
+                                        Forms\Components\Select::make('Tax Type')
+                                            ->hidden(fn (Get $get): bool => $get('included_tax') === false)
+                                            ->label(__('Tax Type'))
+                                            ->options([
+                                                'PPN' => 'PPN',
+                                                'PPH' => 'PPH',
+
+                                            ]),
+                                    ]),
+                                Forms\Components\Textarea::make('comment')
+                                    ->label(__('Comment'))
+                                    ->columnSpanFull(),
+                            ])
+                            ->columns(2),
+
+
+                    ])
+                    ->action(function (array $data, ApprovalRequest $record): void {
+                        $new = new Order();
+                        $new->orderable_id = $record->approvable_id;
+                        $new->orderable_type = $record->approvable_type;
+                        $new->supplier_id = $data['supplier_id'];
+                        $new->category_id = $data['category_id'];
+                        $new->delivery_date = $data['delivery_date'];
+                        $new->payment_term = $data['payment_term'];
+                        $new->included_tax = $data['included_tax'];
+                        $new->tax_type = $data['tax_type'] ?? null;
+                        $new->capex_code = $data['capex_code'] ?? null;
+                        $new->comment = $data['comment'];
+                        $new->save();
+                        $requestItems = $record->approvable->requestItems;
+                        foreach ($requestItems as $item) {
+                            $new->orderItems()->saveMany([
+                                new OrderItem([
+                                    'product_id' => $item->product_id,
+                                    'quantity' => $item->quantity,
+                                    'unit_price' => 0,
+                                    'remark' => $item->remark,
+                                    'company_id' => auth('ldap')->user()->company->id,
+                                ]),
+                            ]);
+                        }
+                    })
+                    ->button(),
                 Tables\Actions\Action::make('approve')
+                    ->hidden(fn (ApprovalRequest $record): bool => $record->status === 'Request Completed')
                     ->action(fn (ApprovalRequest $record) => RequestApproved::dispatch($record))
                     ->button()
                     ->icon('tabler-check')
                     ->color('success'),
                 Tables\Actions\Action::make('reject')
+                    ->hidden(fn (ApprovalRequest $record): bool => $record->status === 'Request Completed')
                     ->button()
                     ->icon('tabler-clipboard-x')
                     ->color('danger')

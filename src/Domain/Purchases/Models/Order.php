@@ -8,6 +8,7 @@ use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
@@ -23,13 +24,15 @@ class Order extends Model
         'createdBy' => 'created_by',
         'updatedBy' => 'updated_by',
     ];
-
+    protected $casts = [
+        'include_tax' => 'boolean'
+    ];
     public static function boot()
     {
         parent::boot();
         self::creating(function ($model) {
             $count = $model->whereBelongsTo(Filament::getTenant())->withTrashed()->count() + 1;
-            $model->order_number = 'PO-' . str_pad($count, 5, '0', STR_PAD_LEFT) . '/' . $this->convertToRoman((int)Carbon::now()->format('m')) . '/' . (int)Carbon::now()->format('Y');
+            $model->order_number = 'PO-' . str_pad($count, 5, '0', STR_PAD_LEFT) . '/' . $model->convertToRoman((int)Carbon::now()->format('m')) . '/' . (int)Carbon::now()->format('Y');
             $model->company_id = auth()->user()->company->id;
         });
     }
@@ -77,6 +80,10 @@ class Order extends Model
     public function approvalHistories(): MorphMany
     {
         return $this->setConnection('sqlsrv')->morphMany(ApprovalHistory::class, 'approvable');
+    }
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
     }
     public function comments()
     {

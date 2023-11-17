@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\MakeOrderEvent;
 use App\Events\RequestApproved;
 use App\Events\RequestSubmited;
+use App\Listeners\MakeOrderListener;
 use App\Listeners\RequestApprovedListener;
 use App\Listeners\RequestSubmitedListener;
 use Illuminate\Auth\Events\Registered;
@@ -31,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         RequestApproved::class => [
             RequestApprovedListener::class,
+        ],
+        MakeOrderEvent::class => [
+            MakeOrderListener::class,
         ],
     ];
 
