@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 
 class PermissionResource extends Resource
 {
+    protected static bool $isScopedToTenant = false;
     protected static ?string $model = Permission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';

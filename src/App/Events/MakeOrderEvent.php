@@ -15,12 +15,14 @@ class MakeOrderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public ApprovalRequest $request;
+    public array $data;
     /**
      * Create a new event instance.
      */
-    public function __construct(ApprovalRequest $request)
+    public function __construct(array $data, ApprovalRequest $request)
     {
         $this->request = $request;
+        $this->data = $data;
     }
 
     /**

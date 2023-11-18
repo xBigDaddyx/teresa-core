@@ -70,9 +70,14 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state)),
                 Select::make('roles')
-                    ->hidden(fn (Page $livewire): bool => $livewire instanceof EditRecord || $livewire instanceof ViewRecord)
+                    ->relationship('roles', 'name')
                     ->multiple()
-                    ->relationship('roles', 'name')->preload(),
+                    ->preload()
+                    ->searchable(),
+                Select::make('roles')
+                // ->hidden(fn (Page $livewire): bool => $livewire instanceof EditRecord || $livewire instanceof ViewRecord)
+                // ->multiple()
+                // ->relationship('roles', 'name')->preload(),
 
                 // TextInput::make('passwordConfirmation')
                 //     ->password()
@@ -214,7 +219,14 @@ class UserResource extends Resource
                     ->label(__('Filter')),
             )
             ->actions([
-
+                \STS\FilamentImpersonate\Tables\Actions\Impersonate::make()
+                    ->guard('ldap')
+                    ->redirectTo(function (Model $record) {
+                        if ($record->hasRole('purchase-user') || $record->hasRole('purchase-officer') || $record->hasRole('purchase-approver')) {
+                            return route('filament.purchase.pages.dashboard', ['tenant' => Filament::getTenant()]);
+                        }
+                        return route('filament.admin.pages.dashboard', ['tenant' => Filament::getTenant()]);
+                    }),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

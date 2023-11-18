@@ -34,8 +34,15 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     use HasRoles;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
-
+    public function canImpersonate()
+    {
+        return auth('ldap')->user()->hasRole('super-admin');
+    }
+    public function canBeImpersonated()
+    {
+        // Let's prevent impersonating other users at our own company
+        return str_ends_with($this->email, '@hoplun.com') && $this->getRoleNames()->count() > 0;
+    }
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {

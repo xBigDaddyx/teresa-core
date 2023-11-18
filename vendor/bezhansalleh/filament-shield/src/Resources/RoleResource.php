@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 
 class RoleResource extends Resource implements HasShieldPermissions
 {
+    protected static bool $isScopedToTenant = false;
     protected static ?string $recordTitleAttribute = 'name';
 
     protected static $permissionsCollection;

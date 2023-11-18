@@ -12,6 +12,7 @@ use Domain\Purchases\Models\Category;
 use Domain\Purchases\Models\Comment;
 use Domain\Purchases\Models\Order;
 use Domain\Purchases\Models\OrderItem;
+use Domain\Purchases\Models\Request;
 use Domain\Purchases\Models\Supplier;
 use Filament\Actions\StaticAction;
 use Filament\Facades\Filament;
@@ -39,6 +40,21 @@ class ApprovalRequestResource extends Resource
     protected static ?string $navigationGroup = 'Approval';
     protected static ?string $navigationLabel = 'Approval Request';
     protected static ?string $navigationIcon = 'tabler-report';
+
+    public static function getPluralModelLabel(): string
+    {
+        if (auth('ldap')->user()->hasRole('purchase-officer')) {
+            return __('Purchase Requested');
+        }
+        return __('Approval Requests');
+    }
+    public static function getNavigationLabel(): string
+    {
+        if (auth('ldap')->user()->hasRole('purchase-officer')) {
+            return __('Purchase Requested');
+        }
+        return __('Approval Requests');
+    }
     public static function getNavigationBadge(): ?string
     {
 
@@ -58,6 +74,7 @@ class ApprovalRequestResource extends Resource
 
     public static function table(Table $table): Table
     {
+        // dd(Request::find(12)->getNextApproval());
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('approvable.request_number')
@@ -98,6 +115,7 @@ class ApprovalRequestResource extends Resource
                     ->label(__('View'))
                     ->color('info'),
                 Tables\Actions\Action::make('order')
+                    ->visible(fn (): bool => auth('ldap')->user()->hasRole('purchase-officer'))
                     ->label('Make Order')
                     ->icon('tabler-files')
                     ->steps([
@@ -173,30 +191,7 @@ class ApprovalRequestResource extends Resource
 
                     ])
                     ->action(function (array $data, ApprovalRequest $record): void {
-                        $new = new Order();
-                        $new->orderable_id = $record->approvable_id;
-                        $new->orderable_type = $record->approvable_type;
-                        $new->supplier_id = $data['supplier_id'];
-                        $new->category_id = $data['category_id'];
-                        $new->delivery_date = $data['delivery_date'];
-                        $new->payment_term = $data['payment_term'];
-                        $new->included_tax = $data['included_tax'];
-                        $new->tax_type = $data['tax_type'] ?? null;
-                        $new->capex_code = $data['capex_code'] ?? null;
-                        $new->comment = $data['comment'];
-                        $new->save();
-                        $requestItems = $record->approvable->requestItems;
-                        foreach ($requestItems as $item) {
-                            $new->orderItems()->saveMany([
-                                new OrderItem([
-                                    'product_id' => $item->product_id,
-                                    'quantity' => $item->quantity,
-                                    'unit_price' => 0,
-                                    'remark' => $item->remark,
-                                    'company_id' => auth('ldap')->user()->company->id,
-                                ]),
-                            ]);
-                        }
+                        MakeOrderEvent::dispatch($data, $record);
                     })
                     ->button(),
                 Tables\Actions\Action::make('approve')

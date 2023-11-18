@@ -1,0 +1,71 @@
+{
+    "name": "rickdbcn/filament-email",
+    "description": "Log all outbound emails you send through your Filament application",
+    "keywords": [
+        "RickDBCN",
+        "laravel",
+        "filament-email"
+    ],
+    "homepage": "https://github.com/rickdbcn/filament-email",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rick de Boer",
+            "email": "rickdb@calvintijd.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0",
+        "illuminate/contracts": "^10.0",
+        "laravel/framework": "^10.17",
+        "spatie/laravel-package-tools": "^1.14.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-livewire": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "RickDBCN\\FilamentEmail\\": "src/",
+            "RickDBCN\\FilamentEmail\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RickDBCN\\FilamentEmail\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RickDBCN\\FilamentEmail\\FilamentEmailServiceProvider"
+            ],
+            "aliases": {
+                "FilamentEmail": "RickDBCN\\FilamentEmail\\Facades\\FilamentEmail"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

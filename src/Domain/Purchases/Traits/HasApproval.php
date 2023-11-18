@@ -164,6 +164,18 @@ trait HasApproval
                                     'next_person' => 'Missing',
                                 ]);
                             }
+                            if ($next->level === 'Purchasing') {
+                                return collect([
+                                    'status' => 'Completed',
+                                    'message' => 'Approval process is completed',
+                                    'waiting' => 'Completed',
+                                    'on_stage' => $approvals->approvalFlow->level,
+                                    'next_stage' => $next->level,
+                                    'next_stage_id' => $next->id,
+                                    'next_person_charge' => $incharge->id,
+                                    'next_person' => $incharge->name,
+                                ]);
+                            }
                             return collect([
                                 'status' => $approvals->status,
                                 'message' => 'Still waiting for action on this stage, if approved then approval process going to next stage',
@@ -176,6 +188,7 @@ trait HasApproval
                             ]);
                         }
                     }
+
                     return collect([
                         'status' => $approvals->status,
                         'message' => 'If ' . $approvals->approvalFlow->level . ' approved, then approval process is complete',
@@ -202,6 +215,18 @@ trait HasApproval
                 ]);
                 return abort(500, 'person in charge is missing and its required because this stage is not skipable');
             }
+            if ($next->level === 'Purchasing') {
+                return collect([
+                    'status' => 'Completed',
+                    'message' => 'Approval process is completed',
+                    'waiting' => 'Completed',
+                    'on_stage' => 'Completed',
+                    'next_stage' => 'Completed',
+                    'next_stage_id' => 'Completed',
+                    'next_person_charge' => 'Completed',
+                    'next_person' => 'Completed',
+                ]);
+            }
             return collect([
                 'status' => $approvals->status,
                 'message' => 'Still waiting for action on this stage, if approved then approval process going to next stage',
@@ -213,6 +238,7 @@ trait HasApproval
                 'next_person' => $incharge->name,
             ]);
         }
+
         return collect([
             'status' => $approvals->status,
             'message' => 'Still waiting for action on this stage, if approved then approval process is complete',

@@ -168,7 +168,7 @@ class RequestResource extends Resource
                     ->modalAlignment(Alignment::Center)
                     ->modalIcon('tabler-status-change')
                     ->modalHeading('Approval Status')
-                    ->modalDescription('Below is all information we hold about approval records for this request')
+                    ->modalDescription('Below is all information we hold about last approval records for this request')
                     ->modalSubmitAction(false)
                     ->modalCancelAction(fn (StaticAction $action) => $action->label('Close'))
                     ->modalContent(fn (Request $record): View => view(

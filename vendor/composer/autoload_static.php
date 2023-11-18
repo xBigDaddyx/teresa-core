@@ -23,9 +23,9 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         '9261e07cd92c53dcc971c7c88c176c04' => __DIR__ . '/..' . '/danharrin/date-format-converter/src/helpers.php',
         '9720327d09ed9a4ba00c9b5071b71c7d' => __DIR__ . '/..' . '/danharrin/date-format-converter/src/standards.php',
         '2ad94ea6f6f6013119e9abcf4e302a08' => __DIR__ . '/..' . '/filament/forms/src/helpers.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'b69d5f1f95cd1ed438c038b6cbcc45b5' => __DIR__ . '/..' . '/filament/notifications/src/Testing/Autoload.php',
         '89e9938b64b06cc502d7ceca69a380fe' => __DIR__ . '/..' . '/filament/filament/src/global_helpers.php',
         'ebb446bb6d02e998480945fbbb73dc64' => __DIR__ . '/..' . '/filament/filament/src/helpers.php',
@@ -35,11 +35,13 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
-        '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
+        'eee56a36884c3af04e64bac85043e771' => __DIR__ . '/..' . '/akaunting/laravel-money/src/helpers.php',
+        '507d7a825db0ba8319f9dd335c46057a' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '017b24472353920ed42bb364f7653c43' => __DIR__ . '/..' . '/propaganistas/laravel-phone/src/helpers.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
@@ -140,12 +142,15 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
             'Sfolador\\Locked\\Database\\Factories\\' => 35,
             'Sfolador\\Locked\\' => 16,
             'Sabberworm\\CSS\\' => 15,
+            'STS\\FilamentImpersonate\\' => 24,
         ),
         'R' => 
         array (
             'RyanChandler\\TablerIcons\\' => 25,
             'RyanChandler\\BladeCaptureDirective\\Database\\Factories\\' => 54,
             'RyanChandler\\BladeCaptureDirective\\' => 35,
+            'RickDBCN\\FilamentEmail\\Database\\Factories\\' => 42,
+            'RickDBCN\\FilamentEmail\\' => 23,
             'RichanFongdasen\\EloquentBlameable\\' => 34,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
@@ -211,6 +216,7 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Horizon\\' => 16,
             'Laravel\\Breeze\\' => 15,
+            'Lab404\\Impersonate\\' => 19,
         ),
         'K' => 
         array (
@@ -306,9 +312,13 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         array (
             'Aymanalhattami\\FilamentSlimScrollbar\\' => 37,
             'Awcodes\\Shout\\' => 14,
+            'Awcodes\\FilamentBadgeableColumn\\' => 32,
+            'Ariaieboy\\FilamentCurrency\\Database\\Factories\\' => 46,
+            'Ariaieboy\\FilamentCurrency\\' => 27,
             'App\\' => 4,
             'AlperenErsoy\\FilamentExport\\' => 28,
             'AkrilliA\\LaravelBeyond\\' => 23,
+            'Akaunting\\Money\\' => 16,
         ),
     );
 
@@ -565,6 +575,10 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
+        'STS\\FilamentImpersonate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stechstudio/filament-impersonate/src',
+        ),
         'RyanChandler\\TablerIcons\\' => 
         array (
             0 => __DIR__ . '/..' . '/ryangjchandler/blade-tabler-icons/src',
@@ -576,6 +590,14 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'RyanChandler\\BladeCaptureDirective\\' => 
         array (
             0 => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/src',
+        ),
+        'RickDBCN\\FilamentEmail\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rickdbcn/filament-email/database/factories',
+        ),
+        'RickDBCN\\FilamentEmail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rickdbcn/filament-email/src',
         ),
         'RichanFongdasen\\EloquentBlameable\\' => 
         array (
@@ -778,6 +800,10 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'Laravel\\Breeze\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/breeze/src',
+        ),
+        'Lab404\\Impersonate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lab404/laravel-impersonate/src',
         ),
         'Kirschbaum\\PowerJoins\\' => 
         array (
@@ -1034,6 +1060,18 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         array (
             0 => __DIR__ . '/..' . '/awcodes/shout/src',
         ),
+        'Awcodes\\FilamentBadgeableColumn\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src',
+        ),
+        'Ariaieboy\\FilamentCurrency\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ariaieboy/filament-currency/database/factories',
+        ),
+        'Ariaieboy\\FilamentCurrency\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ariaieboy/filament-currency/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/App',
@@ -1047,9 +1085,22 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         array (
             0 => __DIR__ . '/..' . '/akrillia/laravel-beyond/src',
         ),
+        'Akaunting\\Money\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/akaunting/laravel-money/src',
+        ),
     );
 
     public static $classMap = array (
+        'Akaunting\\Money\\Casts\\CurrencyCast' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Casts/CurrencyCast.php',
+        'Akaunting\\Money\\Casts\\MoneyCast' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Casts/MoneyCast.php',
+        'Akaunting\\Money\\Currency' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Currency.php',
+        'Akaunting\\Money\\Exceptions\\UnexpectedAmountException' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Exceptions/UnexpectedAmountException.php',
+        'Akaunting\\Money\\Money' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Money.php',
+        'Akaunting\\Money\\Provider' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Provider.php',
+        'Akaunting\\Money\\Rules\\CurrencyRule' => __DIR__ . '/..' . '/akaunting/laravel-money/src/Rules/CurrencyRule.php',
+        'Akaunting\\Money\\View\\Components\\Currency' => __DIR__ . '/..' . '/akaunting/laravel-money/src/View/Components/Currency.php',
+        'Akaunting\\Money\\View\\Components\\Money' => __DIR__ . '/..' . '/akaunting/laravel-money/src/View/Components/Money.php',
         'AkrilliA\\LaravelBeyond\\Actions\\ChangeComposerAutoloaderAction' => __DIR__ . '/..' . '/akrillia/laravel-beyond/src/Actions/ChangeComposerAutoloaderAction.php',
         'AkrilliA\\LaravelBeyond\\Actions\\CopyAndRefactorDirectoryAction' => __DIR__ . '/..' . '/akrillia/laravel-beyond/src/Actions/CopyAndRefactorDirectoryAction.php',
         'AkrilliA\\LaravelBeyond\\Actions\\CopyAndRefactorFileAction' => __DIR__ . '/..' . '/akrillia/laravel-beyond/src/Actions/CopyAndRefactorFileAction.php',
@@ -1253,6 +1304,10 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'App\\Filament\\Purchase\\Resources\\ProductResource\\Pages\\EditProduct' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/ProductResource/Pages/EditProduct.php',
         'App\\Filament\\Purchase\\Resources\\ProductResource\\Pages\\ListProducts' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/ProductResource/Pages/ListProducts.php',
         'App\\Filament\\Purchase\\Resources\\ProductResource\\Pages\\ViewProduct' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/ProductResource/Pages/ViewProduct.php',
+        'App\\Filament\\Purchase\\Resources\\RequestItemResource' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestItemResource.php',
+        'App\\Filament\\Purchase\\Resources\\RequestItemResource\\Pages\\CreateRequestItem' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestItemResource/Pages/CreateRequestItem.php',
+        'App\\Filament\\Purchase\\Resources\\RequestItemResource\\Pages\\EditRequestItem' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestItemResource/Pages/EditRequestItem.php',
+        'App\\Filament\\Purchase\\Resources\\RequestItemResource\\Pages\\ListRequestItems' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestItemResource/Pages/ListRequestItems.php',
         'App\\Filament\\Purchase\\Resources\\RequestResource' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestResource.php',
         'App\\Filament\\Purchase\\Resources\\RequestResource\\Pages\\CreateRequest' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestResource/Pages/CreateRequest.php',
         'App\\Filament\\Purchase\\Resources\\RequestResource\\Pages\\EditRequest' => __DIR__ . '/../..' . '/src/App/Filament/Purchase/Resources/RequestResource/Pages/EditRequest.php',
@@ -1361,7 +1416,14 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'App\\Tables\\Columns\\SpecificationColumn' => __DIR__ . '/../..' . '/src/App/Tables/Columns/SpecificationColumn.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/src/App/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/src/App/View/Components/GuestLayout.php',
+        'Ariaieboy\\FilamentCurrency\\FilamentCurrencyServiceProvider' => __DIR__ . '/..' . '/ariaieboy/filament-currency/src/FilamentCurrencyServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Awcodes\\FilamentBadgeableColumn\\BadgeableColumnServiceProvider' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/BadgeableColumnServiceProvider.php',
+        'Awcodes\\FilamentBadgeableColumn\\Components\\Badge' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/Components/Badge.php',
+        'Awcodes\\FilamentBadgeableColumn\\Components\\BadgeableColumn' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/Components/BadgeableColumn.php',
+        'Awcodes\\FilamentBadgeableColumn\\Components\\BadgeableEntry' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/Components/BadgeableEntry.php',
+        'Awcodes\\FilamentBadgeableColumn\\Concerns\\HasBadges' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/Concerns/HasBadges.php',
+        'Awcodes\\FilamentBadgeableColumn\\Enums\\BadgeSize' => __DIR__ . '/..' . '/awcodes/filament-badgeable-column/src/Enums/BadgeSize.php',
         'Awcodes\\Shout\\Components\\Concerns\\HasContent' => __DIR__ . '/..' . '/awcodes/shout/src/Components/Concerns/HasContent.php',
         'Awcodes\\Shout\\Components\\Concerns\\HasIcon' => __DIR__ . '/..' . '/awcodes/shout/src/Components/Concerns/HasIcon.php',
         'Awcodes\\Shout\\Components\\Concerns\\HasType' => __DIR__ . '/..' . '/awcodes/shout/src/Components/Concerns/HasType.php',
@@ -5245,6 +5307,17 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'Kirschbaum\\PowerJoins\\PowerJoins' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/PowerJoins.php',
         'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/PowerJoinsServiceProvider.php',
         'Kirschbaum\\PowerJoins\\StaticCache' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/StaticCache.php',
+        'Lab404\\Impersonate\\Controllers\\ImpersonateController' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Controllers/ImpersonateController.php',
+        'Lab404\\Impersonate\\Events\\LeaveImpersonation' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Events/LeaveImpersonation.php',
+        'Lab404\\Impersonate\\Events\\TakeImpersonation' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Events/TakeImpersonation.php',
+        'Lab404\\Impersonate\\Exceptions\\InvalidUserProvider' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Exceptions/InvalidUserProvider.php',
+        'Lab404\\Impersonate\\Exceptions\\MissingUserProvider' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Exceptions/MissingUserProvider.php',
+        'Lab404\\Impersonate\\Guard\\SessionGuard' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Guard/SessionGuard.php',
+        'Lab404\\Impersonate\\Impersonate' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Impersonate.php',
+        'Lab404\\Impersonate\\ImpersonateServiceProvider' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/ImpersonateServiceProvider.php',
+        'Lab404\\Impersonate\\Middleware\\ProtectFromImpersonation' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Middleware/ProtectFromImpersonation.php',
+        'Lab404\\Impersonate\\Models\\Impersonate' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Models/Impersonate.php',
+        'Lab404\\Impersonate\\Services\\ImpersonateManager' => __DIR__ . '/..' . '/lab404/laravel-impersonate/src/Services/ImpersonateManager.php',
         'Laravel\\Breeze\\BreezeServiceProvider' => __DIR__ . '/..' . '/laravel/breeze/src/BreezeServiceProvider.php',
         'Laravel\\Breeze\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallCommand.php',
         'Laravel\\Breeze\\Console\\InstallsApiStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsApiStack.php',
@@ -9395,9 +9468,25 @@ class ComposerStaticInit3196f7c35c26b1218f53f2a8299ee761
         'RichanFongdasen\\EloquentBlameable\\BlameableService' => __DIR__ . '/..' . '/richan-fongdasen/eloquent-blameable/src/BlameableService.php',
         'RichanFongdasen\\EloquentBlameable\\BlameableTrait' => __DIR__ . '/..' . '/richan-fongdasen/eloquent-blameable/src/BlameableTrait.php',
         'RichanFongdasen\\EloquentBlameable\\ServiceProvider' => __DIR__ . '/..' . '/richan-fongdasen/eloquent-blameable/src/ServiceProvider.php',
+        'RickDBCN\\FilamentEmail\\Commands\\FilamentEmailCommand' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Commands/FilamentEmailCommand.php',
+        'RickDBCN\\FilamentEmail\\Database\\Factories\\EmailFactory' => __DIR__ . '/..' . '/rickdbcn/filament-email/database/factories/EmailFactory.php',
+        'RickDBCN\\FilamentEmail\\Facades\\FilamentEmail' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Facades/FilamentEmail.php',
+        'RickDBCN\\FilamentEmail\\FilamentEmail' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/FilamentEmail.php',
+        'RickDBCN\\FilamentEmail\\FilamentEmailServiceProvider' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/FilamentEmailServiceProvider.php',
+        'RickDBCN\\FilamentEmail\\Filament\\Resources\\EmailResource' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Filament/Resources/EmailResource.php',
+        'RickDBCN\\FilamentEmail\\Filament\\Resources\\EmailResource\\Pages\\ListEmails' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Filament/Resources/EmailResource/Pages/ListEmails.php',
+        'RickDBCN\\FilamentEmail\\Filament\\Resources\\EmailResource\\Pages\\ViewEmail' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Filament/Resources/EmailResource/Pages/ViewEmail.php',
+        'RickDBCN\\FilamentEmail\\Listeners\\FilamentEmailLogger' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Listeners/FilamentEmailLogger.php',
+        'RickDBCN\\FilamentEmail\\Mail\\ResendMail' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Mail/ResendMail.php',
+        'RickDBCN\\FilamentEmail\\Models\\Email' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Models/Email.php',
+        'RickDBCN\\FilamentEmail\\Providers\\EmailMessageServiceProvider' => __DIR__ . '/..' . '/rickdbcn/filament-email/src/Providers/EmailMessageServiceProvider.php',
         'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirective' => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/src/BladeCaptureDirective.php',
         'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider' => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/src/BladeCaptureDirectiveServiceProvider.php',
         'RyanChandler\\TablerIcons\\BladeTablerIconsServiceProvider' => __DIR__ . '/..' . '/ryangjchandler/blade-tabler-icons/src/BladeTablerIconsServiceProvider.php',
+        'STS\\FilamentImpersonate\\Concerns\\Impersonates' => __DIR__ . '/..' . '/stechstudio/filament-impersonate/src/Concerns/Impersonates.php',
+        'STS\\FilamentImpersonate\\FilamentImpersonateServiceProvider' => __DIR__ . '/..' . '/stechstudio/filament-impersonate/src/FilamentImpersonateServiceProvider.php',
+        'STS\\FilamentImpersonate\\Pages\\Actions\\Impersonate' => __DIR__ . '/..' . '/stechstudio/filament-impersonate/src/Pages/Actions/Impersonate.php',
+        'STS\\FilamentImpersonate\\Tables\\Actions\\Impersonate' => __DIR__ . '/..' . '/stechstudio/filament-impersonate/src/Tables/Actions/Impersonate.php',
         'Sabberworm\\CSS\\CSSList\\AtRuleBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/AtRuleBlockList.php',
         'Sabberworm\\CSS\\CSSList\\CSSBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSBlockList.php',
         'Sabberworm\\CSS\\CSSList\\CSSList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSList.php',

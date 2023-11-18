@@ -7,6 +7,7 @@ module.exports = withAnimations({
 
     darkMode: 'class',
     content: [
+        './vendor/awcodes/filament-badgeable-column/resources/**/*.blade.php',
         './app/Http/Livewire/**/*Table.php',
         './app/Livewire/**/*.php',
         './vendor/power-components/livewire-powergrid/resources/views/**/*.php',

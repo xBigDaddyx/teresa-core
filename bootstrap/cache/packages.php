@@ -1,4 +1,11 @@
 <?php return array (
+  'akaunting/laravel-money' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Akaunting\\Money\\Provider',
+    ),
+  ),
   'akrillia/laravel-beyond' => 
   array (
     'providers' => 
@@ -11,6 +18,24 @@
     'providers' => 
     array (
       0 => 'AlperenErsoy\\FilamentExport\\FilamentExportServiceProvider',
+    ),
+  ),
+  'ariaieboy/filament-currency' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ariaieboy\\FilamentCurrency\\FilamentCurrencyServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'FilamentCurrency' => 'Ariaieboy\\FilamentCurrency\\Facades\\FilamentCurrency',
+    ),
+  ),
+  'awcodes/filament-badgeable-column' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Awcodes\\FilamentBadgeableColumn\\BadgeableColumnServiceProvider',
     ),
   ),
   'awcodes/shout' => 
@@ -222,6 +247,13 @@
       0 => 'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider',
     ),
   ),
+  'lab404/laravel-impersonate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Lab404\\Impersonate\\ImpersonateServiceProvider',
+    ),
+  ),
   'laravel/breeze' => 
   array (
     'providers' => 
@@ -364,6 +396,17 @@
       0 => 'RichanFongdasen\\EloquentBlameable\\ServiceProvider',
     ),
   ),
+  'rickdbcn/filament-email' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'RickDBCN\\FilamentEmail\\FilamentEmailServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'FilamentEmail' => 'RickDBCN\\FilamentEmail\\Facades\\FilamentEmail',
+    ),
+  ),
   'robsontenorio/mary' => 
   array (
     'providers' => 
@@ -434,6 +477,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'stechstudio/filament-impersonate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'STS\\FilamentImpersonate\\FilamentImpersonateServiceProvider',
     ),
   ),
   'stijnvanouplines/blade-country-flags' => 

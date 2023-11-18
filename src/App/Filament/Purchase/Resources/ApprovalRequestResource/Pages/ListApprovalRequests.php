@@ -42,6 +42,14 @@ class ListApprovalRequests extends ListRecords
     // }
     public function getTabs(): array
     {
+        if(auth('ldap')->user()->hasRole('purchase-officer')){
+            return [
+                'requested' => Tab::make()
+                ->icon('tabler-clipboard-x')
+                ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Request Completed')->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Request Completed')),
+            ];
+        }
         return [
             // 'admin' => Tab::make()
 
@@ -60,10 +68,7 @@ class ListApprovalRequests extends ListRecords
                 ->icon('tabler-clipboard-x')
                 ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Rejected')->count())
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Rejected')),
-            'completed' => Tab::make()
-                ->icon('tabler-clipboard-x')
-                ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Request Completed')->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Request Completed')),
+
         ];
     }
 }

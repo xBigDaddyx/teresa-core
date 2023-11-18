@@ -58,7 +58,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.polybag-stats', ['carton' => $carton,'type' => $type,'polybags' => $polybags,'tags' => $tags]);
 
-$__html = app('livewire')->mount($__name, $__params, '6k4Cui5', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'QoT7XLN', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -229,7 +229,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.polybag-attributes', ['carton' => $carton,'type' => $type,'polybags' => $polybags]);
 
-$__html = app('livewire')->mount($__name, $__params, 'C8PqVmS', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'nkfezQ1', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -250,7 +250,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('components.polybag-stats', ['carton' => $carton,'type' => $type,'polybags' => $polybags]);
 
-$__html = app('livewire')->mount($__name, $__params, '8qzenj7', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'HZrCOCs', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -272,7 +272,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('kanban.validation-table', ['carton' => $carton]);
 
-$__html = app('livewire')->mount($__name, $__params, '4oAXaUo', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, '8KAoYiy', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

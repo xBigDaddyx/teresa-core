@@ -58,6 +58,7 @@ class RequestSubmitedListener
 
         $model = Request::find($event->request->id);
         $model->is_submited = true;
+        $model->approval_status = 'Running Process';
         $model->save();
 
         //notify user

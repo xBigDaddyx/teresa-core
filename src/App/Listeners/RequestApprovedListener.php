@@ -7,6 +7,7 @@ use App\Mail\SendRequestApprovedNotification;
 use Domain\Purchases\Models\ApprovalFlow;
 use Domain\Purchases\Models\ApprovalHistory;
 use Domain\Purchases\Models\ApprovalRequest;
+use Domain\Purchases\Models\Request;
 use Domain\Users\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -38,7 +39,7 @@ class RequestApprovedListener
         $request_model = new ReflectionClass($approvalRequest->approvable);
         $action = '';
         if ($request_model->getShortName() === 'Request') {
-            if ($next_approval['next_stage'] !== 'Completed') {
+            if ($next_approval['next_stage'] !== 'Completed' && $next_approval['status'] !== 'Completed') {
                 $action = 'Approved';
                 $new->status = 'Approved';
                 $new->approval_flow_id = $next_approval['next_stage_id'];
@@ -50,21 +51,28 @@ class RequestApprovedListener
                 $new->company_id = $approvalRequest->company_id;
                 $new->created_by = $next_approval['next_person_charge'];
                 $new->save();
+
+                $model = Request::find($approvalRequest->approvable->id);
+                $model->approval_status = 'Approved ' . $next_approval['next_stage'];
+                $model->save();
             } else {
                 $action = 'Approved';
-                $new->status = 'Request Completed';
-                $new->approval_flow_id = $approvalRequest->approval_flow_id;
+                $new->status = 'Approved';
+                $new->approval_flow_id = $next_approval['next_stage_id'];
                 $new->approvable_id = $approvalRequest->approvable->id;
                 $new->approvable_type = $approvalRequest->approvable->getNamespace();
                 $new->last_status = $approvalRequest->status;
-                $new->user_id = $approvalRequest->user_id;
+                $new->user_id = $next_approval['next_person_charge'];
                 $new->action = 'Approve';
                 $new->company_id = $approvalRequest->company_id;
 
                 $new->save();
+                $model = Request::find($approvalRequest->approvable->id);
+                $model->approval_status = 'Approval Completed';
+                $model->save();
             }
         } else {
-            if ($next_approval['next_stage'] !== 'Completed') {
+            if ($next_approval['next_stage'] !== 'Completed' && $next_approval['status'] !== 'Completed') {
                 $action = 'Approved';
                 $new->status = 'Approved';
                 $new->approval_flow_id = $next_approval['next_stage_id'];

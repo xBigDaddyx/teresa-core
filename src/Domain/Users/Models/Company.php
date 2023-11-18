@@ -20,6 +20,7 @@ use Domain\Purchases\Models\Department;
 use Domain\Purchases\Models\Order;
 use Domain\Purchases\Models\Product;
 use Domain\Purchases\Models\Request;
+use Domain\Purchases\Models\RequestItem;
 use Domain\Purchases\Models\Supplier;
 use Domain\Purchases\Models\Unit;
 use Filament\Models\Contracts\HasAvatar;
@@ -182,6 +183,10 @@ class Company extends Model implements HasAvatar, HasCurrentTenantLabel
     public function planQueues()
     {
         return $this->hasMany(PlanQueue::class, 'company_id', 'id');
+    }
+    public function requestItems()
+    {
+        return $this->hasMany(RequestItem::class, 'company_id', 'id');
     }
     protected $appends = [
         'logo_url',
