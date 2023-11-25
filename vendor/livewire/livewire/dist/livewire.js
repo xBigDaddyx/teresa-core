@@ -486,7 +486,7 @@
   }
 
   // js/request.js
-  var updateUri = document.querySelector("[data-uri]")?.getAttribute("data-uri") ?? window.livewireScriptConfig["uri"] ?? null;
+  var updateUri = document.querySelector("[data-update-uri]")?.getAttribute("data-update-uri") ?? window.livewireScriptConfig["uri"] ?? null;
   function triggerSend() {
     bundleMultipleRequestsTogetherIfTheyHappenWithinFiveMsOfEachOther(() => {
       sendRequestToServer();
@@ -859,7 +859,7 @@
       directives(el, attrs).forEach((handle) => handle());
     });
     let outNestedComponents = (el) => !closestRoot(el.parentElement, true);
-    Array.from(document.querySelectorAll(allSelectors())).filter(outNestedComponents).forEach((el) => {
+    Array.from(document.querySelectorAll(allSelectors().join(","))).filter(outNestedComponents).forEach((el) => {
       initTree(el);
     });
     dispatch2(document, "alpine:initialized");
@@ -1888,11 +1888,12 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   function onlyDuringClone(callback) {
     return (...args) => isCloning && callback(...args);
   }
+  var interceptors = [];
+  function interceptClone(callback) {
+    interceptors.push(callback);
+  }
   function cloneNode(from, to) {
-    if (from._x_dataStack) {
-      to._x_dataStack = from._x_dataStack;
-      to.setAttribute("data-has-alpine-state", true);
-    }
+    interceptors.forEach((i) => i(from, to));
     isCloning = true;
     dontRegisterReactiveSideEffects(() => {
       initTree(to, (el, callback) => {
@@ -1937,13 +1938,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     callback();
     overrideEffect(cache);
   }
-  function shouldSkipRegisteringDataDuringClone(el) {
-    if (!isCloning)
-      return false;
-    if (isCloningLegacy)
-      return true;
-    return el.hasAttribute("data-has-alpine-state");
-  }
   function bind(el, name, value, modifiers = []) {
     if (!el._x_bindings)
       el._x_bindings = reactive({});
@@ -1974,7 +1968,11 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         el.value = value;
       }
       if (window.fromModel) {
-        el.checked = checkedAttrLooseCompare(el.value, value);
+        if (typeof value === "boolean") {
+          el.checked = safeParseBoolean(el.value) === value;
+        } else {
+          el.checked = checkedAttrLooseCompare(el.value, value);
+        }
       }
     } else if (el.type === "checkbox") {
       if (Number.isInteger(value)) {
@@ -2042,6 +2040,15 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   function checkedAttrLooseCompare(valueA, valueB) {
     return valueA == valueB;
+  }
+  function safeParseBoolean(rawValue) {
+    if ([1, "1", "true", "on", "yes", true].includes(rawValue)) {
+      return true;
+    }
+    if ([0, "0", "false", "off", "no", false].includes(rawValue)) {
+      return false;
+    }
+    return rawValue ? Boolean(rawValue) : null;
   }
   function isBooleanAttr(attrName) {
     const booleanAttributes = [
@@ -2257,7 +2264,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     get raw() {
       return raw;
     },
-    version: "3.13.2",
+    version: "3.13.3",
     flushAndStopDeferringMutations,
     dontAutoEvaluateFunctions,
     disableEffectScheduling,
@@ -2271,6 +2278,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     onlyDuringClone,
     addRootSelector,
     addInitSelector,
+    interceptClone,
     addScopeToNode,
     deferMutations,
     mapAttributes,
@@ -3121,7 +3129,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     });
   };
   directive("ignore", handler);
-  directive("effect", (el, { expression }, { effect: effect3 }) => effect3(evaluateLater(el, expression)));
+  directive("effect", skipDuringClone((el, { expression }, { effect: effect3 }) => {
+    effect3(evaluateLater(el, expression));
+  }));
   function on2(el, event, modifiers, callback) {
     let listenerTarget = el;
     let handler4 = (e) => callback(e);
@@ -3357,21 +3367,40 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         return event.detail !== null && event.detail !== void 0 ? event.detail : event.target.value;
       else if (el.type === "checkbox") {
         if (Array.isArray(currentValue)) {
-          let newValue = modifiers.includes("number") ? safeParseNumber(event.target.value) : event.target.value;
+          let newValue = null;
+          if (modifiers.includes("number")) {
+            newValue = safeParseNumber(event.target.value);
+          } else if (modifiers.includes("boolean")) {
+            newValue = safeParseBoolean(event.target.value);
+          } else {
+            newValue = event.target.value;
+          }
           return event.target.checked ? currentValue.concat([newValue]) : currentValue.filter((el2) => !checkedAttrLooseCompare2(el2, newValue));
         } else {
           return event.target.checked;
         }
       } else if (el.tagName.toLowerCase() === "select" && el.multiple) {
-        return modifiers.includes("number") ? Array.from(event.target.selectedOptions).map((option) => {
-          let rawValue = option.value || option.text;
-          return safeParseNumber(rawValue);
-        }) : Array.from(event.target.selectedOptions).map((option) => {
+        if (modifiers.includes("number")) {
+          return Array.from(event.target.selectedOptions).map((option) => {
+            let rawValue = option.value || option.text;
+            return safeParseNumber(rawValue);
+          });
+        } else if (modifiers.includes("boolean")) {
+          return Array.from(event.target.selectedOptions).map((option) => {
+            let rawValue = option.value || option.text;
+            return safeParseBoolean(rawValue);
+          });
+        }
+        return Array.from(event.target.selectedOptions).map((option) => {
           return option.value || option.text;
         });
       } else {
-        let rawValue = event.target.value;
-        return modifiers.includes("number") ? safeParseNumber(rawValue) : modifiers.includes("trim") ? rawValue.trim() : rawValue;
+        if (modifiers.includes("number")) {
+          return safeParseNumber(event.target.value);
+        } else if (modifiers.includes("boolean")) {
+          return safeParseBoolean(event.target.value);
+        }
+        return modifiers.includes("trim") ? event.target.value.trim() : event.target.value;
       }
     });
   }
@@ -3476,6 +3505,19 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       undo();
     });
   });
+  interceptClone((from, to) => {
+    if (from._x_dataStack) {
+      to._x_dataStack = from._x_dataStack;
+      to.setAttribute("data-has-alpine-state", true);
+    }
+  });
+  function shouldSkipRegisteringDataDuringClone(el) {
+    if (!isCloning)
+      return false;
+    if (isCloningLegacy)
+      return true;
+    return el.hasAttribute("data-has-alpine-state");
+  }
   directive("show", (el, { modifiers, expression }, { effect: effect3 }) => {
     let evaluate22 = evaluateLater(el, expression);
     if (!el._x_doHide)
@@ -4046,6 +4088,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   var aliases = {
     "on": "$on",
+    "el": "$el",
+    "id": "$id",
     "get": "$get",
     "set": "$set",
     "call": "$call",
@@ -4109,6 +4153,12 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   });
   wireProperty("__instance", (component) => component);
   wireProperty("$get", (component) => (property, reactive3 = true) => dataGet(reactive3 ? component.reactive : component.ephemeral, property));
+  wireProperty("$el", (component) => {
+    return component.el;
+  });
+  wireProperty("$id", (component) => {
+    return component.id;
+  });
   wireProperty("$set", (component) => async (property, value, live = true) => {
     dataSet(component.reactive, property, value);
     return live ? await requestCommit(component) : Promise.resolve();
@@ -6786,35 +6836,39 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         throw "Alpine: No x-anchor directive found on element using $anchor...";
       return el._x_anchor;
     });
-    Alpine3.directive("anchor", (el, { expression, modifiers, value }, { cleanup: cleanup3, evaluate: evaluate22 }) => {
+    Alpine3.interceptClone((from, to) => {
+      if (from && from._x_anchor && !to._x_anchor) {
+        to._x_anchor = from._x_anchor;
+      }
+    });
+    Alpine3.directive("anchor", Alpine3.skipDuringClone((el, { expression, modifiers, value }, { cleanup: cleanup3, evaluate: evaluate22 }) => {
+      let { placement, offsetValue, unstyled } = getOptions(modifiers);
       el._x_anchor = Alpine3.reactive({ x: 0, y: 0 });
       let reference = evaluate22(expression);
       if (!reference)
         throw "Alpine: no element provided to x-anchor...";
-      let positions = ["top", "top-start", "top-end", "right", "right-start", "right-end", "bottom", "bottom-start", "bottom-end", "left", "left-start", "left-end"];
-      let placement = positions.find((i) => modifiers.includes(i));
-      let offsetValue = 0;
-      let unstyled = modifiers.includes("no-style");
-      if (modifiers.includes("offset")) {
-        let idx = modifiers.findIndex((i) => i === "offset");
-        offsetValue = modifiers[idx + 1] !== void 0 ? Number(modifiers[idx + 1]) : offsetValue;
-      }
-      let release2 = autoUpdate(reference, el, () => {
+      let compute = () => {
         let previousValue;
         computePosition2(reference, el, {
           placement,
           middleware: [flip(), shift({ padding: 5 }), offset(offsetValue)]
         }).then(({ x, y }) => {
+          unstyled || setStyles2(el, x, y);
           if (JSON.stringify({ x, y }) !== previousValue) {
-            unstyled || setStyles2(el, x, y);
             el._x_anchor.x = x;
             el._x_anchor.y = y;
           }
           previousValue = JSON.stringify({ x, y });
         });
-      });
+      };
+      let release2 = autoUpdate(reference, el, () => compute());
       cleanup3(() => release2());
-    });
+    }, (el, { expression, modifiers, value }, { cleanup: cleanup3, evaluate: evaluate22 }) => {
+      let { placement, offsetValue, unstyled } = getOptions(modifiers);
+      if (el._x_anchor) {
+        unstyled || setStyles2(el, el._x_anchor.x, el._x_anchor.y);
+      }
+    }));
   }
   function setStyles2(el, x, y) {
     Object.assign(el.style, {
@@ -6822,6 +6876,17 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       top: y + "px",
       position: "absolute"
     });
+  }
+  function getOptions(modifiers) {
+    let positions = ["top", "top-start", "top-end", "right", "right-start", "right-end", "bottom", "bottom-start", "bottom-end", "left", "left-start", "left-end"];
+    let placement = positions.find((i) => modifiers.includes(i));
+    let offsetValue = 0;
+    if (modifiers.includes("offset")) {
+      let idx = modifiers.findIndex((i) => i === "offset");
+      offsetValue = modifiers[idx + 1] !== void 0 ? Number(modifiers[idx + 1]) : offsetValue;
+    }
+    let unstyled = modifiers.includes("no-style");
+    return { placement, offsetValue, unstyled };
   }
   var module_default6 = src_default6;
 
@@ -8170,6 +8235,79 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
   }
 
+  // js/features/supportScriptsAndAssets.js
+  on("effects", (component, effects) => {
+    let assets = effects.assets;
+    if (assets) {
+      Object.entries(assets).forEach(([key, content]) => {
+        onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, () => {
+          addAssetsToHeadTagOfPage(content);
+        });
+      });
+    }
+  });
+  on("effects", (component, effects) => {
+    let scripts = effects.scripts;
+    if (scripts) {
+      Object.entries(scripts).forEach(([key, content]) => {
+        onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, () => {
+          let scriptContent = extractScriptTagContent(content);
+          module_default.evaluate(component.el, scriptContent, { "$wire": component.$wire });
+        });
+      });
+    }
+  });
+  var executedScripts = /* @__PURE__ */ new WeakMap();
+  function onlyIfScriptHasntBeenRunAlreadyForThisComponent(component, key, callback) {
+    if (executedScripts.has(component)) {
+      let alreadyRunKeys2 = executedScripts.get(component);
+      if (alreadyRunKeys2.includes(key))
+        return;
+    }
+    callback();
+    if (!executedScripts.has(component))
+      executedScripts.set(component, []);
+    let alreadyRunKeys = executedScripts.get(component);
+    alreadyRunKeys.push(key);
+    executedScripts.set(component, alreadyRunKeys);
+  }
+  function extractScriptTagContent(rawHtml) {
+    let scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
+    let matches2 = scriptRegex.exec(rawHtml);
+    let innards = matches2 && matches2[1] ? matches2[1].trim() : "";
+    return innards;
+  }
+  var executedAssets = /* @__PURE__ */ new Set();
+  function onlyIfAssetsHaventBeenLoadedAlreadyOnThisPage(key, callback) {
+    if (executedAssets.has(key))
+      return;
+    callback();
+    executedAssets.add(key);
+  }
+  function addAssetsToHeadTagOfPage(rawHtml) {
+    let newDocument = new DOMParser().parseFromString(rawHtml, "text/html");
+    let newHead = document.adoptNode(newDocument.head);
+    for (let child of newHead.children) {
+      if (isScript2(child)) {
+        document.head.appendChild(cloneScriptTag2(child));
+      } else {
+        document.head.appendChild(child);
+      }
+    }
+  }
+  function isScript2(el) {
+    return el.tagName.toLowerCase() === "script";
+  }
+  function cloneScriptTag2(el) {
+    let script = document.createElement("script");
+    script.textContent = el.textContent;
+    script.async = el.async;
+    for (let attr of el.attributes) {
+      script.setAttribute(attr.name, attr.value);
+    }
+    return script;
+  }
+
   // js/features/supportFileDownloads.js
   on("commit", ({ component, succeed }) => {
     succeed(({ effects }) => {
@@ -8231,10 +8369,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     if (!queryString)
       return;
     Object.entries(queryString).forEach(([key, value]) => {
-      let { name, as, use, alwaysShow } = normalizeQueryStringEntry(key, value);
+      let { name, as, use, alwaysShow, except } = normalizeQueryStringEntry(key, value);
       if (!as)
         as = name;
-      let initialValue = dataGet(component.ephemeral, name);
+      let initialValue = [false, null, void 0].includes(except) ? dataGet(component.ephemeral, name) : except;
       let { initial, replace: replace2, push: push2, pop } = track2(as, initialValue, alwaysShow);
       if (use === "replace") {
         let effectReference = module_default.effect(() => {

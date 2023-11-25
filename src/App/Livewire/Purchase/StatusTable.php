@@ -17,6 +17,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+use Illuminate\Database\Eloquent\Collection;
+use Xbigdaddyx\HarmonyFlow\Models\Approval;
 
 class StatusTable extends Component implements HasForms, HasTable
 {
@@ -29,74 +31,83 @@ class StatusTable extends Component implements HasForms, HasTable
     }
     public function table(Table $table): Table
     {
+
+        // $collection = new Collection(Approval::where('approvable_id', $this->request->id)->first()->statuses);
+        // dd($collection);
         return $table
-            ->query(ApprovalRequest::with('approvalFlow')->where('approvable_id', $this->request->id)->orderBy('created_at', 'DESC'))
+            ->query(Approval::where('approvable_id', $this->request->id)->first()->statuses->toQuery())
+            // ->query(ApprovalRequest::with('approvalFlow')->where('approvable_id', $this->request->id)->orderBy('created_at', 'DESC'))
             ->columns([
-                Tables\Columns\TextColumn::make('approvable.request_number')
-                    ->label(__('Number'))
-                    ->description(fn (Model $record) => $record->approvalFlow->type),
-                BadgeableColumn::make('createdBy.name')
-                    ->description(fn (Model $record): string => $record->createdBy->approvalUser->first()->level ?? '-')
-                    ->label('Processed By')
-                    ->suffixBadges([
-                        Badge::make('status')
-                            ->label(fn (Model $record) => $record->status)
-                            ->color('danger')
-                            ->color(fn (string $state): string => match ($state) {
-                                'Submited' => 'gray',
-                                'Approved' => 'success',
-                                'Completed' => 'success',
-                                'Processed' => 'warning',
-                                'rejected' => 'danger',
-                                default => 'primary',
-                            }),
-                    ]),
+                Tables\Columns\TextColumn::make('model.approvable.request_number')
+                    ->label(__('Request Number'))
+                    ->description(fn (Model $record) => $record->model->type),
+
+                // Tables\Columns\TextColumn::make('approvable.request_number')
+                //     ->label(__('Number'))
+                //     ->description(fn (Model $record) => $record->approvalFlow->type),
+                // BadgeableColumn::make('reason')
+                //     ->description(fn (Model $record) => 'Approval request sent : ' . Carbon::parse($record->created_at)->format('d M Y H:i:s'))
+                //     ->label('Status')
+                //     ->suffixBadges([
+                //         Badge::make('status')
+                //             ->label(fn (Model $record) => $record->name)
+                //             ->color('danger')
+                //             ->color(fn (string $state): string => match ($state) {
+                //                 'Submited' => 'gray',
+                //                 'Approved' => 'success',
+                //                 'Completed' => 'success',
+                //                 'Processed' => 'warning',
+                //                 'rejected' => 'danger',
+                //                 default => 'primary',
+                //             }),
+                //     ]),
 
 
 
-                Tables\Columns\TextColumn::make('approvable.approval_status')
-                    ->toggleable(isToggledHiddenByDefault: true)
+                Tables\Columns\TextColumn::make('name')
+                    // ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('Status'))
                     ->badge()
-                    ->icon(fn (string $state): string => match ($state) {
-                        'Approval Completed' => 'tabler-check',
-                        'Running Process' => 'tabler-settings-code',
-                        default => 'tabler-file',
-                    })
+
                     ->color(fn (string $state): string => match ($state) {
-                        'Approval Completed' => 'success',
-                        'Running Process' => 'warning',
+                        'Submited' => 'gray',
+                        'Approved' => 'success',
+                        'Completed' => 'success',
+                        'Processed' => 'warning',
                         'rejected' => 'danger',
                         default => 'primary',
                     }),
-                // Tables\Columns\TextColumn::make('createdBy.name')
-                //     ->description(fn (Model $record): string => $record->createdBy->approvalUser->first()->level ?? '-')
-                //     ->label('Processed By'),
+                Tables\Columns\TextColumn::make('reason')
+                    ->tooltip(fn (Model $record): string => "{$record->author->name}")
+                    ->label(__('Description')),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
                     ->description(fn (Model $record): string => Carbon::parse($record->created_at)->diffForHumans())
                     ->dateTime()
-                    ->label(__('Processed At')),
-                Tables\Columns\TextColumn::make('last_status')
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->default('-'),
-                Tables\Columns\TextColumn::make('approvalFlow.level')
-                    ->label(__('Stage')),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->description(function (Model $record) {
-                        $person = $record->user;
-                        if ($person) {
-                            if ($person->approvalUser->count() > 1) {
-                                return ApprovalUser::where('user_id', $person->id)->where('type', 'PR')->first()->level;
-                            } else if ($person->approvalUser->count() === 1) {
-                                return $person->approvalUser->first()->level;
-                            }
-                        }
+                    ->label(__('Time')),
+                // Tables\Columns\TextColumn::make('last_status')
+                //     ->toggleable(isToggledHiddenByDefault: true)
+                //     ->default('-'),
+                // Tables\Columns\TextColumn::make('approvalFlow.level')
+                //     ->label(__('Stage')),
+                // Tables\Columns\TextColumn::make('user.name')
+                //     ->description(function (Model $record) {
+                //         $person = $record->user;
+                //         if ($person) {
+                //             if ($person->approvalUser->count() > 1) {
+                //                 return ApprovalUser::where('user_id', $person->id)->where('type', 'PR')->first()->level;
+                //             } else if ($person->approvalUser->count() === 1) {
+                //                 return $person->approvalUser->first()->level;
+                //             }
+                //         }
 
-                        return '-';
-                    })
-                    ->label(__('Now Waiting')),
+                //         return '-';
+                //     })
+                //     ->label(__('Now Waiting')),
 
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 // ...
             ])

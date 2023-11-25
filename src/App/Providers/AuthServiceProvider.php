@@ -32,6 +32,7 @@ use Domain\Users\Models\Role;
 use Domain\Users\Policies\RolePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Xbigdaddyx\HarmonyFlow\Models\Flow;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -43,7 +44,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Role::class => RolePolicy::class,
         //<<========== Purchase ===========>>//
-        ApprovalFlow::class => ApprovalFlowPolicy::class,
+        Flow::class => ApprovalFlowPolicy::class,
         ApprovalRequest::class => ApprovalRequestPolicy::class,
         ApprovalUser::class => ApprovalUserPolicy::class,
         Category::class => CategoryPolicy::class,

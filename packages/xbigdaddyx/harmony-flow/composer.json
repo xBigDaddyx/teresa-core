@@ -1,0 +1,46 @@
+{
+    "name": "xbigdaddyx/harmony-flow",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@email.com",
+            "homepage": "http://author.com"
+        }
+    ],
+    "homepage": "https://github.com/xbigdaddyx/harmony-flow",
+    "keywords": [
+        "Laravel",
+        "HarmonyFlow"
+    ],
+    "require": {
+        "spatie/laravel-model-status": "^1.14.0",
+        "ringlesoft/laravel-process-approval": "^1.0.5",
+        "illuminate/contracts": "^10.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xbigdaddyx\\HarmonyFlow\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Xbigdaddyx\\HarmonyFlow\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Xbigdaddyx\\HarmonyFlow\\HarmonyFlowServiceProvider"
+            ],
+            "aliases": {
+                "HarmonyFlow": "Xbigdaddyx\\HarmonyFlow\\Facades\\HarmonyFlow"
+            }
+        }
+    }
+}

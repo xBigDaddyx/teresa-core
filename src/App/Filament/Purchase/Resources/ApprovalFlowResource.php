@@ -14,10 +14,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Xbigdaddyx\HarmonyFlow\Models\Flow;
 
 class ApprovalFlowResource extends Resource
 {
-    protected static ?string $model = ApprovalFlow::class;
+    protected static bool $isScopedToTenant = false;
+    protected static ?string $model = Flow::class;
 
     protected static ?string $navigationGroup = 'Approval';
     protected static ?string $navigationLabel = 'Approval Flow';
@@ -27,7 +29,7 @@ class ApprovalFlowResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Grid::make(4)
+                Forms\Components\Grid::make(2)
                     ->schema([
 
                         Forms\Components\Select::make('type')
@@ -40,7 +42,7 @@ class ApprovalFlowResource extends Resource
                             ->live()
                             ->afterStateUpdated(function (Set $set, ?string $state) {
 
-                                $flows = ApprovalFlow::where('type', $state)->orderBy('order', 'desc')->value('order');
+                                $flows = Flow::where('type', $state)->orderBy('order', 'desc')->value('order');
 
                                 if ((int)$flows > 0) {
 
@@ -51,19 +53,10 @@ class ApprovalFlowResource extends Resource
                                 return $set('order', 0);
                             })
                             ->label(__('Approval Type')),
-                        Forms\Components\Select::make('level')
+                        Forms\Components\Select::make('designation_id')
                             ->required()
-                            ->options([
-                                'Supervisor' => 'Supervisor',
-                                'Manager' => 'Manager',
-                                'Purchasing' => 'Purchasing',
-                                'Purchasing Manager' => 'Purchasing Manager',
-                                'Finance Controller' => 'Finance Controller',
-                                'CFO' => 'CFO',
-                                'General Manager' => 'General Manager',
-                                'Country Head' => 'Country Head',
-                            ])
-                            ->label(__('Approval Level')),
+                            ->relationship('designation', 'name')
+                            ->label(__('Approval Designation')),
                         Forms\Components\TextInput::make('order')
                             ->hint('Define approval order')
                             ->hidden(fn (Get $get): bool => $get('type') == null || $get('type') == '')
@@ -72,7 +65,7 @@ class ApprovalFlowResource extends Resource
                             ->minValue(function (Get $get) {
                                 $type = $get('type');
                                 if ($type !== '' || $type !== null) {
-                                    $queues = ApprovalFlow::where('type', $type)->orderBy('order', 'desc')->value('order');
+                                    $queues = Flow::where('type', $type)->orderBy('order', 'desc')->value('order');
 
                                     if ((int)$queues > 0) {
                                         return (int)$queues + 1;
@@ -85,16 +78,38 @@ class ApprovalFlowResource extends Resource
 
 
                             ->label('Approval Order'),
-                        Forms\Components\Toggle::make('is_skipable')
-                            ->label(__('Skipable')),
-                        Forms\Components\Toggle::make('is_last_stage')
-                            ->label(__('Last Stage')),
+                        Forms\Components\Group::make()
+                            ->columns(2)
+                            ->schema([
+                                Forms\Components\Radio::make('is_skipable')
+                                    ->options([
+                                        true => 'Yes',
+                                        false => 'No',
+
+                                    ])
+                                    ->descriptions([
+                                        true => 'this approval can be skipped to next approval order',
+                                        false => 'this approval cannot be skipped to next approval order',
+
+                                    ])
+                                    ->label(__('Skipable')),
+                                Forms\Components\Radio::make('is_last')
+                                    ->options([
+                                        true => 'Yes',
+                                        false => 'No',
+
+                                    ])
+                                    ->descriptions([
+                                        true => 'this approval stage is the last step approval and completed.',
+                                        false => 'this approval stage is still need next step approval.',
+
+                                    ])
+                                    ->label(__('Last Stage')),
+                            ]),
+
 
                     ]),
 
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull()
-                    ->label('Description'),
 
                 Forms\Components\Grid::make(3)
                     ->schema([
@@ -142,8 +157,8 @@ class ApprovalFlowResource extends Resource
                     ->label(__('Approval Order')),
                 Tables\Columns\TextColumn::make('type')
                     ->label(__('Approval Type')),
-                Tables\Columns\TextColumn::make('level')
-                    ->label(__('Approval Level')),
+                Tables\Columns\TextColumn::make('designation.name')
+                    ->label(__('Approval Designation')),
                 Tables\Columns\ViewColumn::make('parameter')
                     ->label(__('Parameter'))
                     ->searchable()
@@ -162,9 +177,9 @@ class ApprovalFlowResource extends Resource
                         default => 'danger',
                     })
                     ->label(__('Skipable')),
-                Tables\Columns\TextColumn::make('description')
-                    ->limit(50)
-                    ->label(__('Approval Description')),
+                // Tables\Columns\TextColumn::make('description')
+                //     ->limit(50)
+                //     ->label(__('Approval Description')),
             ])
             ->defaultGroup('type')
             ->groups([

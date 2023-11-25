@@ -24,9 +24,11 @@ use Support\Traits\HasProfilePhoto;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Xbigdaddyx\HarmonyFlow\Traits\HasDesignations;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenants, LdapAuthenticatable
 {
+    use HasDesignations;
     use AuthenticatesWithLdap;
     use HasApiTokens;
     use HasFactory;

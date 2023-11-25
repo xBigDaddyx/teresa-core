@@ -10,6 +10,7 @@ use Filament\Resources\Pages\ListRecords;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 use Filament\Resources\Components\Tab;
 use Illuminate\Database\Eloquent\Builder;
+use Xbigdaddyx\HarmonyFlow\Models\Approval;
 
 class ListApprovalRequests extends ListRecords
 {
@@ -42,12 +43,12 @@ class ListApprovalRequests extends ListRecords
     // }
     public function getTabs(): array
     {
-        if(auth('ldap')->user()->hasRole('purchase-officer')){
+        if (auth('ldap')->user()->hasRole('purchase-officer')) {
             return [
                 'requested' => Tab::make()
-                ->icon('tabler-clipboard-x')
-                ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Request Completed')->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Request Completed')),
+                    ->icon('tabler-clipboard-x')
+                    ->badge(Approval::query()->whereBelongsTo(auth()->user())->where('is_completed', false)->count())
+                    ->modifyQueryUsing(fn (Builder $query) => $query->whereBelongsTo(auth()->user())->where('is_completed', false)),
             ];
         }
         return [
@@ -56,18 +57,18 @@ class ListApprovalRequests extends ListRecords
             //     ->icon('heroicon-o-clipboard-document-list')
             //     ->badge(ApprovalRequest::query()->whereBelongsTo(auth()->user())->count())
             //     ->modifyQueryUsing(fn (Builder $query) => $query),
-            'need' => Tab::make()
+            'requested' => Tab::make()
                 ->icon('heroicon-o-clipboard-document-list')
-                ->badge(ApprovalRequest::query()->whereBelongsTo(auth()->user())->where('status', '!=', 'Request Completed')->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->whereBelongsTo(auth()->user())->where('status', '!=', 'Request Completed')),
+                ->badge(Approval::query()->whereBelongsTo(auth()->user())->where('is_completed', false)->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereBelongsTo(auth()->user())->where('is_completed', false)),
             'approved' => Tab::make()
                 ->icon('tabler-clipboard-check')
-                ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Approved')->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Approved')),
+                ->badge(Approval::query()->whereBelongsTo(auth()->user())->where('is_completed', true)->where('is_approved', true)->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereBelongsTo(auth()->user())->where('is_completed', true)->where('is_approved', true)),
             'rejected' => Tab::make()
                 ->icon('tabler-clipboard-x')
-                ->badge(ApprovalRequest::query()->where('created_by', auth()->user()->id)->where('status', 'Rejected')->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('status', 'Rejected')),
+                ->badge(Approval::query()->whereBelongsTo(auth()->user())->where('is_completed', true)->where('is_rejected', true)->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->whereBelongsTo(auth()->user())->where('is_completed', true)->where('is_rejected', true)),
 
         ];
     }

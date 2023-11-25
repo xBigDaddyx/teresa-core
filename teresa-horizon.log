@@ -1,0 +1,265 @@
+Horizon started successfully.
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+Horizon started successfully.
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 12:01:22 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 12:01:22 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  106.36ms FAIL
+  2023-11-21 12:01:43 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:01:43 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.63ms DONE
+  2023-11-21 12:02:07 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 12:02:08 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  44.87ms FAIL
+  2023-11-21 12:02:20 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:02:20 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.40ms DONE
+  2023-11-21 12:02:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:02:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.67ms DONE
+  2023-11-21 12:02:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:02:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.13ms DONE
+  2023-11-21 12:02:49 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 12:02:49 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  124.23ms DONE
+  2023-11-21 12:03:10 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:03:10 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.62ms DONE
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 13:04:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:04:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  29.30ms DONE
+  2023-11-21 13:05:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:05:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.77ms DONE
+  2023-11-21 13:18:17 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 13:18:17 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  48.20ms DONE
+  2023-11-21 13:18:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:18:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.45ms DONE
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 15:16:28 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 15:16:28 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  123.33ms DONE
+  2023-11-21 15:16:28 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-21 15:16:28 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  28.90ms FAIL
+  2023-11-21 15:16:49 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:16:49 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.98ms DONE
+  2023-11-21 15:16:49 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:16:49 Laravel\Telescope\Jobs\ProcessPendingUpdates  12.20ms DONE
+  2023-11-21 15:32:10 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 15:32:10 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  32.50ms DONE
+  2023-11-21 15:32:10 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-21 15:32:10 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  17.62ms FAIL
+  2023-11-21 15:32:40 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:40 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.66ms DONE
+  2023-11-21 15:32:40 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:40 Laravel\Telescope\Jobs\ProcessPendingUpdates  2.76ms DONE
+  2023-11-21 15:37:13 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 15:37:14 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  39.74ms FAIL
+  2023-11-21 15:37:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:37:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  13.37ms DONE
+  2023-11-21 15:39:20 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 15:39:20 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  31.97ms FAIL
+  2023-11-21 15:39:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:39:41 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.45ms DONE
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 15:45:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:45:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  35.32ms DONE
+  2023-11-21 16:26:08 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 16:26:08 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  46.12ms FAIL
+  2023-11-21 16:26:29 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:26:29 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.28ms DONE
+  2023-11-21 16:29:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:29:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  20.32ms DONE
+  2023-11-21 16:29:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:29:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.59ms DONE
+  2023-11-21 16:30:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:30:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.82ms DONE
+  2023-11-21 16:30:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:30:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.06ms DONE
+  2023-11-22 13:50:39 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:50:39 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.90ms DONE
+  2023-11-22 13:51:00 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:51:00 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.60ms DONE
+  2023-11-22 13:52:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.34ms DONE
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-22 14:08:11 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 14:08:11 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  146.89ms FAIL
+  2023-11-22 14:10:05 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:05 Laravel\Telescope\Jobs\ProcessPendingUpdates  25.28ms DONE
+  2023-11-22 14:24:54 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:24:54 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.59ms DONE
+  2023-11-22 14:29:42 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 14:29:42 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  41.09ms FAIL
+  2023-11-22 21:33:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.34ms DONE
+  2023-11-22 21:33:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.52ms DONE
+  2023-11-22 21:33:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.55ms DONE
+  2023-11-22 21:36:25 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:25 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.47ms DONE
+  2023-11-22 21:36:25 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:25 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.04ms DONE
+  2023-11-22 21:38:22 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:38:22 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.30ms DONE
+  2023-11-22 21:41:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.87ms DONE
+  2023-11-22 21:41:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.88ms DONE
+  2023-11-22 21:47:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.80ms DONE
+  2023-11-22 21:47:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.01ms DONE
+Horizon started successfully.
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates  31.08ms DONE
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.43ms DONE
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.95ms DONE
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:12 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.10ms DONE
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.94ms DONE
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.13ms DONE
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.12ms DONE
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.09ms DONE
+  2023-11-22 21:53:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:53:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.64ms DONE
+  2023-11-22 21:53:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:53:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.20ms DONE
+  2023-11-22 21:54:36 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 21:54:36 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  32.32ms DONE
+  2023-11-22 21:54:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:54:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.39ms DONE
+  2023-11-22 21:56:42 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 21:56:42 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  10.73ms DONE
+  2023-11-22 21:57:03 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:57:03 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.67ms DONE
+  2023-11-22 21:57:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:57:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.46ms DONE
+  2023-11-22 21:59:06 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 21:59:07 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  52.80ms DONE
+  2023-11-22 21:59:28 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:59:28 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.85ms DONE
+  2023-11-22 22:00:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:00:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.53ms DONE
+  2023-11-22 22:00:58 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:00:58 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.11ms DONE
+  2023-11-22 22:08:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:08:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.71ms DONE
+  2023-11-22 22:08:58 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:08:58 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.55ms DONE
+  2023-11-22 22:13:31 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 22:13:31 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  11.26ms DONE
+  2023-11-22 22:13:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:13:41 Laravel\Telescope\Jobs\ProcessPendingUpdates  29.75ms DONE
+  2023-11-22 22:14:02 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:14:02 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.22ms DONE
+  2023-11-22 22:15:47 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 22:15:47 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  25.42ms DONE
+  2023-11-22 22:16:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:16:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  40.51ms DONE
+Horizon started successfully.
+Horizon started successfully.
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  160.04ms DONE
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  19.74ms DONE
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  43.79ms FAIL
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:39:36 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  25.26ms FAIL
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  29.37ms DONE
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.94ms DONE
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.46ms DONE
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.39ms DONE
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  61.87ms DONE
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  28.52ms DONE
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  18.52ms FAIL
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:41:00 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  13.26ms FAIL
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  32.38ms DONE
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.52ms DONE
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.44ms DONE
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.69ms DONE
+  2023-11-22 22:44:33 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  81.93ms DONE
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  28.94ms DONE
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  10.49ms FAIL
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:44:34 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  10.94ms FAIL
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.28ms DONE
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.90ms DONE
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.78ms DONE
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:55 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.69ms DONE
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.53ms DONE
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.81ms DONE
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.07ms DONE
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.80ms DONE
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.38ms DONE
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.70ms DONE
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.64ms DONE
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:34 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.24ms DONE
+  2023-11-22 22:47:55 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:47:55 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  13.98ms FAIL
+  2023-11-22 22:47:55 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:47:55 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  56.26ms DONE
+  2023-11-22 22:48:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.58ms DONE
+  2023-11-22 22:48:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.00ms DONE
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+Horizon started successfully.
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  49.22ms DONE
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  50.08ms DONE
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 23:32:01 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  101.91ms DONE
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  31.49ms DONE
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.08ms DONE
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.87ms DONE
+  2023-11-23 11:21:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:21:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  38.15ms DONE
+  2023-11-23 13:11:50 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 13:11:50 Filament\Notifications\DatabaseNotification  45.01ms DONE
+  2023-11-24 13:41:09 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-24 13:41:10 Filament\Notifications\DatabaseNotification  134.93ms DONE

@@ -23,7 +23,7 @@ class CreateRequest extends CreateRecord
                 ->description('Request Form')
                 ->icon('heroicon-o-document-text')
                 ->schema([
-                    Forms\Components\Grid::make(3)
+                    Forms\Components\Grid::make(4)
                         ->schema([
                             Forms\Components\Select::make('category_id')
                                 ->relationship('category', 'name')
@@ -34,6 +34,9 @@ class CreateRequest extends CreateRecord
                                 ->label(__('Customer / Buyer')),
                             Forms\Components\TextInput::make('contract_no')
                                 ->label(__('Contract')),
+                            Forms\Components\TextInput::make('capex_code')
+                                ->visible(fn (Get $get): bool => (int)$get('category_id') === 2)
+                                ->label(__('Capex Code')),
                             Forms\Components\Textarea::make('note')->columnSpanFull(),
 
                         ])

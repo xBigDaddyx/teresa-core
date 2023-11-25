@@ -14,7 +14,6 @@ class Comment extends Model
     use HasFactory;
     use SoftDeletes;
     use BlameableTrait;
-    protected $connection = 'teresa_purchase';
     protected static $blameable = [
         'guard' => null,
         'user' => User::class,

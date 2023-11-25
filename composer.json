@@ -20,6 +20,7 @@
         "bezhansalleh/filament-shield": "^3.0",
         "davidhsianturi/blade-bootstrap-icons": "^1.4",
         "directorytree/ldaprecord-laravel": "^3.1",
+        "eightynine/filament-approvals": "^3.0",
         "filament/filament": "^3.0",
         "filament/notifications": "^3.0",
         "filament/spatie-laravel-media-library-plugin": "^3.0-stable",
@@ -38,17 +39,18 @@
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
         "pboivin/filament-peek": "^2.0",
-        "power-components/livewire-powergrid": "^5.1",
         "predis/predis": "^2.2",
         "richan-fongdasen/eloquent-blameable": "^1.9",
         "rickdbcn/filament-email": "^1.0",
+        "ringlesoft/laravel-process-approval": "^1.0",
         "robsontenorio/mary": "^0.43.0",
         "ryangjchandler/blade-tabler-icons": "^2.1",
         "sfolador/laravel-locked": "^0.5.1",
         "socialiteproviders/microsoft-azure": "^5.1",
         "socialiteproviders/zoho": "^4.1",
-        "spatie/laravel-permission": "^5.11",
+        "spatie/laravel-permission": "^6.1",
         "stechstudio/filament-impersonate": "^3.5",
+        "stephenjude/filament-debugger": "^2.0",
         "stijnvanouplines/blade-country-flags": "^1.0",
         "tapp/filament-auditing": "^3.0",
         "teresa/carton-box-guard": "^1.0",
@@ -114,9 +116,9 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
-        "xbigdaddyx/approval-system": {
+        "xbigdaddyx/harmony-flow": {
             "type": "path",
-            "url": "/var/www/core/packages/xbigdaddyx/approval-system",
+            "url": "/var/www/core/packages/xbigdaddyx/harmony-flow",
             "options": {
                 "symlink": true
             }

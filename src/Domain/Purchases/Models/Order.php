@@ -12,9 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
+use Spatie\ModelStatus\HasStatuses;
 
 class Order extends Model
 {
+    use HasStatuses;
     use BlameableTrait;
     use SoftDeletes;
     protected $connection = 'teresa_purchase';

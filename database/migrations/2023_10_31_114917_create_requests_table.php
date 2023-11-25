@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('teresa_purchase')->create('requests', function (Blueprint $table) {
+        Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->string('request_number');
             $table->foreignId('department_id')->nullable();
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('teresa_purchase')->dropIfExists('requests');
+        Schema::dropIfExists('requests');
     }
 };

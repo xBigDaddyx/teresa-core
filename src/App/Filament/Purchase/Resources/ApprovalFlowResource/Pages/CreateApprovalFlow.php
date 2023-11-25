@@ -3,17 +3,18 @@
 namespace App\Filament\Purchase\Resources\ApprovalFlowResource\Pages;
 
 use App\Filament\Purchase\Resources\ApprovalFlowResource;
-use Domain\Purchases\Models\ApprovalFlow;
+
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Forms;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Database\Eloquent\Builder;
+use Xbigdaddyx\HarmonyFlow\Models\Flow;
 
 class CreateApprovalFlow extends CreateRecord
 {
-    use CreateRecord\Concerns\HasWizard;
+    // use CreateRecord\Concerns\HasWizard;
     protected static string $resource = ApprovalFlowResource::class;
     protected function getSteps(): array
     {
@@ -35,7 +36,7 @@ class CreateApprovalFlow extends CreateRecord
                                 ->live()
                                 ->afterStateUpdated(function (Set $set, ?string $state) {
 
-                                    $flows = ApprovalFlow::where('type', $state)->orderBy('order', 'desc')->value('order');
+                                    $flows = Flow::where('type', $state)->orderBy('order', 'desc')->value('order');
 
                                     if ((int)$flows > 0) {
 
@@ -46,20 +47,10 @@ class CreateApprovalFlow extends CreateRecord
                                     return $set('order', 0);
                                 })
                                 ->label(__('Approval Type')),
-                            Forms\Components\Select::make('level')
+                            Forms\Components\Select::make('designation_id')
                                 ->required()
-                                ->options([
-                                    'User' => 'User',
-                                    'Supervisor' => 'Supervisor',
-                                    'Manager' => 'Manager',
-                                    'Purchasing' => 'Purchasing',
-                                    'Purchasing Manager' => 'Purchasing Manager',
-                                    'Finance Controller' => 'Finance Controller',
-                                    'CFO' => 'CFO',
-                                    'General Manager' => 'General Manager',
-                                    'Country Head' => 'Country Head',
-                                ])
-                                ->label(__('Approval Level')),
+                                ->relationship('designation', 'name')
+                                ->label(__('Approval Designation')),
                             Forms\Components\TextInput::make('order')
                                 ->hint('Define approval order')
                                 ->hidden(fn (Get $get): bool => $get('type') == null || $get('type') == '')
@@ -68,14 +59,14 @@ class CreateApprovalFlow extends CreateRecord
                                 ->minValue(function (Get $get) {
                                     $type = $get('type');
                                     if ($type !== '' || $type !== null) {
-                                        $queues = ApprovalFlow::where('type', $type)->orderBy('order', 'desc')->value('order');
+                                        $queues = Flow::where('type', $type)->orderBy('order', 'desc')->value('order');
 
                                         if ((int)$queues > 0) {
                                             return (int)$queues + 1;
                                         }
                                     }
 
-                                    return 0;
+                                    return 1;
                                 })
                                 ->maxValue(99)
 
@@ -84,8 +75,7 @@ class CreateApprovalFlow extends CreateRecord
 
 
                         ]),
-                    Forms\Components\Textarea::make('description')
-                        ->label('Description'),
+
 
                 ]),
             Forms\Components\Wizard\Step::make('Approval Parameter')
@@ -133,4 +123,9 @@ class CreateApprovalFlow extends CreateRecord
 
         ];
     }
+    // protected function mutateFormDataBeforeCreate(array $data): array
+    // {
+    //     dd($data);
+    //     return $data;
+    // }
 }

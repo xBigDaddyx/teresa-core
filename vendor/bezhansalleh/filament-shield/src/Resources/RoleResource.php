@@ -21,7 +21,6 @@ use Illuminate\Support\Str;
 
 class RoleResource extends Resource implements HasShieldPermissions
 {
-    protected static bool $isScopedToTenant = false;
     protected static ?string $recordTitleAttribute = 'name';
 
     protected static $permissionsCollection;
@@ -306,6 +305,11 @@ class RoleResource extends Resource implements HasShieldPermissions
         return Utils::isResourceNavigationBadgeEnabled()
             ? static::getModel()::count()
             : null;
+    }
+
+    public static function isScopedToTenant(): bool
+    {
+        return Utils::isScopedToTenant();
     }
 
     public static function canGloballySearch(): bool

@@ -13,16 +13,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
-use Domain\Purchases\Traits\HasApproval;
+// use Domain\Purchases\Traits\HasApproval;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Xbigdaddyx\HarmonyFlow\Traits\HasApproval;
+use Spatie\ModelStatus\HasStatuses;
 
 class Request extends Model
 {
+    use HasStatuses;
     use HasApproval;
+    // use HasApproval;
     use SoftDeletes;
     use BlameableTrait;
-    protected $connection = 'teresa_purchase';
+
     protected static $blameable = [
         'guard' => null,
         'user' => User::class,
@@ -33,6 +37,7 @@ class Request extends Model
     public static function boot()
     {
         parent::boot();
+        // static::bootHasApproval();
         self::creating(function ($model) {
 
 
@@ -104,10 +109,10 @@ class Request extends Model
     {
         return $this->setConnection('sqlsrv')->belongsTo(User::class, 'created_by', 'id');
     }
-    public function approvals(): MorphMany
-    {
-        return $this->setConnection('sqlsrv')->morphMany(ApprovalRequest::class, 'approvable');
-    }
+    // public function approvals(): MorphMany
+    // {
+    //     return $this->setConnection('sqlsrv')->morphMany(ApprovalRequest::class, 'approvable');
+    // }
     public function approvalHistories(): MorphMany
     {
         return $this->setConnection('sqlsrv')->morphMany(ApprovalHistory::class, 'approvable');

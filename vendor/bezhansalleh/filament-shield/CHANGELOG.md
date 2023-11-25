@@ -2,6 +2,36 @@
 
 All notable changes to `filament-shield` will be documented in this file.
 
+## 3.0.13 - 2023-11-22
+
+### What's Changed
+
+- drop support for spatie permission 6.0 by @bezhanSalleh in https://github.com/bezhanSalleh/filament-shield/pull/279
+
+**Full Changelog**: https://github.com/bezhanSalleh/filament-shield/compare/3.0.12...3.0.13
+
+## 3.0.12 - 2023-11-22
+
+### What's Changed
+
+- feat: adds support for disabling tenant scoping for the permission re… by @djsall in https://github.com/bezhanSalleh/filament-shield/pull/276
+- fixes #274 by @bezhanSalleh in https://github.com/bezhanSalleh/filament-shield/pull/277
+- Fix/#272 by @bezhanSalleh in https://github.com/bezhanSalleh/filament-shield/pull/278
+
+### New Contributors
+
+- @djsall made their first contribution in https://github.com/bezhanSalleh/filament-shield/pull/276
+
+**Full Changelog**: https://github.com/bezhanSalleh/filament-shield/compare/3.0.11...3.0.12
+
+## 3.0.11 - 2023-11-03
+
+**What's new in 3.0.11?**
+
+- Support for `spatie/laravel-permission` version 6.0
+
+**Full Changelog**: https://github.com/bezhanSalleh/filament-shield/compare/3.0.10...3.0.11
+
 ## 3.0.10 - 2023-11-03
 
 ### What's Changed

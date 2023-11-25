@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use Domain\Purchases\Models\ApprovalFlow;
 use Domain\Users\Models\User;
+use Xbigdaddyx\HarmonyFlow\Models\Flow;
 
 class ApprovalFlowPolicy
 {
@@ -14,7 +15,7 @@ class ApprovalFlowPolicy
     {
         //
     }
-    public function view(User $user, ApprovalFlow $category): bool
+    public function view(User $user, Flow $category): bool
     {
 
         return $user->hasRole('super-admin');

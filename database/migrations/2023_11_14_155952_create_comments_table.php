@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('teresa_purchase')->create('comments', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string("body");
             $table->unsignedBigInteger('commentable_id');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('teresa_purchase')->dropIfExists('comments');
+        Schema::dropIfExists('comments');
     }
 };

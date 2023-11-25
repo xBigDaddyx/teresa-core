@@ -137,6 +137,17 @@
       1 => 'LdapRecord\\Laravel\\LdapAuthServiceProvider',
     ),
   ),
+  'eightynine/filament-approvals' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'EightyNine\\Approvals\\ApprovalServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Approval' => 'EightyNine\\Approvals\\Facades\\Approval',
+    ),
+  ),
   'filament/actions' => 
   array (
     'providers' => 
@@ -375,13 +386,6 @@
       0 => 'Pboivin\\FilamentPeek\\FilamentPeekServiceProvider',
     ),
   ),
-  'power-components/livewire-powergrid' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'PowerComponents\\LivewirePowerGrid\\Providers\\PowerGridServiceProvider',
-    ),
-  ),
   'propaganistas/laravel-phone' => 
   array (
     'providers' => 
@@ -405,6 +409,20 @@
     'aliases' => 
     array (
       'FilamentEmail' => 'RickDBCN\\FilamentEmail\\Facades\\FilamentEmail',
+    ),
+  ),
+  'ringlesoft/laravel-process-approval' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'RingleSoft\\LaravelProcessApproval\\LaravelProcessApprovalServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'ProcessApproval' => 'RingleSoft\\LaravelProcessApproval\\Facade',
+    ),
+    'dont-discover' => 
+    array (
     ),
   ),
   'robsontenorio/mary' => 
@@ -484,6 +502,13 @@
     'providers' => 
     array (
       0 => 'STS\\FilamentImpersonate\\FilamentImpersonateServiceProvider',
+    ),
+  ),
+  'stephenjude/filament-debugger' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Stephenjude\\FilamentDebugger\\DebuggerServiceProvider',
     ),
   ),
   'stijnvanouplines/blade-country-flags' => 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class RequestItem extends Pivot
 {
-    protected $connection = 'teresa_purchase';
+
     protected $fillable = [
         'request_id',
         'product_id',

@@ -1,0 +1,454 @@
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+PHP Deprecated:  Optional parameter $force declared before required parameter $testType is implicitly treated as a required parameter in /var/www/core/vendor/livewire/livewire/src/Features/SupportConsoleCommands/Commands/MakeCommand.php on line 111
+  2023-11-21 12:01:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:01:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  31.70ms DONE
+  2023-11-21 12:01:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:01:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  27.52ms DONE
+  2023-11-21 12:02:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:02:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  36.15ms DONE
+  2023-11-21 12:03:20 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 12:03:20 Laravel\Telescope\Jobs\ProcessPendingUpdates  28.07ms DONE
+  2023-11-21 13:04:49 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 13:04:49 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  58.55ms DONE
+  2023-11-21 13:05:09 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:05:09 Laravel\Telescope\Jobs\ProcessPendingUpdates  9.92ms DONE
+  2023-11-21 13:05:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:05:19 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.10ms DONE
+  2023-11-21 13:05:42 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 13:05:43 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  58.29ms DONE
+  2023-11-21 13:06:03 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:06:03 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.78ms DONE
+  2023-11-21 13:06:13 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:06:13 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.93ms DONE
+  2023-11-21 13:18:28 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:18:28 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.03ms DONE
+  2023-11-21 13:18:49 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:18:49 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.49ms DONE
+  2023-11-21 13:35:16 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 13:35:16 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  63.51ms DONE
+  2023-11-21 13:35:16 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-21 13:35:16 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  19.48ms DONE
+  2023-11-21 13:35:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  9.83ms DONE
+  2023-11-21 13:35:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.49ms DONE
+  2023-11-21 13:35:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.32ms DONE
+  2023-11-21 13:35:37 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:37 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.58ms DONE
+  2023-11-21 13:35:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.62ms DONE
+  2023-11-21 13:35:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 13:35:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.99ms DONE
+  2023-11-21 14:19:51 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 14:19:51 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  68.83ms FAIL
+  2023-11-21 14:20:03 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:20:03 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.68ms DONE
+  2023-11-21 14:20:15 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:20:15 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.82ms DONE
+  2023-11-21 14:20:27 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:20:27 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.64ms DONE
+  2023-11-21 14:24:57 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 14:24:57 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  15.92ms DONE
+  2023-11-21 14:25:09 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:25:09 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.03ms DONE
+  2023-11-21 14:25:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:25:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.67ms DONE
+  2023-11-21 14:25:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 14:25:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.41ms DONE
+  2023-11-21 15:16:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ...  2023-11-21 15:16:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+ RUNNING
+  2023-11-21 15:16:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.64ms DONE
+  2023-11-21 15:16:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.23ms DONE
+  2023-11-21 15:16:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:16:59 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:16:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.00ms DONE
+  2023-11-21 15:16:59 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.10ms DONE
+  2023-11-21 15:32:20 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:20 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.94ms DONE
+  2023-11-21 15:32:20 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:20 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.95ms DONE
+  2023-11-21 15:32:30 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:30 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.04ms DONE
+  2023-11-21 15:32:30 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:32:30 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.07ms DONE
+  2023-11-21 15:37:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:37:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.15ms DONE
+  2023-11-21 15:37:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:37:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.20ms DONE
+  2023-11-21 15:39:30 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:39:30 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.96ms DONE
+  2023-11-21 15:39:51 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:39:51 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.89ms DONE
+  2023-11-21 15:45:27 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-21 15:45:27 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  29.38ms FAIL
+  2023-11-21 15:45:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:45:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.74ms DONE
+  2023-11-21 15:45:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 15:45:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  15.16ms DONE
+  2023-11-21 16:26:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:26:19 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.42ms DONE
+  2023-11-21 16:26:40 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:26:40 Laravel\Telescope\Jobs\ProcessPendingUpdates  11.90ms DONE
+  2023-11-21 16:29:43 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-21 16:29:43 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  41.05ms DONE
+  2023-11-21 16:29:43 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-21 16:29:43 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  36.33ms DONE
+  2023-11-21 16:30:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:30:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.77ms DONE
+  2023-11-21 16:30:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-21 16:30:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.65ms DONE
+  2023-11-22 13:50:28 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 13:50:28 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  81.44ms DONE
+  2023-11-22 13:50:28 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 13:50:28 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  10.28ms DONE
+  2023-11-22 13:50:39 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:50:39 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.97ms DONE
+  2023-11-22 13:50:49 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:50:49 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.74ms DONE
+  2023-11-22 13:50:49 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:50:49 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.67ms DONE
+  2023-11-22 13:51:00 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:51:00 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.84ms DONE
+  2023-11-22 13:52:23 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 13:52:23 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  25.65ms DONE
+  2023-11-22 13:52:23 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 13:52:23 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  7.60ms DONE
+  2023-11-22 13:52:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.55ms DONE
+  2023-11-22 13:52:43 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:43 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:43 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.86ms DONE
+  2023-11-22 13:52:43 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.75ms DONE
+  2023-11-22 13:52:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.42ms DONE
+  2023-11-22 13:52:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:52:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.09ms DONE
+  2023-11-22 13:58:46 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 13:58:46 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  194.14ms FAIL
+  2023-11-22 13:58:56 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:58:56 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.84ms DONE
+  2023-11-22 13:59:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:59:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.65ms DONE
+  2023-11-22 13:59:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 13:59:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.23ms DONE
+  2023-11-22 14:08:21 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:08:21 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.36ms DONE
+  2023-11-22 14:08:31 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:08:31 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.96ms DONE
+  2023-11-22 14:08:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:08:41 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.09ms DONE
+  2023-11-22 14:09:54 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 14:09:55 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  33.46ms DONE
+  2023-11-22 14:09:55 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 14:09:55 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  14.61ms FAIL
+  2023-11-22 14:10:05 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:05 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.12ms DONE
+  2023-11-22 14:10:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.41ms DONE
+  2023-11-22 14:10:16 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:16 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.35ms DONE
+  2023-11-22 14:10:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.84ms DONE
+  2023-11-22 14:10:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:10:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.56ms DONE
+  2023-11-22 14:24:44 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 14:24:44 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  30.91ms DONE
+  2023-11-22 14:24:44 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 14:24:44 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  14.01ms FAIL
+  2023-11-22 14:24:54 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:24:54 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.74ms DONE
+  2023-11-22 14:25:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:25:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.66ms DONE
+  2023-11-22 14:25:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:25:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.65ms DONE
+  2023-11-22 14:25:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:25:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.68ms DONE
+  2023-11-22 14:25:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:25:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.34ms DONE
+  2023-11-22 14:29:52 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:29:52 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.52ms DONE
+  2023-11-22 14:30:02 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:30:02 Laravel\Telescope\Jobs\ProcessPendingUpdates  16.59ms DONE
+  2023-11-22 14:30:12 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 14:30:12 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.31ms DONE
+  2023-11-22 21:32:54 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:32:54 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  45.08ms FAIL
+  2023-11-22 21:33:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.83ms DONE
+  2023-11-22 21:33:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.70ms DONE
+  2023-11-22 21:33:35 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:33:35 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  43.82ms DONE
+  2023-11-22 21:33:35 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 21:33:35 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  8.81ms DONE
+  2023-11-22 21:33:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.63ms DONE
+  2023-11-22 21:33:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:33:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.26ms DONE
+  2023-11-22 21:34:05 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:34:05 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.57ms DONE
+  2023-11-22 21:34:05 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:34:05 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.11ms DONE
+  2023-11-22 21:36:05 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:36:05 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  31.58ms DONE
+  2023-11-22 21:36:05 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 21:36:05 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  14.52ms FAIL
+  2023-11-22 21:36:15 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:15 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.69ms DONE
+  2023-11-22 21:36:15 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:15 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.95ms DONE
+  2023-11-22 21:36:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.40ms DONE
+  2023-11-22 21:36:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:36:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.67ms DONE
+  2023-11-22 21:38:12 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:38:12 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  46.77ms FAIL
+  2023-11-22 21:38:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:38:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.96ms DONE
+  2023-11-22 21:38:42 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:38:42 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.21ms DONE
+  2023-11-22 21:41:06 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:41:06 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  33.64ms DONE
+  2023-11-22 21:41:06 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 21:41:06 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  12.03ms FAIL
+  2023-11-22 21:41:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.44ms DONE
+  2023-11-22 21:41:26 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:26 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.78ms DONE
+  2023-11-22 21:41:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.37ms DONE
+  2023-11-22 21:41:36 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:41:36 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.37ms DONE
+  2023-11-22 21:47:27 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:47:27 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  30.70ms DONE
+  2023-11-22 21:47:27 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 21:47:27 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  12.18ms FAIL
+  2023-11-22 21:47:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.53ms DONE
+  2023-11-22 21:47:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.88ms DONE
+  2023-11-22 21:47:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.01ms DONE
+  2023-11-22 21:47:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:47:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.78ms DONE
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  135.42ms DONE
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  31.55ms DONE
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  39.81ms DONE
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 21:51:02 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  39.57ms DONE
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  34.00ms DONE
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.80ms  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  35.28ms DONE
+ DONE
+  2023-11-22 21:51:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  37.77ms DONE
+  2023-11-22 21:53:14 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 21:53:14 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  23.43ms DONE
+  2023-11-22 21:53:35 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:53:35 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.45ms DONE
+  2023-11-22 21:54:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:54:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.65ms DONE
+  2023-11-22 21:55:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:55:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.78ms DONE
+  2023-11-22 21:56:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:56:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.86ms DONE
+  2023-11-22 21:59:17 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:59:17 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.66ms DONE
+  2023-11-22 21:59:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 21:59:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.07ms DONE
+  2023-11-22 22:00:26 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 22:00:26 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  18.99ms DONE
+  2023-11-22 22:00:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:00:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.66ms DONE
+  2023-11-22 22:07:44 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 22:07:44 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  20.76ms DONE
+  2023-11-22 22:07:54 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:07:54 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.91ms DONE
+  2023-11-22 22:08:14 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:08:14 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.08ms DONE
+  2023-11-22 22:08:38 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  RUNNING
+  2023-11-22 22:08:38 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovalRecord  12.83ms DONE
+  2023-11-22 22:08:48 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:08:48 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.09ms DONE
+  2023-11-22 22:09:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:09:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.14ms DONE
+  2023-11-22 22:13:51 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:13:51 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.30ms DONE
+  2023-11-22 22:15:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:15:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.80ms DONE
+  2023-11-22 22:16:18 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:16:18 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.63ms DONE
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  31.09ms DONE
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.31ms DONE
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  47.68ms DONE
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:39:47 Laravel\Telescope\Jobs\ProcessPendingUpdates  31.45ms DONE
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ...  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.53ms DONE
+ RUNNING
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates   2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.31ms DONE
+ 5.09ms DONE
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:40:08 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.65ms DONE
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.49ms DONE
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.51ms DONE
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.64ms DONE
+  2023-11-22 22:41:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.11ms DONE
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.82ms DONE
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates   2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.39ms DONE
+ 5.09ms DONE
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:41:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.31ms DONE
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.05ms DONE
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.06ms DONE
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  8.47ms DONE
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:44:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  8.18ms DONE
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+ ... RUNNING
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.08ms DONE
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.83ms DONE
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  16.11ms DONE
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:45:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  32.74ms DONE
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  RUNNING
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  66.78ms DONE
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  RUNNING
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel  21.06ms DONE
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  25.09ms DONE
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+  2023-11-22 22:46:03 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  10.65ms DONE
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.15ms DONE
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.21ms DONE
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.88ms DONE
+  2023-11-22 22:46:24 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.86ms DONE
+  2023-11-22 22:48:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:06 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  8.86ms DONE
+  2023-11-22 22:48:06 Laravel\Telescope\Jobs\ProcessPendingUpdates  11.88ms DONE
+  2023-11-22 22:48:27 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:27 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 22:48:27 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.06ms DONE
+  2023-11-22 22:48:27 Laravel\Telescope\Jobs\ProcessPendingUpdates  6.91ms DONE
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  32.71ms DONE
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  32.16ms DONE
+  2023-11-22 23:32:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  36.00ms DONE
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.04ms DONE
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  2.97ms DONE
+  2023-11-22 23:32:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  27.45ms DONE
+  2023-11-22 23:36:21 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord   2023-11-22 23:36:21 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  RUNNING
+ RUNNING
+  2023-11-22 23:36:21 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories  21.65ms DONE
+  2023-11-22 23:36:21 Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord  77.04ms DONE
+  2023-11-22 23:36:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:33 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.59ms DONE
+  2023-11-22 23:36:33 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.29ms DONE
+  2023-11-22 23:36:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:45 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.51ms DONE
+  2023-11-22 23:36:45 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.25ms DONE
+  2023-11-22 23:36:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:57 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-22 23:36:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.59ms DONE
+  2023-11-22 23:36:57 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.77ms DONE
+  2023-11-23 11:17:22 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 11:17:22 Filament\Notifications\DatabaseNotification  153.65ms DONE
+  2023-11-23 11:17:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:17:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  11.93ms DONE
+  2023-11-23 11:17:43 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:17:43 Laravel\Telescope\Jobs\ProcessPendingUpdates  12.44ms DONE
+  2023-11-23 11:17:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:17:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.00ms DONE
+  2023-11-23 11:21:32 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 11:21:32 Filament\Notifications\DatabaseNotification  53.16ms DONE
+  2023-11-23 11:21:43 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:21:43 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.41ms DONE
+  2023-11-23 11:22:04 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:22:04 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.25ms DONE
+  2023-11-23 11:24:19 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 11:24:20 Filament\Notifications\DatabaseNotification  28.00ms DONE
+  2023-11-23 11:24:31 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:24:31 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.66ms DONE
+  2023-11-23 11:24:41 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:24:41 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.57ms DONE
+  2023-11-23 11:24:52 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:24:52 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.56ms DONE
+  2023-11-23 11:43:21 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 11:43:21 Filament\Notifications\DatabaseNotification  57.19ms DONE
+  2023-11-23 11:43:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:43:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.73ms DONE
+  2023-11-23 11:43:42 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:43:42 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.83ms DONE
+  2023-11-23 11:43:53 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 11:43:53 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.98ms DONE
+  2023-11-23 13:12:01 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 13:12:01 Laravel\Telescope\Jobs\ProcessPendingUpdates  7.06ms DONE
+  2023-11-23 13:12:11 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 13:12:11 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.11ms DONE
+  2023-11-23 13:12:22 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 13:12:22 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.41ms DONE
+  2023-11-23 14:43:13 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 14:43:13 Filament\Notifications\DatabaseNotification  56.25ms DONE
+  2023-11-23 14:43:23 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 14:43:23 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.58ms DONE
+  2023-11-23 14:43:34 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 14:43:34 Laravel\Telescope\Jobs\ProcessPendingUpdates  11.78ms DONE
+  2023-11-23 14:43:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 14:43:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  10.51ms DONE
+  2023-11-23 20:33:20 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 20:33:20 Filament\Notifications\DatabaseNotification  56.31ms DONE
+  2023-11-23 20:33:32 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:33:32 Laravel\Telescope\Jobs\ProcessPendingUpdates  4.97ms DONE
+  2023-11-23 20:33:44 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:33:44 Laravel\Telescope\Jobs\ProcessPendingUpdates  11.71ms DONE
+  2023-11-23 20:33:56 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:33:56 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.66ms DONE
+  2023-11-23 20:51:17 Filament\Notifications\DatabaseNotification .... RUNNING
+  2023-11-23 20:51:17 Filament\Notifications\DatabaseNotification  15.25ms DONE
+  2023-11-23 20:51:27 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:51:27 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.18ms DONE
+  2023-11-23 20:51:38 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:51:38 Laravel\Telescope\Jobs\ProcessPendingUpdates  12.29ms DONE
+  2023-11-23 20:51:48 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-23 20:51:48 Laravel\Telescope\Jobs\ProcessPendingUpdates  3.48ms DONE
+  2023-11-24 13:41:19 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-24 13:41:19 Laravel\Telescope\Jobs\ProcessPendingUpdates  15.97ms DONE
+  2023-11-24 13:41:30 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-24 13:41:30 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.37ms DONE
+  2023-11-24 13:41:40 Laravel\Telescope\Jobs\ProcessPendingUpdates ... RUNNING
+  2023-11-24 13:41:40 Laravel\Telescope\Jobs\ProcessPendingUpdates  5.12ms DONE

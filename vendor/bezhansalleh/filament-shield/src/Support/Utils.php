@@ -44,6 +44,11 @@ class Utils
         return config('filament-shield.shield_resource.navigation_badge', true);
     }
 
+    public static function isScopedToTenant(): bool
+    {
+        return config('filament-shield.shield_resource.is_scoped_to_tenant', true);
+    }
+
     public static function isResourceNavigationGroupEnabled(): bool
     {
         return config('filament-shield.shield_resource.navigation_group', true);
@@ -208,17 +213,17 @@ class Utils
         return config('permission.models.permission', 'Spatie\\Permission\\Models\\Permission');
     }
 
-    public static function discoverAllResources(): string
+    public static function discoverAllResources(): bool
     {
         return config('filament-shield.discovery.discover_all_resources', false);
     }
 
-    public static function discoverAllWidgets(): string
+    public static function discoverAllWidgets(): bool
     {
         return config('filament-shield.discovery.discover_all_widgets', false);
     }
 
-    public static function discoverAllPages(): string
+    public static function discoverAllPages(): bool
     {
         return config('filament-shield.discovery.discover_all_pages', false);
     }
