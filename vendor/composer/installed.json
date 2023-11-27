@@ -11879,6 +11879,81 @@
             "install-path": "../spatie/laravel-medialibrary"
         },
         {
+            "name": "spatie/laravel-model-status",
+            "version": "1.14.0",
+            "version_normalized": "1.14.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-model-status.git",
+                "reference": "7ffee82bf3017f22c030acd1b174f161be8a36fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-model-status/zipball/7ffee82bf3017f22c030acd1b174f161be8a36fa",
+                "reference": "7ffee82bf3017f22c030acd1b174f161be8a36fa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.71|^9.0|^10.0",
+                "php": "^8.0|^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.6|^7.0|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5"
+            },
+            "time": "2023-06-17T22:10:37+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\ModelStatus\\ModelStatusServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ModelStatus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Verhelst",
+                    "email": "tvke91@gmail.com",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to enable assigning statuses to Eloquent Models",
+            "homepage": "https://github.com/spatie/laravel-model-status",
+            "keywords": [
+                "laravel-status",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-model-status/issues",
+                "source": "https://github.com/spatie/laravel-model-status/tree/1.14.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "install-path": "../spatie/laravel-model-status"
+        },
+        {
             "name": "spatie/laravel-package-tools",
             "version": "1.16.1",
             "version_normalized": "1.16.1.0",
@@ -15287,6 +15362,73 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "install-path": "../webmozart/assert"
+        },
+        {
+            "name": "xbigdaddyx/harmony-flow",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/var/www/core/packages/xbigdaddyx/harmony-flow",
+                "reference": "3859d3fa06802ac2393ff9d16c2cc90c2ce9cc68"
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "illuminate/contracts": "^10.0",
+                "ringlesoft/laravel-process-approval": "^1.0.5",
+                "spatie/laravel-model-status": "^1.14.0",
+                "spatie/laravel-package-tools": "^1.15.0",
+                "spatie/laravel-permission": "^6.1"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "~7",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Xbigdaddyx\\HarmonyFlow\\HarmonyFlowServiceProvider"
+                    ],
+                    "aliases": {
+                        "HarmonyFlow": "Xbigdaddyx\\HarmonyFlow\\Facades\\HarmonyFlow"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Xbigdaddyx\\HarmonyFlow\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Xbigdaddyx\\HarmonyFlow\\Tests\\": "tests"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Faisal Yusuf",
+                    "email": "yussupcazzanova97@gmail.com",
+                    "homepage": "https://github.com/xBigDaddyx"
+                }
+            ],
+            "description": ":package_description",
+            "homepage": "https://github.com/xbigdaddyx/harmony-flow",
+            "keywords": [
+                "Filament",
+                "HarmonyFlow",
+                "Laravel"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            },
+            "install-path": "../xbigdaddyx/harmony-flow"
         },
         {
             "name": "ysfkaya/filament-phone-input",

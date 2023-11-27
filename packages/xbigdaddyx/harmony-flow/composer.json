@@ -4,22 +4,28 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Author Name",
-            "email": "author@email.com",
-            "homepage": "http://author.com"
+            "name": "Faisal Yusuf",
+            "email": "yussupcazzanova97@gmail.com",
+            "homepage": "https://github.com/xBigDaddyx"
         }
     ],
     "homepage": "https://github.com/xbigdaddyx/harmony-flow",
     "keywords": [
         "Laravel",
+        "Filament",
+        "Livewire",
         "HarmonyFlow"
     ],
     "require": {
+        "filament/filament": "^3.0",
         "spatie/laravel-model-status": "^1.14.0",
+        "spatie/laravel-package-tools": "^1.15.0",
+        "spatie/laravel-permission": "^6.1",
         "ringlesoft/laravel-process-approval": "^1.0.5",
         "illuminate/contracts": "^10.0"
     },
     "require-dev": {
+        "nunomaduro/collision": "^7.9",
         "phpunit/phpunit": "~9.0",
         "orchestra/testbench": "~7"
     },
@@ -42,5 +48,7 @@
                 "HarmonyFlow": "Xbigdaddyx\\HarmonyFlow\\Facades\\HarmonyFlow"
             }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

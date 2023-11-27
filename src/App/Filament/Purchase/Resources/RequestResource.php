@@ -35,11 +35,15 @@ use Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalHistories;
 use Xbigdaddyx\HarmonyFlow\Jobs\CreateApprovalRecord;
 use Xbigdaddyx\HarmonyFlow\Jobs\UpdateApprovableModel;
 use Xbigdaddyx\HarmonyFlow\Models\Approval;
+use Xbigdaddyx\HarmonyFlow\Tables\Actions\ApprovalActions;
+use Xbigdaddyx\HarmonyFlow\Tables\Actions\CommentAction;
+use Xbigdaddyx\HarmonyFlow\Tables\Actions\StatusAction;
+use Xbigdaddyx\HarmonyFlow\Tables\Columns\ApprovalStatusColumn;
 
 class RequestResource extends Resource
 {
     protected static ?string $model = Request::class;
-
+    //
     protected static ?string $navigationGroup = 'Purchase';
     protected static ?string $navigationLabel = 'My Requests';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
@@ -133,7 +137,8 @@ class RequestResource extends Resource
 
     public static function table(Table $table): Table
     {
-        // dd(Request::find(3)->getNextPerson());
+        // dd(auth('ldap')->user()->hasDepartment('IT'));
+
         //dd(Filament::getTenant()->short_name);
         // $req = Request::find(9)->getNextApproval();
         // dd($req);
@@ -160,7 +165,7 @@ class RequestResource extends Resource
                 Tables\Columns\TextColumn::make('contract_no')
                     ->searchable()
                     ->label(__('Contract')),
-
+                // ApprovalStatusColumn::make('approvalStatus'),
                 ProductColumn::make('requestItems')
                     ->color('info')
                     ->listWithLineBreaks()
@@ -182,65 +187,17 @@ class RequestResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\ActionGroup::make([
-                    ListPreviewAction::make()
-                        ->label('View')
+                ApprovalActions::make(),
+                StatusAction::make(),
+                ListPreviewAction::make()
+                    ->label('View')
 
-                        ->color('info'),
-                    Tables\Actions\Action::make('status')
+                    ->color('info'),
 
-                        ->icon('tabler-status-change')
-                        ->color('success')
-                        ->visible(fn (Request $record) => $record->is_submited === true || $record->is_processed === true)
-                        ->action(fn (Request $record) => $record->advance())
-                        ->modalAlignment(Alignment::Center)
-                        ->modalIcon('tabler-status-change')
-                        ->modalHeading('Approval Status')
-                        ->modalDescription('Below is all information we hold about last approval records for this request')
-                        ->modalSubmitAction(false)
-                        ->modalCancelAction(fn (StaticAction $action) => $action->label('Close'))
-                        ->modalContent(fn (Request $record): View => view(
-                            'filament.purchase.resources.request-resource.pages.request-status',
-                            ['record' => $record],
-                        )),
-                    Tables\Actions\Action::make('submit')
+                Tables\Actions\EditAction::make()
 
-                        ->icon('tabler-file-export')
-                        ->color('success')
-                        ->visible(fn (Request $record) => $record->is_submited === false)
-                        ->action(function (Request $record) {
-                            $record->is_submited = true;
-                            $record->setStatus('submitted', 'Submitted by ' . auth('ldap')->user()->name);
-                            $record->save();
-                            dispatch(new CreateApprovalRecord($record, 'PR', auth('ldap')->user()));
-                        }),
-                    // ->action(fn (Request $record) => RequestSubmited::dispatch($record, 'PR', auth('ldap')->user())),
-                    // Tables\Actions\ViewAction::make(),
-                    Tables\Actions\EditAction::make()
-
-                        ->color('primary'),
-                    Tables\Actions\Action::make('Comment')
-
-                        ->stickyModalHeader()
-
-                        ->outlined()
-                        ->icon('tabler-message-2')
-                        ->badge(fn (Model $record) => $record->comments->count())
-                        ->badgeColor('info')
-                        ->modalAlignment(Alignment::Center)
-                        ->modalIcon('tabler-message-2')
-                        ->modalHeading('Comments')
-                        ->modalSubmitAction(false)
-                        ->modalCancelAction(fn (StaticAction $action) => $action->label('Close'))
-                        ->modalContent(fn (Model $record): View => view(
-                            'filament.purchase.resources.approval-request-resource.pages.comment-approval-request',
-                            ['record' => $record],
-                        ))
-                        ->closeModalByClickingAway(false)
-                ]),
-
-
-
+                    ->color('primary'),
+                CommentAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -263,7 +220,6 @@ class RequestResource extends Resource
         return [
             'index' => Pages\ListRequests::route('/'),
             'create' => Pages\CreateRequest::route('/create'),
-            'status' => Pages\RequestStatus::route('/{record}/status'),
             // 'view' => Pages\ViewRequest::route('/{record}'),
             'edit' => Pages\EditRequest::route('/{record}/edit'),
             // 'document' => Pages\RequestDocument::route('/{record}/doc'),

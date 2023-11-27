@@ -75,7 +75,6 @@ trait Approvable
     {
         return $this->morphOne(ProcessApprovalStatus::class, 'approvable');
     }
-
     /**
      * Approvals relation
      * @return MorphMany
@@ -100,7 +99,7 @@ trait Approvable
             ->join('process_approval_flows', 'process_approval_flows.id', 'process_approval_flow_steps.process_approval_flow_id')
             ->where('process_approval_flows.approvable_type', self::getApprovableType())
             ->select('process_approval_flow_steps.*')
-            ->orderByRaw('`order` asc, id asc')
+            ->orderByRaw("'order' asc, id asc")
             ->get();
     }
 
@@ -182,7 +181,6 @@ trait Approvable
     public function isRejected(): bool
     {
         return $this->approvalStatus?->status === ApprovalActionEnum::REJECTED->value;
-
     }
 
     /**
@@ -192,7 +190,6 @@ trait Approvable
     public function isDiscarded(): bool
     {
         return $this->approvalStatus?->status === ApprovalActionEnum::DISCARDED->value;
-
     }
 
     /**
@@ -301,7 +298,7 @@ trait Approvable
      */
     public function approve($comment = null, Authenticatable|null $user = null): ProcessApproval|bool|RedirectResponse // TODO remove the redirectResponse
     {
-        if(!$this->isSubmitted()){
+        if (!$this->isSubmitted()) {
             throw RequestNotSubmittedException::create($this);
         }
         $nextStep = $this->nextApprovalStep();
@@ -352,7 +349,7 @@ trait Approvable
      */
     public function reject($comment = null, Authenticatable|null $user = null): ProcessApproval|bool
     {
-        if(!$this->isSubmitted()){
+        if (!$this->isSubmitted()) {
             throw RequestNotSubmittedException::create($this);
         }
         DB::beginTransaction();
@@ -389,7 +386,7 @@ trait Approvable
      */
     public function discard($comment = null, Authenticatable|null $user = null): ProcessApproval|bool
     {
-        if(!$this->isSubmitted()){
+        if (!$this->isSubmitted()) {
             throw RequestNotSubmittedException::create($this);
         }
         $nextStep = $this->nextApprovalStep();
@@ -524,11 +521,12 @@ trait Approvable
             return $step;
         });
         $action = $approval->approval_action;
-        if ($action == ApprovalStatusEnum::APPROVED->value && !$this->isApprovalCompleted()) {
-            $action = ApprovalStatusEnum::PENDING->value;
+        if ($action == ApprovalStatusEnum::APPROVED->name && !$this->isApprovalCompleted()) {
+            $action = ApprovalStatusEnum::PENDING->name;
         }
+
         return $this->approvalStatus()->update([
-            'steps' => $current->toArray(),
+            'steps' => $current,
             'status' => $action
         ]);
     }
@@ -552,11 +550,9 @@ trait Approvable
      */
     public function getApprovalsPausedAttribute(): mixed
     {
-        if(method_exists($this, 'pauseApprovals')){
+        if (method_exists($this, 'pauseApprovals')) {
             return $this->pauseApprovals();
         }
         return false;
     }
-
 }
-

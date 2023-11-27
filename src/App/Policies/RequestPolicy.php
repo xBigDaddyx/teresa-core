@@ -18,22 +18,24 @@ class RequestPolicy
     }
     public function view(User $user, Request $request): bool
     {
-        $approvalUser = $user->approvalUser;
-        if ($approvalUser->contains('level', 'User')) {
-            $hasPermission = true;
-        } else {
-            $hasPermission = false;
-        }
-        return $user->hasRole('purchase-user') && $hasPermission;
+        return true;
+        // $purchaseDepartment = $user->purchaseDepartments;
+        // if ($purchaseDepartment->contains('department-user') || ) {
+        //     $hasPermission = true;
+        // } else {
+        //     $hasPermission = false;
+        // }
+        // return $user->hasRole('purchase-user') && $hasPermission;
     }
     public function viewAny(User $user): bool
     {
-        $approvalUser = $user->approvalUser;
-        if ($approvalUser->contains('level', 'User')) {
-            $hasPermission = true;
-        } else {
-            $hasPermission = false;
-        }
-        return $user->hasRole('purchase-user') && $hasPermission;
+        return true;
+        // $approvalUser = $user->approvalUser;
+        // if ($approvalUser->contains('level', 'User')) {
+        //     $hasPermission = true;
+        // } else {
+        //     $hasPermission = false;
+        // }
+        // return $user->hasRole('purchase-user') && $hasPermission;
     }
 }

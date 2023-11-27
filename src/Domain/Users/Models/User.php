@@ -24,11 +24,14 @@ use Support\Traits\HasProfilePhoto;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
-use Xbigdaddyx\HarmonyFlow\Traits\HasDesignations;
+use Xbigdaddyx\HarmonyFlow\Traits\HasDepartments;
+
+// use Xbigdaddyx\HarmonyFlow\Traits\HasDesignations;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenants, LdapAuthenticatable
 {
-    use HasDesignations;
+    // use HasDesignations;
+    use HasDepartments;
     use AuthenticatesWithLdap;
     use HasApiTokens;
     use HasFactory;
@@ -132,6 +135,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     public function purchaseDepartments(): BelongsToMany
     {
         return $this->belongsToMany(Department::class, 'user_purchase_department')->using(UserPurchaseDepartment::class)->withPivot(['company_id']);
+    }
+    public function hasPurchaseDepartment($departmentId)
+    {
+        return $this->purchaseDepartments->contains($departmentId);
     }
     public function approvalUser()
     {

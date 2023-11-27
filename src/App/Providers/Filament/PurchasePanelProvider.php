@@ -47,6 +47,7 @@ class PurchasePanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->plugins([
+                \Xbigdaddyx\HarmonyFlow\HarmonyFlowPlugin::make(),
                 BreezyCore::make()
                     ->myProfile(
 

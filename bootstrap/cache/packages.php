@@ -490,6 +490,13 @@
       0 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
     ),
   ),
+  'spatie/laravel-model-status' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\ModelStatus\\ModelStatusServiceProvider',
+    ),
+  ),
   'spatie/laravel-permission' => 
   array (
     'providers' => 
@@ -534,6 +541,17 @@
     'aliases' => 
     array (
       'CartonBoxGuard' => 'Teresa\\CartonBoxGuard\\Facades\\CartonBoxGuard',
+    ),
+  ),
+  'xbigdaddyx/harmony-flow' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Xbigdaddyx\\HarmonyFlow\\HarmonyFlowServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'HarmonyFlow' => 'Xbigdaddyx\\HarmonyFlow\\Facades\\HarmonyFlow',
     ),
   ),
   'ysfkaya/filament-phone-input' => 

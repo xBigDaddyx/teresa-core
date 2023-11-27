@@ -18,12 +18,13 @@ use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Xbigdaddyx\HarmonyFlow\Traits\HasApproval;
 use Spatie\ModelStatus\HasStatuses;
+use Xbigdaddyx\HarmonyFlow\Models\ApprovableModel;
 
-class Request extends Model
+class Request extends ApprovableModel
 {
-    use HasStatuses;
-    use HasApproval;
+    // use HasStatuses;
     // use HasApproval;
+
     use SoftDeletes;
     use BlameableTrait;
 

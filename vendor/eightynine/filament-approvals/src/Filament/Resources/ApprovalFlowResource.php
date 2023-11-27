@@ -20,6 +20,7 @@ use RingleSoft\LaravelProcessApproval\Models\ProcessApprovalFlow;
 
 class ApprovalFlowResource extends Resource
 {
+    protected static bool $isScopedToTenant = false;
     protected static ?string $model = ProcessApprovalFlow::class;
 
     protected static ?string $modelLabel = 'Approval flow';

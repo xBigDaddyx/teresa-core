@@ -3,16 +3,16 @@
 namespace Xbigdaddyx\HarmonyFlow;
 
 use Xbigdaddyx\HarmonyFlow\Contracts\ApprovalContract;
-use Xbigdaddyx\HarmonyFlow\Contracts\DesignationContract;
+use Xbigdaddyx\HarmonyFlow\Contracts\DepartmentContract;
 use Xbigdaddyx\HarmonyFlow\Contracts\FlowContract;
 
 class HarmonyFlow
 {
     public string $pivotFlow;
-    public string $pivotDesignation;
+    public string $pivotDepartment;
     protected string $approvalClass;
     protected string $flowClass;
-    protected string $designationClass;
+    protected string $department;
     public function __construct()
     {
         $this->initializeCache();
@@ -21,9 +21,9 @@ class HarmonyFlow
     {
         $this->approvalClass = config('harmony-flow.models.approvals');
         $this->flowClass = config('harmony-flow.models.approval-flows');
-        $this->designationClass = config('harmony-flow.models.designations');
+        $this->department = config('harmony-flow.models.departments');
         $this->pivotFlow = config('permission.column_names.flow_pivot_key') ?: 'flow_id';
-        $this->pivotDesignation = config('permission.column_names.user_morph_key') ?: 'user_id';
+        $this->pivotDepartment = config('permission.column_names.user_morph_key') ?: 'user_id';
     }
 
     public function getApprovalClass(): string
@@ -52,15 +52,15 @@ class HarmonyFlow
 
         return $this;
     }
-    public function getDesignationClass(): string
+    public function getDepartmentClass(): string
     {
-        return $this->designationClass;
+        return $this->department;
     }
-    public function setDesignationClass($designationClass)
+    public function setDepartmentClass($department)
     {
-        $this->designationClass = $designationClass;
-        config()->set('harmony-flow.models.designations', $designationClass);
-        app()->bind(DesignationContract::class, $designationClass);
+        $this->department = $department;
+        config()->set('harmony-flow.models.departments', $department);
+        app()->bind(DepartmentContract::class, $department);
 
         return $this;
     }
