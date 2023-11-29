@@ -7,5 +7,4 @@ export default {
         './resources/views/filament/purchase/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
-
 }

@@ -11,6 +11,7 @@ use App\Policies\CategoryPolicy;
 use App\Policies\CityPolicy;
 use App\Policies\CurrenciesPolicy;
 use App\Policies\OrderPolicy;
+use App\Policies\ProcessApprovalFlowPolicy;
 use App\Policies\ProductCategoryPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\RequestPolicy;
@@ -32,6 +33,7 @@ use Domain\Users\Models\Role;
 use Domain\Users\Policies\RolePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use RingleSoft\LaravelProcessApproval\Models\ProcessApprovalFlow;
 use Xbigdaddyx\HarmonyFlow\Models\Flow;
 
 class AuthServiceProvider extends ServiceProvider
@@ -56,6 +58,7 @@ class AuthServiceProvider extends ServiceProvider
         Product::class => ProductPolicy::class,
         ProductCategory::class => ProductCategoryPolicy::class,
         Unit::class => UnitPolicy::class,
+        ProcessApprovalFlow::class => ProcessApprovalFlowPolicy::class,
 
 
     ];

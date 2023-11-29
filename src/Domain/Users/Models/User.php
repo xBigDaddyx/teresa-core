@@ -74,14 +74,17 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     {
         return filament()->getUserAvatarUrl($this);
     }
-
+    public function getSignature()
+    {
+        return 'https://teresa.hoplun.com/storage/' . $this->signature; // Return the path to user's signature
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'social_id',
+        'name', 'email', 'password', 'social_id', 'signature',
         'social_type',
     ];
 
@@ -102,6 +105,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
 
     // /**

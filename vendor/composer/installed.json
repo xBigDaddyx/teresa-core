@@ -9921,6 +9921,90 @@
             "install-path": "../ryangjchandler/blade-tabler-icons"
         },
         {
+            "name": "saade/filament-autograph",
+            "version": "v3.0.2",
+            "version_normalized": "3.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saade/filament-autograph.git",
+                "reference": "d37beda6ff3a08b0263c8ebcb879ea2b719f52ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saade/filament-autograph/zipball/d37beda6ff3a08b0263c8ebcb879ea2b719f52ec",
+                "reference": "d37beda6ff3a08b0263c8ebcb879ea2b719f52ec",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "filament/forms": "^3.0",
+                "illuminate/contracts": "^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "time": "2023-11-22T14:17:39+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saade\\FilamentAutograph\\FilamentAutographServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentAutograph": "Saade\\FilamentAutograph\\Facades\\FilamentAutograph"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Saade\\FilamentAutograph\\": "src/",
+                    "Saade\\FilamentAutograph\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saade",
+                    "email": "saade@outlook.com.br",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Filament package to manage signatures.",
+            "homepage": "https://github.com/saade/filament-autograph",
+            "keywords": [
+                "filament-autograph",
+                "laravel",
+                "saade"
+            ],
+            "support": {
+                "issues": "https://github.com/saade/filament-autograph/issues",
+                "source": "https://github.com/saade/filament-autograph"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/saade",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../saade/filament-autograph"
+        },
+        {
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "version_normalized": "8.4.0.0",
@@ -15370,7 +15454,7 @@
             "dist": {
                 "type": "path",
                 "url": "/var/www/core/packages/xbigdaddyx/harmony-flow",
-                "reference": "3859d3fa06802ac2393ff9d16c2cc90c2ce9cc68"
+                "reference": "3440e37716254e5b2627d179dc5eed1c406c2d58"
             },
             "require": {
                 "filament/filament": "^3.0",
@@ -15422,7 +15506,8 @@
             "keywords": [
                 "Filament",
                 "HarmonyFlow",
-                "Laravel"
+                "Laravel",
+                "Livewire"
             ],
             "transport-options": {
                 "symlink": true,

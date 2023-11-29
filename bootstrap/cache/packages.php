@@ -454,6 +454,17 @@
       0 => 'RyanChandler\\TablerIcons\\BladeTablerIconsServiceProvider',
     ),
   ),
+  'saade/filament-autograph' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Saade\\FilamentAutograph\\FilamentAutographServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'FilamentAutograph' => 'Saade\\FilamentAutograph\\Facades\\FilamentAutograph',
+    ),
+  ),
   'sfolador/laravel-locked' => 
   array (
     'providers' => 

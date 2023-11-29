@@ -16,26 +16,24 @@ class RequestPolicy
     {
         //
     }
+    public function create(User $user)
+    {
+        return $user->hasRole(['purchase-user', 'super-admin']);
+    }
+    public function update(User $user, Request $request): bool
+    {
+        return $request->created_by === $user->id && !$request->isSubmitted();
+    }
     public function view(User $user, Request $request): bool
     {
-        return true;
-        // $purchaseDepartment = $user->purchaseDepartments;
-        // if ($purchaseDepartment->contains('department-user') || ) {
-        //     $hasPermission = true;
-        // } else {
-        //     $hasPermission = false;
-        // }
-        // return $user->hasRole('purchase-user') && $hasPermission;
+        return $user->hasRole(['purchase-user', 'purchase-officer', 'purchase-approver']);
     }
     public function viewAny(User $user): bool
     {
-        return true;
-        // $approvalUser = $user->approvalUser;
-        // if ($approvalUser->contains('level', 'User')) {
-        //     $hasPermission = true;
-        // } else {
-        //     $hasPermission = false;
-        // }
-        // return $user->hasRole('purchase-user') && $hasPermission;
+        return $user->hasRole(['purchase-user', 'purchase-officer', 'purchase-approver']);
+    }
+    public function submit(User $user, Request $request)
+    {
+        return $request->created_by === $user->id;
     }
 }

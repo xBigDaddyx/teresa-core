@@ -6,6 +6,9 @@ use App\Filament\Pages\Tenancy\EditCompanyProfile;
 use App\Filament\Pages\Tenancy\RegisterCompany;
 use App\Http\Middleware\AuthenticateLdap;
 use App\Livewire\MyCustomProfile;
+use App\Livewire\MyCustomProfileComponent;
+use App\Livewire\Pages\CustomPersonalInfo;
+use App\Livewire\Pages\PersonalInfo;
 use App\Livewire\UpdatePassword;
 use Domain\Admin\Models\Login;
 use Domain\Users\Models\Company;
@@ -46,6 +49,7 @@ class PurchasePanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->viteTheme('resources/css/filament/purchase/theme.css')
             ->plugins([
                 \Xbigdaddyx\HarmonyFlow\HarmonyFlowPlugin::make(),
                 BreezyCore::make()
@@ -56,6 +60,7 @@ class PurchasePanelProvider extends PanelProvider
                         hasAvatars: true, // Enables the avatar upload form component (default = false)
                         slug: 'my-profile' // Sets the slug for the profile page (default = 'my-profile')
                     )
+                    ->myProfileComponents([MyCustomProfileComponent::class])
                     ->enableTwoFactorAuthentication(
                         force: false, // force the user to enable 2FA before they can use the application (default = false)
                         //action: CustomTwoFactorPage::class // optionally, use a custom 2FA page

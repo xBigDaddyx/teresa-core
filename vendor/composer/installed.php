@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '64152ae166f0285359e4d4aa2b8553ca35dee38a',
+        'reference' => '1e471a1a494b1884ab9a954eb0d53a5538217d62',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -832,7 +832,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '64152ae166f0285359e4d4aa2b8553ca35dee38a',
+            'reference' => '1e471a1a494b1884ab9a954eb0d53a5538217d62',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1520,6 +1520,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'saade/filament-autograph' => array(
+            'pretty_version' => 'v3.0.2',
+            'version' => '3.0.2.0',
+            'reference' => 'd37beda6ff3a08b0263c8ebcb879ea2b719f52ec',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../saade/filament-autograph',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'sabberworm/php-css-parser' => array(
             'pretty_version' => '8.4.0',
             'version' => '8.4.0.0',
@@ -2201,7 +2210,7 @@
         'xbigdaddyx/harmony-flow' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3859d3fa06802ac2393ff9d16c2cc90c2ce9cc68',
+            'reference' => '3440e37716254e5b2627d179dc5eed1c406c2d58',
             'type' => 'library',
             'install_path' => __DIR__ . '/../xbigdaddyx/harmony-flow',
             'aliases' => array(),

@@ -72,6 +72,8 @@ return array(
     'Sfolador\\Locked\\Database\\Factories\\' => array($vendorDir . '/sfolador/laravel-locked/database/factories'),
     'Sfolador\\Locked\\' => array($vendorDir . '/sfolador/laravel-locked/src'),
     'Sabberworm\\CSS\\' => array($vendorDir . '/sabberworm/php-css-parser/src'),
+    'Saade\\FilamentAutograph\\Database\\Factories\\' => array($vendorDir . '/saade/filament-autograph/database/factories'),
+    'Saade\\FilamentAutograph\\' => array($vendorDir . '/saade/filament-autograph/src'),
     'STS\\FilamentImpersonate\\' => array($vendorDir . '/stechstudio/filament-impersonate/src'),
     'RyanChandler\\TablerIcons\\' => array($vendorDir . '/ryangjchandler/blade-tabler-icons/src'),
     'RyanChandler\\BladeCaptureDirective\\Database\\Factories\\' => array($vendorDir . '/ryangjchandler/blade-capture-directive/database/factories'),

@@ -14,10 +14,12 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Xbigdaddyx\HarmonyFlow\Livewire\Comment;
 use Xbigdaddyx\HarmonyFlow\Livewire\Status;
+use Illuminate\Support\Facades\Gate;
 
 class HarmonyFlowServiceProvider extends PackageServiceProvider
 {
@@ -79,6 +81,7 @@ class HarmonyFlowServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+
         $this->callAfterResolving(BladeCompiler::class, function () {
             if (class_exists(Livewire::class)) {
                 Livewire::component('comment', Comment::class);

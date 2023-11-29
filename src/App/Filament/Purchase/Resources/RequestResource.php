@@ -47,7 +47,48 @@ class RequestResource extends Resource
     protected static ?string $navigationGroup = 'Purchase';
     protected static ?string $navigationLabel = 'My Requests';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    public static function getPluralModelLabel(): string
+    {
+        if (auth('ldap')->user()->hasRole('purchase-officer')) {
+            return __('Purchase Requested');
+        } else if (auth('ldap')->user()->hasRole('purchase-approver')) {
+            return __('Request Approvals');
+        }
+        return __('Requests');
+    }
+    public static function getNavigationLabel(): string
+    {
+        if (auth('ldap')->user()->hasRole('purchase-officer')) {
+            return __('Purchase Requested');
+        } else if (auth('ldap')->user()->hasRole('purchase-approver')) {
+            return __('Request Approvals');
+        }
+        return __('Requests');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        if (auth('ldap')->user()->hasRole('purchase-approver')) {
+            return static::getModel()::whereHas('department', function (Builder $query) {
 
+                $departments = auth('ldap')->user()->departments;
+                if ($departments->count() > 0) {
+                    $collection = new Collection();
+                    foreach ($departments as $dept) {
+                        $collection->push($dept->id);
+                    }
+                    $query->whereIn('department_id', $collection->toArray());
+                }
+                return $query;
+            })->whereHas('approvalStatus', function (Builder $q) {
+                $q->where('status', 'submitted');
+            })->count();
+        }
+        return null;
+    }
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'primary';
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -189,12 +230,15 @@ class RequestResource extends Resource
             ->actions([
                 ApprovalActions::make(),
                 StatusAction::make(),
-                ListPreviewAction::make()
-                    ->label('View')
+                Tables\Actions\Action::make('Document')
+                    ->url(fn (Model $record) => route('filament.purchase.resources.requests.document', ['record' => $record, 'tenant' => Filament::getTenant()])),
+                // ListPreviewAction::make()
+                //     ->label('View')
 
-                    ->color('info'),
+                //     ->color('info'),
 
                 Tables\Actions\EditAction::make()
+                    ->hidden()
 
                     ->color('primary'),
                 CommentAction::make(),
@@ -220,6 +264,8 @@ class RequestResource extends Resource
         return [
             'index' => Pages\ListRequests::route('/'),
             'create' => Pages\CreateRequest::route('/create'),
+            'document' => Pages\Document::route('/{record}/document'),
+
             // 'view' => Pages\ViewRequest::route('/{record}'),
             'edit' => Pages\EditRequest::route('/{record}/edit'),
             // 'document' => Pages\RequestDocument::route('/{record}/doc'),
