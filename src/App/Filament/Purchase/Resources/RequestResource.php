@@ -227,10 +227,14 @@ class RequestResource extends Resource
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])
+            ->recordUrl(
+                fn (Model $record): string => route('filament.purchase.resources.requests.document', ['record' => $record, 'tenant' => Filament::getTenant()]),
+            )
             ->actions([
                 ApprovalActions::make(),
                 StatusAction::make(),
                 Tables\Actions\Action::make('Document')
+                    ->icon('tabler-file-invoice')
                     ->url(fn (Model $record) => route('filament.purchase.resources.requests.document', ['record' => $record, 'tenant' => Filament::getTenant()])),
                 // ListPreviewAction::make()
                 //     ->label('View')

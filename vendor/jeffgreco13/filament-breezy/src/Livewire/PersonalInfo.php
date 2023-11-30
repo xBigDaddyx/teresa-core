@@ -15,7 +15,7 @@ class PersonalInfo extends MyProfileComponent
     public $user;
     public $userClass;
     public bool $hasAvatars;
-    public array $only = ['name', 'email'];
+    public array $only = ['name','email'];
 
     public static $sort = 10;
 

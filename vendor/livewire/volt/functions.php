@@ -26,7 +26,13 @@ function state(mixed ...$properties): StateOptions
             if (is_string($properties[0])) {
                 $properties = [$properties[0] => null];
             } elseif (Arr::isAssoc($properties[0])) {
-                $properties = $properties[0];
+                $properties = array_map(
+                    static fn ($key, $value) => is_numeric($key) ? [$value => null] : [$key => $value],
+                    array_keys($properties[0]),
+                    $properties[0]
+                );
+
+                $properties = array_merge(...$properties);
             } else {
                 $properties = array_fill_keys($properties[0], null);
             }
@@ -90,7 +96,7 @@ function layout(string $layout): void
 /**
  * Define the component's title.
  */
-function title(string $title): void
+function title(Closure|string $title): void
 {
     CompileContext::instance()->title = $title;
 }

@@ -12,20 +12,20 @@ use Teresa\CartonBoxGuard\Traits\HasStringId;
 class Tag extends Model
 {
     use SoftDeletes;
-    use HasStringId;
-    protected $keyType = 'string';
+    // use HasStringId;
+    // protected $keyType = 'string';
 
     protected $primaryKey = 'id';
 
     protected $guarded = [];
-    public function prefixable(): array
-    {
-        return [
-            'id_prefix' => 'TAG',
-            'company_id' => Auth::user()->company->id,
-            'company_short_name' => Auth::user()->company->short_name,
-        ];
-    }
+    // public function prefixable(): array
+    // {
+    //     return [
+    //         'id_prefix' => 'TAG',
+    //         'company_id' => Auth::user()->company->id,
+    //         'company_short_name' => Auth::user()->company->short_name,
+    //     ];
+    // }
     public function __construct(array $attributes = [])
     {
         if (!isset($this->connection)) {

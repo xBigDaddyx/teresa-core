@@ -29,7 +29,7 @@ class ListRequests extends ListRecords
     protected static string $resource = RequestResource::class;
     public function getTabs(): array
     {
-        if (Auth::guard('ldap')->user()->hasRole(['purchase-approver', 'super-admin'])) {
+        if (Auth::guard('ldap')->user()->hasRole(['purchase-approver'])) {
             $departments = Auth::guard('ldap')->user()->purchaseDepartments;
             return [
                 'requests' => Tab::make()
@@ -86,12 +86,12 @@ class ListRequests extends ListRecords
 
             'draft' => Tab::make()
                 ->icon('tabler-pencil')
-                ->badge(Request::query()->where('created_by', auth()->user()->id)->where('is_submited', false)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('is_submited', false)),
+                ->badge(Request::query()->where('created_by', auth()->user()->id)->whereHas('approvals', fn (Builder $que) => $que->where('approval_action', 'Created'))->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->whereHas('approvals', fn (Builder $que) => $que->where('approval_action', 'Created'))),
             'submited' => Tab::make()
                 ->icon('tabler-file-export')
-                ->badge(Request::query()->where('created_by', auth()->user()->id)->where('is_submited', true)->where('is_processed', false)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('is_submited', true)->where('is_processed', false)),
+                ->badge(Request::query()->where('created_by', auth()->user()->id)->whereHas('approvals', fn (Builder $que) => $que->where('approval_action', 'Submitted'))->count())
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->whereHas('approvals', fn (Builder $que) => $que->where('approval_action', 'Submitted'))),
             'processed' => Tab::make()
                 ->icon('tabler-arrow-autofit-height')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('created_by', auth()->user()->id)->where('is_processed', true)),

@@ -76,7 +76,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasTenant
     }
     public function getSignature()
     {
-        return 'https://teresa.hoplun.com/storage/' . $this->signature; // Return the path to user's signature
+        if ($this->signature) {
+            return 'https://teresa.hoplun.com/storage/' . $this->signature; // Return the path to user's signature
+        }
+        return null;
     }
     /**
      * The attributes that are mass assignable.

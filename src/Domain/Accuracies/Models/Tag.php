@@ -13,7 +13,7 @@ class Tag extends Model
     use BlameableTrait;
     use SoftDeletes;
 
-    protected $keyType = 'string';
+    // protected $keyType = 'string';
 
     protected $primaryKey = 'id';
 
@@ -28,30 +28,32 @@ class Tag extends Model
         'updatedBy' => 'updated_by',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::creating(function ($model) {
-            $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     self::creating(function ($model) {
+    //         $count = ($model::where('id', 'like', auth()->user()->company->short_name . '%')->withTrashed()->count() + 1);
 
-            if ($count < 10) {
-                $number = '000000' . $count;
-            } elseif ($count >= 10 && $count < 100) {
-                $number = '00000' . $count;
-            } elseif ($count >= 100 && $count < 1000) {
-                $number = '0000' . $count;
-            } elseif ($count >= 1000 && $count < 10000) {
-                $number = '000' . $count;
-            } elseif ($count >= 10000 && $count < 100000) {
-                $number = '00' . $count;
-            } elseif ($count >= 100000 && $count < 1000000) {
-                $number = '0' . $count;
-            } else {
-                $number = $count;
-            }
-            $model->id = auth()->user()->company->short_name . '.TAG.' . $number;
-        });
-    }
+    //         if ($count < 10) {
+    //             $number = '0000000' . $count;
+    //         } elseif ($count >= 10 && $count < 100) {
+    //             $number = '000000' . $count;
+    //         } elseif ($count >= 100 && $count < 1000) {
+    //             $number = '00000' . $count;
+    //         } elseif ($count >= 1000 && $count < 10000) {
+    //             $number = '0000' . $count;
+    //         } elseif ($count >= 10000 && $count < 100000) {
+    //             $number = '000' . $count;
+    //         } elseif ($count >= 100000 && $count < 1000000) {
+    //             $number = '00' . $count;
+    //         } elseif ($count >= 1000000 && $count < 10000000) {
+    //             $number = '0' . $count;
+    //         } else {
+    //             $number = $count;
+    //         }
+    //         $model->id = auth()->user()->company->short_name . '.TAG.' . $number;
+    //     });
+    // }
 
     public function taggable()
     {

@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-slot name="description">
-
+            {{$record->department->name}}
         </x-slot>
         @if ($record->isSubmitted())
         <div class="flex items-center justify-center">
@@ -38,11 +38,26 @@
         </x-slot>
 
         <x-slot name="description">
-
+            {{$record->department->name}}
         </x-slot>
         @if (!empty($approver->user))
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-center text-center mb-4">
+            @if ($approver->user->getSignature() !== null)
             <img src="{{$approver->user->getSignature()}}" alt="Avatar" />
+            @else
+            <div class="text-center">
+                @if ($approver->approval_action === "Approved")
+                <x-tabler-circle-check class="h-20 w-20 text-success" />
+                @elseif ($approver->approval_action === "Rejected")
+                <x-tabler-circle-x class="h-20 w-20 text-danger" />
+                @endif
+
+                ( <span>{{$approver->approval_action}}</span> )
+            </div>
+
+            @endif
+
+
         </div>
         <div class="flex items-center gap-3">
             <div class="avatar">
